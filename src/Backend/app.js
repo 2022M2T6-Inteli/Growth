@@ -1,19 +1,19 @@
 // Requires
 const express = require('express')
-const Connection = require('./Connection')
+const ConnectionService = require('./services/ConnectionService')
 
 // Routes
-const builderRouter = require('./routes/BuilderRoutes')
+const routes = require('./routes/routes');
 
 const port = 3000;
 const app = express()
 
-Connection.setDatabase('./database.db');
+// Define onde está o banco de dados que será usado
+ConnectionService.setDatabase('./database.db');
 
 app.use(express.json())
 
-
-app.use(builderRouter)
+app.use(routes)
 
 app.get("/", (req, res) => {
     res.json("oi")
