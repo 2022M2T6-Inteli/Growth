@@ -3,7 +3,7 @@ const express = require('express')
 const ConnectionService = require('./services/ConnectionService')
 
 // Routes
-const routes = require('./routes/routes');
+const routes = require('./routes/Routes');
 
 const port = 3000;
 const app = express()

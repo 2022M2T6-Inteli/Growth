@@ -6,7 +6,6 @@ class ConstructionModel extends Model {
     name;
     description;
     city_id;
-    type_id;
     creation_date;
     update_date;
 
@@ -58,10 +57,6 @@ class ConstructionModel extends Model {
 
     setCityId(city_id){
         this.city_id = city_id;
-    }
-
-    setTypeId(type_id){
-        this.type_id = type_id;
     }
 
     setCreationDate(creation_date){

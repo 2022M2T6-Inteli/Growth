@@ -5,7 +5,7 @@ class Controller {
     static async execute(req, res, callback) {
         try {
             const date = new Date();
-            LogService.log(`Acessed ${req.url} at ${date.getDay()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`)
+            LogService.log(`Acessed ${req.method} ${req.url} at ${date.getDay()}/${date.getMonth()}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}:${date.getMilliseconds()}`)
             
             return await callback(req, res);
         } catch (error) {
