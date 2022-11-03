@@ -9,6 +9,7 @@ const TagRouter = require('./TagRoutes');
 const BuilderConstructionSummaryRouter = require('./BuilderConstructionSummaryRoutes');
 const CityRouter = require('./CityRoutes');
 const StateRouter = require('./StateRoutes');
+const ConstructionBuilderInterestRouter = require('./ConstructionBuilderInterestrRoutes');
 
 const router = express.Router();
 
@@ -19,6 +20,7 @@ router.use(TagRouter);
 router.use(BuilderConstructionSummaryRouter);
 router.use(CityRouter);
 router.use(StateRouter);
+router.use(ConstructionBuilderInterestRouter)
 
 
 

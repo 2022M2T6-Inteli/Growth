@@ -5,21 +5,21 @@ const CityController = require('../controllers/CityController')
 const cityRouter = express.Router()
 
 // CREATE
-cityRouter.get("/cidade-create", CityController.getCreateCity)
-cityRouter.post("/cidade", CityController.postCreateCity)
+cityRouter.get("/cidades-create", CityController.getCreateCity)
+cityRouter.post("/cidades", CityController.postCreateCity)
 
 // READ
-cityRouter.get("/cidade", CityController.getAllCity)
-cityRouter.get("/cidade/:id", CityController.getCity)
+cityRouter.get("/cidades", CityController.getAllCity)
+cityRouter.get("/cidades/:id", CityController.getCity)
 
 // UPDATE
-cityRouter.put("/cidade/:id", CityController.postUpdateCity) // UPDATE API
-cityRouter.get("/cidade/:id", CityController.getUpdateCity)
-cityRouter.post("/cidade/:id", CityController.postUpdateCity)
+cityRouter.put("/cidades/:id", CityController.postUpdateCity) // UPDATE API
+cityRouter.get("/cidades/:id", CityController.getUpdateCity)
+cityRouter.post("/cidades/:id", CityController.postUpdateCity)
 
 // DELETE
-cityRouter.delete("/cidade/:id", CityController.postDeleteCity) // DELETE API
-cityRouter.get("/cidade-delete/:id", CityController.getUpdateCity)
-cityRouter.post("/cidade-delete/:id", CityController.postUpdateCity)
+cityRouter.delete("/cidades/:id", CityController.postDeleteCity) // DELETE API
+cityRouter.get("/cidades-delete/:id", CityController.getUpdateCity)
+cityRouter.post("/cidades-delete/:id", CityController.postUpdateCity)
 
 module.exports = cityRouter;

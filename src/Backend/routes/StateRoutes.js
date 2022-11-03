@@ -5,21 +5,21 @@ const StateController = require('../controllers/StateController')
 const stateRouter = express.Router()
 
 // CREATE
-stateRouter.get("/estado-create", StateController.getCreateState)
-stateRouter.post("/estado", StateController.postCreateState)
+stateRouter.get("/estados-create", StateController.getCreateState)
+stateRouter.post("/estados", StateController.postCreateState)
 
 // READ
-stateRouter.get("/estado", StateController.getAllState)
-stateRouter.get("/estado/:id", StateController.getState)
+stateRouter.get("/estados", StateController.getAllState)
+stateRouter.get("/estados/:id", StateController.getState)
 
 // UPDATE
-stateRouter.put("/estado/:id", StateController.postUpdateState) // UPDATE API
-stateRouter.get("/estado/:id", StateController.getUpdateState)
-stateRouter.post("/estado/:id", StateController.postUpdateState)
+stateRouter.put("/estados/:id", StateController.postUpdateState) // UPDATE API
+stateRouter.get("/estados/:id", StateController.getUpdateState)
+stateRouter.post("/estados/:id", StateController.postUpdateState)
 
 // DELETE
-stateRouter.delete("/estado/:id", StateController.postDeleteState) // DELETE API
-stateRouter.get("/estado-delete/:id", StateController.getUpdateState)
-stateRouter.post("/estado-delete/:id", StateController.postUpdateState)
+stateRouter.delete("/estados/:id", StateController.postDeleteState) // DELETE API
+stateRouter.get("/estados-delete/:id", StateController.getUpdateState)
+stateRouter.post("/estados-delete/:id", StateController.postUpdateState)
 
 module.exports = stateRouter;

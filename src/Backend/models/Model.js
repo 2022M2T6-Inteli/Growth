@@ -92,7 +92,7 @@ class Model {
         VALUES
             (${this.getObjectEntries().map(entrie => `$${entrie[0]}`).join(", ")})`;
 
-        if (!this.verifyIdentifierColumns()) {
+        if ((this.identifierColumns.length == 1 && !this.verifyIdentifierColumns()) || this.identifierColumns.length != 1) {
             const id = await ConnectionService.insert(
                 query,
                 this.getObject()
