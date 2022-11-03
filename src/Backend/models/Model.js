@@ -4,10 +4,14 @@ const APIError = require('../services/ErrorService');
 class Model {
     tableName; // Nome da tabela no banco de dados
     identifierColumns = ['id']; // Nome das colunas de identificação (id em entidades fortes e ids de relações em tabelas de relacionamento)
+    codeColumns = ['identifierColumns', 'tableName', 'codeColumns']
 
     constructor(params) {
         this.tableName = params['tableName'];
         this.identifierColumns = params['identifierColumns'];
+        if(params.codeColumns && params.codeColumns.length){
+            this.codeColumns.concat(params.codeColumns)
+        }
     }
 
     // Verifica se todas as colunas de identificação estão setadas
@@ -28,7 +32,7 @@ class Model {
     // Retorna como Entries ([[key, value]]) todos os atributos da classe que não sejam de lógica como tableName e identifierColumns
     getObjectEntries() {
         return Object.entries(this).filter(entrie => {
-            return entrie[0] != 'tableName' && entrie[0] != 'identifierColumns'
+            return !this.codeColumns.includes(entrie[0])
         })
     }
 

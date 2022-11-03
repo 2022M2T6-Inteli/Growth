@@ -23,7 +23,7 @@ class CityController extends Controller {
     // READ
     static getCity = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
-        const city = await CityModel.getByColumns({id: id})
+        const city = await CityModel.getByColumns({id: id}, {state: true})
         res.json(city.getObject())
     })
 

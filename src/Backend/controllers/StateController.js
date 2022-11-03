@@ -22,7 +22,7 @@ class StateController extends Controller {
     // READ
     static getState = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
-        const state = await StateModel.getByColumns({id: id})
+        const state = await StateModel.getByColumns({id: id}, {capitalCity: true})
         res.json(state.getObject())
     })
 

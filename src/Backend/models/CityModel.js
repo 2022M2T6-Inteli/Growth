@@ -7,9 +7,10 @@ class CityModel extends Model {
     number_people;
     is_capital;
     state_id;
+    state;
 
     constructor(cityInfo) {
-        super({ 'tableName': 'ibge_city', 'identifierColumns': ['id'] })
+        super({ 'tableName': 'ibge_city', 'identifierColumns': ['id'], 'codeColumns': ['state']})
 
         if(cityInfo.id){
             this.setCity(cityInfo)
@@ -24,6 +25,8 @@ class CityModel extends Model {
         this.setNumberPeople(cityInfo.number_people);
         this.setStateId(cityInfo.state_id);
         this.setIsCapital(cityInfo.is_capital);
+
+        this.setState(cityInfo)
     }
 
     setNewCity(cityInfo){
@@ -58,17 +61,33 @@ class CityModel extends Model {
         this.state_id = state_id;
     }
 
+    setState(stateInfo){
+        this.state = {
+            id: stateInfo.state_id,
+            name: stateInfo.state_name,
+            uf: stateInfo.state_uf,
+        }
+    }
+
     setIsCapital(is_capital){
         this.is_capital = is_capital;
     }
 
 
     // Retorna uma Cidade com base nas colunas passadas por parâmetro
-    static async getByColumns(params){
+    static async getByColumns(params = [], joins = {}){
         const rowInfo = await this.getSQL(
-            `SELECT * 
+            `SELECT ibge_city.* 
+                ${joins.state ? `,
+                    ibge_state.id AS state_id,
+                    ibge_state.name AS state_name,
+                    ibge_state.uf AS state_uf
+                `: ``} 
             FROM ibge_city
-            WHERE ${Object.keys(params).map(key => `${key} = $${key}`).join(" AND ")}`,
+                ${joins.state ? `
+                    INNER JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+                `: ``} 
+            WHERE ${Object.keys(params).map(key => `ibge_city.${key} = $${key}`).join(" AND ")}`,
             params
         )
 
@@ -80,11 +99,19 @@ class CityModel extends Model {
     }
 
     // Retorna Cidades com base nas colunas passadas por parâmetro
-    static async allByColumns(params = []){
+    static async allByColumns(params = [], joins = {}){
         const rows = await this.allSQL(
-            `SELECT * 
+            `SELECT ibge_city.*
+                ${joins.state ? `,
+                    ibge_state.id AS state_id,
+                    ibge_state.name AS state_name,
+                    ibge_state.uf AS state_uf
+                `: ``} 
             FROM ibge_city
-            ${params.length ? `WHERE ${Object.keys(params).map(key => `${key} = $${key}`).join(" AND ")}` : ``}`,
+                ${joins.state ? `
+                    INNER JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+                `: ``} 
+            ${params.length ? `WHERE ${Object.keys(params).map(key => `ibge_city.${key} = $${key}`).join(" AND ")}` : ``}`,
             params
         )
 
