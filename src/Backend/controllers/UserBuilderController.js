@@ -36,7 +36,7 @@ class UserBuilderController extends Controller {
 
     static getAllUserBuilder = (req, res) => Controller.execute(req, res, async (req, res) => {
         const users = await UserBuilderModel.allByColumns()
-        res.json(users.map(user => user.getObject()))
+        res.json(users)
     })
 
     static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {

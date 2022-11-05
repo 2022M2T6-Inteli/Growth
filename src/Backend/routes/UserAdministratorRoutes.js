@@ -5,24 +5,24 @@ const UserAdministratorController = require('../controllers/UserAdministratorCon
 const userAdministratorRouter = express.Router()
 
 // CREATE
-userAdministratorRouter.get("/usuarios-create", UserAdministratorController.getCreateUserAdministrator)
-userAdministratorRouter.post("/usuarios", UserAdministratorController.postCreateUserAdministrator)
+userAdministratorRouter.get("/administradores-create", UserAdministratorController.getCreateUserAdministrator)
+userAdministratorRouter.post("/administradores", UserAdministratorController.postCreateUserAdministrator)
 
 // READ
-userAdministratorRouter.get("/login", UserAdministratorController.getLogin)
-userAdministratorRouter.post("/login", UserAdministratorController.postLogin)
+userAdministratorRouter.get("/login-administrador", UserAdministratorController.getLogin)
+userAdministratorRouter.post("/login-administrador", UserAdministratorController.postLogin)
 
-userAdministratorRouter.get("/usuarios", UserAdministratorController.getAllUserAdministrator)
-userAdministratorRouter.get("/usuarios/:id", UserAdministratorController.getUserAdministrator)
+userAdministratorRouter.get("/administradores", UserAdministratorController.getAllUserAdministrator)
+userAdministratorRouter.get("/administradores/:id", UserAdministratorController.getUserAdministrator)
 
 // UPDATE
-userAdministratorRouter.put("/usuarios/:id", UserAdministratorController.postUpdateUserAdministrator) // UPDATE API
-userAdministratorRouter.get("/usuarios/:id", UserAdministratorController.getUpdateUserAdministrator)
-userAdministratorRouter.post("/usuarios/:id", UserAdministratorController.postUpdateUserAdministrator)
+userAdministratorRouter.put("/administradores/:id", UserAdministratorController.postUpdateUserAdministrator) // UPDATE API
+userAdministratorRouter.get("/administradores/:id", UserAdministratorController.getUpdateUserAdministrator)
+userAdministratorRouter.post("/administradores/:id", UserAdministratorController.postUpdateUserAdministrator)
 
 // DELETE
-userAdministratorRouter.delete("/usuarios/:id", UserAdministratorController.postDeleteUserAdministrator) // DELETE API
-userAdministratorRouter.get("/usuarios-delete/:id", UserAdministratorController.getUpdateUserAdministrator)
+userAdministratorRouter.delete("/administradores/:id", UserAdministratorController.postDeleteUserAdministrator) // DELETE API
+userAdministratorRouter.get("/administradores-delete/:id", UserAdministratorController.getUpdateUserAdministrator)
 userAdministratorRouter.post("/usuarios-delete/:id", UserAdministratorController.postUpdateUserAdministrator)
 
 module.exports = userAdministratorRouter;

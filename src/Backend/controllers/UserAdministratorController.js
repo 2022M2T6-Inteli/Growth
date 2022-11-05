@@ -29,7 +29,7 @@ class UserAdministratorController extends Controller {
 
     static getAllUserAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
         const users = await UserAdministratorModel.allByColumns()
-        res.json(users.map(user => user.getObject()))
+        res.json(users)
     })
 
     static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
