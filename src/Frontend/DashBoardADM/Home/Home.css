@@ -11,108 +11,21 @@ main {
   align-items: center;
   background-color: #f5f5f5;
 }
-main h1 {
-  width: 95%;
-  margin: 0px;
-  padding: 0px;
-}
-main .general-actions {
-  border: transparent solid 1px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-main .general-actions button {
-  background: linear-gradient(355.23deg, #FF8B22 7.7%, #FFB719 82.04%), #D9D9D9;
-  border: 0px solid transparent;
-  border-radius: 10px;
-  padding: 10px 0px;
-  color: #ffffff;
-  font-weight: 500;
-  font-size: 1.2rem;
-  width: 200px;
-}
-main .general-actions div {
-  width: auto;
-}
-main .general-actions div span {
-  display: flex;
-  flex-direction: row;
-  width: auto;
-  text-align: start;
-  flex-wrap: wrap;
-  width: 150px;
-}
-main .general-actions div span .quantity {
-  width: 30%;
-  text-align: center;
-  font-size: 2rem;
-  display: block;
-}
-main .general-actions div span span {
-  width: 70%;
-}
-main .general-actions div button {
-  font-size: 0.8rem;
-  background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
-  display: block;
-  padding: 2px;
-  width: 100%;
-}
-main .general-actions div button i {
-  margin-right: 5px;
-}
-main .cards {
-  margin-top: 30px;
-}
-main .cards a {
-  color: #2b2b2b;
-  text-decoration: none;
+main .container .quantities div {
   display: flex;
   justify-content: center;
-  transition: all 0.5 ease-out;
-  height: 600px;
+  align-items: center;
 }
-main .cards a:hover .card {
-  width: 95%;
-  height: 95%;
+main .container .quantities div .quantity {
+  font-size: 3rem;
+  margin-right: 10px;
 }
-main .cards a:hover .card .card-body .card-title {
-  font-size: 1.2rem;
+main .container .quantities div .description {
+  width: 30px;
 }
-main .cards a .card {
-  transition: all 0.1s ease-out;
-  width: 90%;
-  height: 90%;
-  margin: 20px 0px;
-  border: 0px solid transparent;
-  transition: all 0.5s ease-out;
-}
-main .cards a .card .card-body {
-  background-color: #ffffff;
-  border-radius: 0px 0px 10px 10px;
-  overflow: hidden;
-}
-main .cards a .card .card-body .tags {
+main .container .col-6 {
   display: flex;
-  flex-wrap: wrap;
-  margin: 10px 0px;
-}
-main .cards a .card .card-body .tags span {
-  background: linear-gradient(355.23deg, #FF8B22 7.7%, #FFB719 82.04%), #D9D9D9;
-  border-radius: 5px;
-  padding: 0px 10px;
-  margin: 0px 5px;
-  color: #ffffff;
-  font-weight: 500;
-}
-main .cards a .card .card-body .card-title {
-  font-size: 1.3rem;
-}
-main .cards a .card .card-body .card-text {
-  font-size: 0.9rem;
+  justify-content: center;
 }
 
 aside {
