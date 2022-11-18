@@ -1,4 +1,5 @@
 aside {
+    padding-top: 60px;
     height: 100vh;
     background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
     display: flex;
@@ -136,6 +137,9 @@ aside-filter{
     width: 90%;
 }
 
+.tags-disable{
+
+}
 
 aside form {
     width: 100%;
@@ -153,24 +157,3 @@ main > .row {
     display: flex;
     justify-content: center;
 }
-
-.col-8{
-    height: 100vh;
-    overflow-y: scroll;
-}
-
-::-webkit-scrollbar {
-    width:10px;
-    height: 10px;
-    }
-     
-    /* aqui é para personalizar o fundo da barra, neste caso estou colocando um fundo cinza escuro*/
-    ::-webkit-scrollbar-track {
-    background:#A0A0A0;
-    }
-     
-    /* aqui é a alça da barra, que demonstra a altura que você está na página
-    estou colocando uma cor azul clara nela*/
-    ::-webkit-scrollbar-thumb {
-    background: #006B3F;
-    }
