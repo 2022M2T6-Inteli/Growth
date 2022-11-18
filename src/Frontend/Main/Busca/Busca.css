@@ -1,8 +1,3 @@
-body{
-  height: 100vh !important;
-  overflow: hidden;
-}
-
 aside {
   background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
   display: flex;
@@ -206,3 +201,31 @@ aqui é para personalizar o fundo da barra, neste caso estou colocando um fundo 
   background: #006B3F;
 } 
  */
+ footer {
+  background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
+  color: white;
+
+  padding: 20px 0px;
+}
+
+footer h3 {
+  border-bottom: white solid 1px;
+}
+
+footer .col-6 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+footer ul {
+  list-style-type: none;
+}
+
+footer ul a {
+  color: white;
+}
+footer ul a:hover {
+  color: white;
+}
