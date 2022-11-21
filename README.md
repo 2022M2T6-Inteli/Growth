@@ -1,7 +1,7 @@
 # Inteli - Instituto de Tecnologia e Liderança 
 
 <p align="center">
-<a href= "https://www.inteli.edu.br/"><img src="https://www.inteli.edu.br/wp-content/uploads/2021/08/20172028/marca_1-2.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
+<a href= "https://www.inteli.edu.br/"><img src="https://capitaldigital.com.br/wp-content/uploads/2021/04/logo-inteli-300x134-1.png" alt="Inteli - Instituto de Tecnologia e Liderança" border="0"></a>
 </p>
 
 # Conexão MRV
@@ -20,19 +20,6 @@
 O projeto tem como objetivo conectar a MRV com empreiteiros a partir de oportunidades em obras locais.
 
 ## 📁 Estrutura de pastas
-
-```
-Alunos inteli (remover essa observação do readme.md após leitura e execução):
-
-Supondo que você é da Turma 4 e Projeto 5, substitua:
-
-T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf
-por
-T4_G5_V01_Web_application_document.pdf
-
-Faça o mesmo para a documentação em formato DOCX.
-```
-
 |--> documentos<br>
   &emsp;| --> outros <br>
   &emsp;| T(NUMERO_DA_TURMA)_G(NUMERO_DO_GRUPO)_V(VERSÃO)_Web_application_document.pdf<br>
@@ -41,6 +28,21 @@ Faça o mesmo para a documentação em formato DOCX.
 |--> src<br>
   &emsp;|--> Backend<br>
   &emsp;|--> Frontend<br>
+    &emsp;&emsp;|--> DashBoardADM<br>
+      &emsp;&emsp;&emsp;|--> Componentes<br>
+      &emsp;&emsp;&emsp;|--> Home<br>
+      &emsp;&emsp;&emsp;|--> Obra<br>
+      &emsp;&emsp;&emsp;|--> Obras<br>
+      &emsp;&emsp;&emsp;|--> Usuario<br>
+      &emsp;&emsp;&emsp;|--> Usuarios<br>
+    &emsp;&emsp;|--> Main<br>
+      &emsp;&emsp;&emsp;|--> Busca<br>
+      &emsp;&emsp;&emsp;|--> Cadastro<br>
+      &emsp;&emsp;&emsp;|--> Componentes<br>
+      &emsp;&emsp;&emsp;|--> EdicaoUsuario<br>
+      &emsp;&emsp;&emsp;|--> Home<br>
+      &emsp;&emsp;&emsp;|--> Institucional<br>
+      &emsp;&emsp;&emsp;|--> Login<br>
 | readme.md<br>
 | license.txt
 
@@ -91,18 +93,10 @@ deve possuir o valor "node app.js".
 
 ## 🗃 Histórico de lançamentos
 
-* 0.2.1 - 25/01/2022
-    * Atualização de documentos (código do módulo permanece inalterado).
-* 0.2.0 - 15/01/2022
-    * Remove `setDefaultXYZ()`
-    * Adiciona `init()`
-* 0.1.1 - 11/01/2022
-    * Crash quando chama `baz()`
-* 0.1.0 - 10/01/2022
-    * O primeiro lançamento adequado
-    * Renomeia `foo()` para `bar()`
-* 0.0.1 - 01/01/2022
-    * Trabalho em andamento
+* 0.0.1 - 04/11/2022
+    * Primeira versão do backend
+* 0.0.2 - 18/11/2022
+    * Primeira versão do frontend
 
 ## 📋 Licença/License
 
