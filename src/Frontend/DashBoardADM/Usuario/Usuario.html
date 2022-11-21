@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuário</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="Usuario.css">
+    <script src="Usuario.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+</head>
+
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-2 aside-nav">
+                <img src="https://logodownload.org/wp-content/uploads/2018/07/mrv-logo-1-1.png" alt="">
+                <nav>
+                    <ul>
+                        <li>
+                            <a href="../Usuarios/Usuarios.html">
+                                <i class="bi bi-house"></i>
+                                <span>Inicio</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../Obras/Obras.html">
+                                <i class="bi bi-building"></i>
+                                <span>Obras</span>
+                            </a>
+                        </li>
+                        <li class="active">
+                            <a href="#">
+                                <i class="bi bi-people"></i>
+                                <span>Usuários</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="../../Main/Home/Home.html">
+                                <i class="bi bi-box-arrow-left"></i>
+                                <span>Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </aside>
+            <main class="col-8">
+                <h1>Usuário</h1>
+                <div class="container">
+                    <center>
+                        <a href=""><img class="imagensFoto" src="../../../../imagens/Usuario/empreiteiro-1.jpg" width="200"></a>
+                    </center><br><br>
+
+                    <center>
+                        <div class="input-group mb-3">
+                            <button class="btEditar">Carregar foto <i class="bi bi-file-arrow-up"></i></button><br><br>
+                            <form>
+                                <div class="row">
+                                    <div class="col-12">
+                                        <label>Razão social:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite a razão social"
+                                            aria-label="Username" aria-describedby="basic-addon1" name="pwd">
+                                    </div>
+                                    <div class="col-9">
+                                        <label>CNPJ:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite o CNPJ:"
+                                            aria-label="Username" aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Número de Funcionários:</label>
+                                        <br>
+                                        <input type="text" class="form-control"
+                                            placeholder="Digite o número de funcionários:" aria-label="Username"
+                                            aria-describedby="basic-addon1">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Telefone:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite o telefone:"
+                                            aria-label="Amount (to the nearest dollar)">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>E-mail:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite o e-mail:"
+                                            aria-label="Amount (to the nearest dollar)">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Nome do dono:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite o nome do dono:"
+                                            aria-label="Amount (to the nearest dollar)">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>CPF do dono:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite o CPF do dono:"
+                                            aria-describedby="basic-addon3">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Telefone do dono:</label>
+                                        <br>
+                                        <input type="text" class="form-control" placeholder="Digite o telefone do dono:"
+                                            aria-describedby="basic-addon3">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>E-mail do contador:</label>
+                                        <br>
+                                        <input type="text" class="form-control"
+                                            placeholder="Digite o e-mail do contador:" aria-describedby="basic-addon3">
+                                    </div>
+                                    <div class="col-6">
+                                        <label>Telefone do contador:</label>
+                                        <br>
+                                        <input type="text" class="form-control"
+                                            placeholder="Digite o telefone do contador" aria-describedby="basic-addon3">
+                                    </div>
+
+                                </div>
+                                <center>
+                                    <div class="col-6">
+                                        <input type="button" class="saveButton" value="Salvar">
+                                    </div>
+                                </center><br><br>
+                                <div class="info">Alguma informação</div>
+                            </form>
+
+                        </div><br><br>
+                    </center>
+                </div>
+            </main>
+
+        </div>
+    </div>
+</body>
+
+</html>
