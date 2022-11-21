@@ -97,10 +97,47 @@ class UserBuilderController extends Controller {
         res.json({"message": `Usuário de ID ${id} deletado`})
     })
 
+
+    // Site
     static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
         res.render(__dirname + '/../../Frontend/Main/Login/Login', {});
     })
 
+    static getCadastroEtapa1 = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa1/CadastroEtapa1', {});
+    })
+
+    static getCadastroEtapa2 = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa2/CadastroEtapa2', {});
+    })
+
+    static getCadastroEtapa3 = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa3/CadastroEtapa3', {});
+    })
+
+    static getCadastroEtapa4 = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa4/CadastroEtapa4', {});
+    })
+
+    static getCadastroEtapa5 = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa5/CadastroEtapa5', {});
+    })
+
+    static getCadastroEtapa6 = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa6/CadastroEtapa6', {});
+    })
+
+    static getEdicaoUsuarioEmpresa = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoEmpresa', {});
+    })
+
+    static getEdicaoUsuarioDono = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoDono', {});
+    })
+
+    static getEdicaoUsuarioContador = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoContador', {});
+    })
 }
 
 module.exports = UserBuilderController;

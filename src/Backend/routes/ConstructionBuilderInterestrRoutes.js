@@ -1,20 +1,24 @@
 const express = require('express')
-const ConstructionBuilderInterestController = require('../controllers/ConstructionBuilderInterestController')
+const Controller = require('../controllers/ConstructionBuilderInterestController')
 
-const constructionBuilderInterestRouter = express.Router()
+const Router = express.Router()
 
 // CREATE
-constructionBuilderInterestRouter.get("/api/empreiteiro-obra-interesse-create", ConstructionBuilderInterestController.getCreateConstructionBuilderInterest)
-constructionBuilderInterestRouter.post("/api/empreiteiro-obra-interesse", ConstructionBuilderInterestController.postCreateConstructionBuilderInterest)
+Router.get("/api/empreiteiro-obra-interesse-create", Controller.getCreateConstructionBuilderInterest)
+Router.post("/api/empreiteiro-obra-interesse", Controller.postCreateConstructionBuilderInterest)
 
 // READ
-constructionBuilderInterestRouter.get("/api/empreiteiro-obra-interesse/obra/:constructionId", ConstructionBuilderInterestController.getAllConstructionBuilderInterestByConstruction)
-constructionBuilderInterestRouter.get("/api/empreiteiro-obra-interesse/empreiteiro/:builderId", ConstructionBuilderInterestController.getAllConstructionBuilderInterestByBuilder)
-constructionBuilderInterestRouter.get("/api/empreiteiro-obra-interesse/:constructionId/:builderId", ConstructionBuilderInterestController.getConstructionBuilderInterest)
+Router.get("/api/empreiteiro-obra-interesse/obra/:constructionId", Controller.getAllConstructionBuilderInterestByConstruction)
+Router.get("/api/empreiteiro-obra-interesse/empreiteiro/:builderId", Controller.getAllConstructionBuilderInterestByBuilder)
+Router.get("/api/empreiteiro-obra-interesse/:constructionId/:builderId", Controller.getConstructionBuilderInterest)
 
 // UPDATE
 
 // DELETE
-constructionBuilderInterestRouter.delete("/api/empreiteiro-obra-interesse/:constructionId/:builderId", ConstructionBuilderInterestController.postDeleteConstructionBuilderInterest) // DELETE API
+Router.delete("/api/empreiteiro-obra-interesse/:constructionId/:builderId", Controller.postDeleteConstructionBuilderInterest) // DELETE API
 
-module.exports = constructionBuilderInterestRouter;
+Router.delete("/api/empreiteiro-obra-interesse/:constructionId/:builderId", Controller.postDeleteConstructionBuilderInterest)
+
+Router.get("/busca", Controller.getBusca)
+
+module.exports = Router;

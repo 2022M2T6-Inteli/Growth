@@ -27,7 +27,15 @@ router.post("/api/usuarios-delete/:id", Controller.postUpdateUserBuilder)
 
 router.get("/login", Controller.getLogin);
 
+router.get("/cadastro/etapa1", Controller.getCadastroEtapa1);
+router.get("/cadastro/etapa2", Controller.getCadastroEtapa2);
+router.get("/cadastro/etapa3", Controller.getCadastroEtapa3);
+router.get("/cadastro/etapa4", Controller.getCadastroEtapa4);
+router.get("/cadastro/etapa5", Controller.getCadastroEtapa5);
+router.get("/cadastro/etapa6", Controller.getCadastroEtapa6);
 
-
+router.get("/usuario/edicao/contador", Controller.getEdicaoUsuarioContador);
+router.get("/usuario/edicao/dono", Controller.getEdicaoUsuarioDono);
+router.get("/usuario/edicao/empresa", Controller.getEdicaoUsuarioEmpresa);
 
 module.exports = router;

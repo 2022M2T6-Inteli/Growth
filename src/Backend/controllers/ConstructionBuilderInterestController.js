@@ -56,6 +56,9 @@ class ConstructionBuilderInterestController extends Controller {
         res.json(`Interesse de Contrução pelo Empreiteiro deletado com sucesso`)
     })
 
+    static getBusca = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Busca/Busca', {});
+    })
 }
 
 module.exports = ConstructionBuilderInterestController
