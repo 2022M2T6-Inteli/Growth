@@ -5,21 +5,21 @@ const BuilderConstructionSummaryController = require('../controllers/BuilderCons
 const builderConstructionSummaryRouter = express.Router()
 
 // CREATE
-builderConstructionSummaryRouter.get("/portifolio-create", BuilderConstructionSummaryController.getCreateBuilderConstructionSummary)
-builderConstructionSummaryRouter.post("/portifolio", BuilderConstructionSummaryController.postCreateBuilderConstructionSummary)
+builderConstructionSummaryRouter.get("/api/portifolio-create", BuilderConstructionSummaryController.getCreateBuilderConstructionSummary)
+builderConstructionSummaryRouter.post("/api/portifolio", BuilderConstructionSummaryController.postCreateBuilderConstructionSummary)
 
 // READ
-builderConstructionSummaryRouter.get("/portifolio", BuilderConstructionSummaryController.getAllBuilderConstructionSummary)
-builderConstructionSummaryRouter.get("/portifolio/:id", BuilderConstructionSummaryController.getBuilderConstructionSummary)
+builderConstructionSummaryRouter.get("/api/portifolio", BuilderConstructionSummaryController.getAllBuilderConstructionSummary)
+builderConstructionSummaryRouter.get("/api/portifolio/:id", BuilderConstructionSummaryController.getBuilderConstructionSummary)
 
 // UPDATE
-builderConstructionSummaryRouter.put("/portifolio/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary) // UPDATE API
-builderConstructionSummaryRouter.get("/portifolio/:id", BuilderConstructionSummaryController.getUpdateBuilderConstructionSummary)
-builderConstructionSummaryRouter.post("/portifolio/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary)
+builderConstructionSummaryRouter.put("/api/portifolio/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary) // UPDATE API
+builderConstructionSummaryRouter.get("/api/portifolio/:id", BuilderConstructionSummaryController.getUpdateBuilderConstructionSummary)
+builderConstructionSummaryRouter.post("/api/portifolio/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary)
 
 // DELETE
-builderConstructionSummaryRouter.delete("/portifolio/:id", BuilderConstructionSummaryController.postDeleteBuilderConstructionSummary) // DELETE API
-builderConstructionSummaryRouter.get("/portifolio-delete/:id", BuilderConstructionSummaryController.getUpdateBuilderConstructionSummary)
-builderConstructionSummaryRouter.post("/portifolio-delete/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary)
+builderConstructionSummaryRouter.delete("/api/portifolio/:id", BuilderConstructionSummaryController.postDeleteBuilderConstructionSummary) // DELETE API
+builderConstructionSummaryRouter.get("/api/portifolio-delete/:id", BuilderConstructionSummaryController.getUpdateBuilderConstructionSummary)
+builderConstructionSummaryRouter.post("/api/portifolio-delete/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary)
 
 module.exports = builderConstructionSummaryRouter;

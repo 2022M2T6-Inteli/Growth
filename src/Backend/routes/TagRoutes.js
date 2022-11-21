@@ -5,21 +5,21 @@ const TagController = require('../controllers/TagController')
 const tagRouter = express.Router()
 
 // CREATE
-tagRouter.get("/tags-create", TagController.getCreateTag)
-tagRouter.post("/tags", TagController.postCreateTag)
+tagRouter.get("/api/tags-create", TagController.getCreateTag)
+tagRouter.post("/api/tags", TagController.postCreateTag)
 
 // READ
-tagRouter.get("/tags", TagController.getAllTag)
-tagRouter.get("/tags/:id", TagController.getTag)
+tagRouter.get("/api/tags", TagController.getAllTag)
+tagRouter.get("/api/tags/:id", TagController.getTag)
 
 // UPDATE
-tagRouter.put("/tags/:id", TagController.postUpdateTag) // UPDATE API
-tagRouter.get("/tags/:id", TagController.getUpdateTag)
-tagRouter.post("/tags/:id", TagController.postUpdateTag)
+tagRouter.put("/api/tags/:id", TagController.postUpdateTag) // UPDATE API
+tagRouter.get("/api/tags/:id", TagController.getUpdateTag)
+tagRouter.post("/api/tags/:id", TagController.postUpdateTag)
 
 // DELETE
-tagRouter.delete("/tags/:id", TagController.postDeleteTag) // DELETE API
-tagRouter.get("/tags-delete/:id", TagController.getUpdateTag)
-tagRouter.post("/tags-delete/:id", TagController.postUpdateTag)
+tagRouter.delete("/api/tags/:id", TagController.postDeleteTag) // DELETE API
+tagRouter.get("/api/tags-delete/:id", TagController.getUpdateTag)
+tagRouter.post("/api/tags-delete/:id", TagController.postUpdateTag)
 
 module.exports = tagRouter;

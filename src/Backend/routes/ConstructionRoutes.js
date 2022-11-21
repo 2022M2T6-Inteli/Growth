@@ -5,21 +5,21 @@ const ConstructionController = require('../controllers/ContructionController')
 const constructionRouter = express.Router()
 
 // CREATE
-constructionRouter.get("/obras-create", ConstructionController.getCreateConstruction)
-constructionRouter.post("/obras", ConstructionController.postCreateConstruction)
+constructionRouter.get("/api/obras-create", ConstructionController.getCreateConstruction)
+constructionRouter.post("/api/obras", ConstructionController.postCreateConstruction)
 
 // READ
-constructionRouter.get("/obras", ConstructionController.getAllConstruction)
-constructionRouter.get("/obras/:id", ConstructionController.getConstruction)
+constructionRouter.get("/api/obras", ConstructionController.getAllConstruction)
+constructionRouter.get("/api/obras/:id", ConstructionController.getConstruction)
 
 // UPDATE
-constructionRouter.put("/obras/:id", ConstructionController.postUpdateConstruction) // UPDATE API
-constructionRouter.get("/obras/:id", ConstructionController.getUpdateConstruction)
-constructionRouter.post("/obras/:id", ConstructionController.postUpdateConstruction)
+constructionRouter.put("/api/obras/:id", ConstructionController.postUpdateConstruction) // UPDATE API
+constructionRouter.get("/api/obras/:id", ConstructionController.getUpdateConstruction)
+constructionRouter.post("/api/obras/:id", ConstructionController.postUpdateConstruction)
 
 // DELETE
-constructionRouter.delete("/obras/:id", ConstructionController.postDeleteConstruction) // DELETE API
-constructionRouter.get("/obras-delete/:id", ConstructionController.getUpdateConstruction)
-constructionRouter.post("/obras-delete/:id", ConstructionController.postUpdateConstruction)
+constructionRouter.delete("/api/obras/:id", ConstructionController.postDeleteConstruction) // DELETE API
+constructionRouter.get("/api/obras-delete/:id", ConstructionController.getUpdateConstruction)
+constructionRouter.post("/api/obras-delete/:id", ConstructionController.postUpdateConstruction)
 
 module.exports = constructionRouter;

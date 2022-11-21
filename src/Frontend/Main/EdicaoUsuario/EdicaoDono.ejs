@@ -19,7 +19,7 @@
     <nav class="navbar navbar-expand-lg shadow p-3  bg-white rounded sticky-top"> <!-- Navbar com principais links do site -->
         <div class="container-fluid h-100">
             <a class="navbar-brand h-100 d-flex align-items-center" href="paginaPrincipal.html">
-                <img src="../../../../imagens/Logo-Gradiente.png" alt="Logo" width="100" style="margin-left: 100px;">
+                <img src="/imagens/Logo-Gradiente.png" alt="Logo" width="100" style="margin-left: 100px;">
             </a>
             <!--barra de pesquisa-->
             <form class="d-flex w-50" role="search">
@@ -40,21 +40,21 @@
                 <div class="row">
                     <aside class="aside-nav"> <!-- Aside com navegação entre os módulos de edição de usuário -->
                         <div class="form-group">
-                            <img src="../../../../imagens/Avatar.svg" alt="Logo">
+                            <img src="/imagens/Avatar.svg" alt="Logo">
                             <br>
                             <label>Usuário</label>
                             <input type="text" class="form-control" value="Sérgio Abreu">
                         </div>
                         <nav>
                             <ul>
-                                <li class="active">
+                                <li>
                                     <a href="./EdicaoEmpresa.html">
                                         <button type="button" id="btn" class="btn btn-outline-success">Dados da
                                             Empresa</button>
                                     </a>
                                     
                                 </li>
-                                <li>
+                                <li class="active">
                                     <a href="./EdicaoDono.html">
                                         <button type="button" id="btn" class="btn btn-outline-success">Dados do
                                             Dono</button>
@@ -72,7 +72,7 @@
             </div>
             <div class="col-9">
                 <div class="row" id="right-top">
-                    <h1>Dados da Empresa</h1>
+                    <h1>Dados do Dono</h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
                         laboris nisi ut aliquip ex ea commodo consequat.</p>
@@ -80,29 +80,19 @@
                 <div class="row" id="right-down">
                     <div class="edit-card">
                         <form class="edit-card-form" method="get" action="">
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Razão Social</label>
-                                <input type="text" class="form-control" value="Conexão MRV&CO">
+                            <div class="form-group" id="input">
+                                <label for="exampleInputEmail1">Nome do Dono</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1" value="Sérgio Abreu">
                             </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">CNPJ</label>
+                            <div class="form-group" id="input">
+                                <label for="exampleInputPassword1">CPF do Dono</label>
                                 <input type="text" class="form-control" id="exampleInputPassword1"
-                                    value="58.982.539/0001-73">
+                                    value="500.843.710-05">
                             </div>
-
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">Número de Funcionários</label>
-                                <input type="text" class="form-control" id="exampleInputEmail1" value="50">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputPassword1">Telefone</label>
-                                <input type="text" class="form-control" id="exampleInputPassword1"
-                                    value="(11) 74388-8518">
-                            </div>
-                            <div class="form-group">
-                                <label for="exampleInputEmail1">E-mail</label>
+                            <div class="form-group" id="input">
+                                <label for="exampleInputEmail1">Telefone do Dono</label>
                                 <input type="text" class="form-control" id="exampleInputEmail1"
-                                    value="conexãomrv@mrv.com">
+                                    value="(11) 9 1234-5678">
                             </div>
                             <button type="submit" id="btn-save" class="btn btn-success">Salvar</button>
                         </form>

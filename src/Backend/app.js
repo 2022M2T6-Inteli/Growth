@@ -9,9 +9,11 @@ const port = 3000;
 const app = express()
 
 // Define onde está o banco de dados que será usado
-ConnectionService.setDatabase('./database.db');
-
+ConnectionService.setDatabase(__dirname + '/database.db');
+app.set('view engine', 'ejs')
 app.use(express.json())
+app.use('/frontend', express.static(__dirname + '/../Frontend'))
+app.use('/imagens', express.static(__dirname + '/../../imagens'))
 
 app.use(routes)
 

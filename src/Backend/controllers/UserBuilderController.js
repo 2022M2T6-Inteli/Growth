@@ -1,5 +1,6 @@
 const UserBuilderModel = require('../models/UserBuilderModel')
 const APIError = require('../services/ErrorService')
+const ViewService = require('../services/ViewService')
 const Controller = require('./Controller')
 
 class UserBuilderController extends Controller {
@@ -37,10 +38,6 @@ class UserBuilderController extends Controller {
     static getAllUserBuilder = (req, res) => Controller.execute(req, res, async (req, res) => {
         const users = await UserBuilderModel.allByColumns()
         res.json(users)
-    })
-
-    static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.json("Pagina em construção")
     })
 
     static postLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -99,6 +96,11 @@ class UserBuilderController extends Controller {
 
         res.json({"message": `Usuário de ID ${id} deletado`})
     })
+
+    static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../Frontend/Main/Login/Login', {});
+    })
+
 }
 
 module.exports = UserBuilderController;
