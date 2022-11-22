@@ -17,10 +17,6 @@ app.use('/imagens', express.static(__dirname + '/../../imagens'))
 
 app.use(routes)
 
-app.get("/", (req, res) => {
-    res.json("oi")
-})
-
 app.listen(port, async () => {
     console.log(`Server escutando a porta ${port} http://localhost:${port}`)
 })

@@ -1,28 +1,24 @@
 const express = require('express')
 
-const UserAdministratorController = require('../controllers/UserAdministratorController')
+const Controller = require('../controllers/UserAdministratorController')
+const AuthMiddleware = require('../middlewares/AuthMiddleware')
 
-const userAdministratorRouter = express.Router()
+const Router = express.Router()
 
 // CREATE
-userAdministratorRouter.get("/api/administradores-create", UserAdministratorController.getCreateUserAdministrator)
-userAdministratorRouter.post("/api/administradores", UserAdministratorController.postCreateUserAdministrator)
+Router.post("/api/administradores", AuthMiddleware.onlyLoggedADM, Controller.postCreateUserAdministrator)
 
 // READ
-userAdministratorRouter.get("/api/login-administrador", UserAdministratorController.getLogin)
-userAdministratorRouter.post("/api/login-administrador", UserAdministratorController.postLogin)
+Router.post("/api/administradores/login", Controller.postLogin)
 
-userAdministratorRouter.get("/api/administradores", UserAdministratorController.getAllUserAdministrator)
-userAdministratorRouter.get("/api/administradores/:id", UserAdministratorController.getUserAdministrator)
+Router.get("/api/administradores", AuthMiddleware.onlyLoggedADM, Controller.getAllUserAdministrator)
+Router.get("/api/administradores/:id", AuthMiddleware.onlyLoggedADM, Controller.getUserAdministrator)
 
 // UPDATE
-userAdministratorRouter.put("/api/administradores/:id", UserAdministratorController.postUpdateUserAdministrator) // UPDATE API
-userAdministratorRouter.get("/api/administradores/:id", UserAdministratorController.getUpdateUserAdministrator)
-userAdministratorRouter.post("/api/administradores/:id", UserAdministratorController.postUpdateUserAdministrator)
+Router.put("/api/administradores/:id", AuthMiddleware.onlyLoggedADM, Controller.postUpdateUserAdministrator) // UPDATE API
 
 // DELETE
-userAdministratorRouter.delete("/api/administradores/:id", UserAdministratorController.postDeleteUserAdministrator) // DELETE API
-userAdministratorRouter.get("/api/administradores-delete/:id", UserAdministratorController.getUpdateUserAdministrator)
-userAdministratorRouter.post("/api/usuarios-delete/:id", UserAdministratorController.postUpdateUserAdministrator)
+Router.delete("/api/administradores/:id", AuthMiddleware.onlyLoggedADM, Controller.postDeleteUserAdministrator) // DELETE API
 
-module.exports = userAdministratorRouter;
+
+module.exports = Router;

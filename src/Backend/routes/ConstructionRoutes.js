@@ -1,25 +1,26 @@
 const express = require('express')
 
 const ConstructionController = require('../controllers/ContructionController')
+const AuthMiddleware = require('../middlewares/AuthMiddleware')
 
-const constructionRouter = express.Router()
+const Router = express.Router()
 
-// CREATE
-constructionRouter.get("/api/obras-create", ConstructionController.getCreateConstruction)
-constructionRouter.post("/api/obras", ConstructionController.postCreateConstruction)
+// API
+// Create
+Router.post("/api/obras", AuthMiddleware.onlyLoggedADM, ConstructionController.create)
 
-// READ
-constructionRouter.get("/api/obras", ConstructionController.getAllConstruction)
-constructionRouter.get("/api/obras/:id", ConstructionController.getConstruction)
+// Read
+Router.get("/api/obras", ConstructionController.all)
+Router.get("/api/obras/:id", ConstructionController.get)
 
-// UPDATE
-constructionRouter.put("/api/obras/:id", ConstructionController.postUpdateConstruction) // UPDATE API
-constructionRouter.get("/api/obras/:id", ConstructionController.getUpdateConstruction)
-constructionRouter.post("/api/obras/:id", ConstructionController.postUpdateConstruction)
+// Update
+Router.put("/api/obras/:id", AuthMiddleware.onlyLoggedADM, ConstructionController.update) // UPDATE API
 
-// DELETE
-constructionRouter.delete("/api/obras/:id", ConstructionController.postDeleteConstruction) // DELETE API
-constructionRouter.get("/api/obras-delete/:id", ConstructionController.getUpdateConstruction)
-constructionRouter.post("/api/obras-delete/:id", ConstructionController.postUpdateConstruction)
+// Delete
+Router.delete("/api/obras/:id", AuthMiddleware.onlyLoggedADM, ConstructionController.delete) // DELETE API
 
-module.exports = constructionRouter;
+// SITE
+Router.get("/busca", ConstructionController.all)
+Router.get("/obras/:id", ConstructionController.all)
+
+module.exports = Router;

@@ -1,4 +1,5 @@
 const UserBuilderModel = require('../models/UserBuilderModel')
+const AuthService = require('../services/AuthService')
 const APIError = require('../services/ErrorService')
 const ViewService = require('../services/ViewService')
 const Controller = require('./Controller')
@@ -25,7 +26,9 @@ class UserBuilderController extends Controller {
 
         await user.insert()
 
-        res.json(user.getObject())
+        res.json({
+            token: AuthService.makeToken(user.id)
+        })
     })
 
     // READ
@@ -46,7 +49,7 @@ class UserBuilderController extends Controller {
 
             user.validatePassword(req.body.password);
     
-            res.json({token: "Em breve token aqui"})
+            res.json({token: AuthService.makeToken(user.id)});
         } catch (error) {
             if(error instanceof APIError){
                 throw new APIError("Credenciais incorretas", 403)

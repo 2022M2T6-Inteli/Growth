@@ -7,7 +7,7 @@ class BuilderConstructionSummaryController extends Controller {
         res.json("aqui vai uma página")
     })
 
-    static postCreateBuilderConstructionSummary = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static create = (req, res) => Controller.execute(req, res, async (req, res) => {
         const builderConstructionSummary = new BuilderConstructionSummaryModel({
             name: req.body.name,
             description: req.body.description,
@@ -21,13 +21,13 @@ class BuilderConstructionSummaryController extends Controller {
     })
 
     // READ
-    static getBuilderConstructionSummary = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static get = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const builderConstructionSummary = await BuilderConstructionSummaryModel.getByColumns({id: id})
         res.json(builderConstructionSummary.getObject())
     })
 
-    static getAllBuilderConstructionSummary = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static all = (req, res) => Controller.execute(req, res, async (req, res) => {
         const builderConstructionSummary = await BuilderConstructionSummaryModel.allByColumns()
         res.json(builderConstructionSummary)
     })
@@ -37,7 +37,7 @@ class BuilderConstructionSummaryController extends Controller {
         res.json("Página a construir")
     })
 
-    static postUpdateBuilderConstructionSummary = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static update = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const builderConstructionSummary = await BuilderConstructionSummaryModel.getByColumns({id: id})
 
@@ -56,7 +56,7 @@ class BuilderConstructionSummaryController extends Controller {
         res.json("Página a construir")
     })
 
-    static postDeleteBuilderConstructionSummary = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static delete = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const builderConstructionSummary = await BuilderConstructionSummaryModel.getByColumns({id: id})
 

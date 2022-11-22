@@ -3,11 +3,7 @@ const Controller = require("./Controller");
 
 class ConstructionController extends Controller {
     // CREATE
-    static getCreateConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.json("aqui vai uma página")
-    })
-
-    static postCreateConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static create = (req, res) => Controller.execute(req, res, async (req, res) => {
         const construction = new ConstructionModel({
             name: req.body.name,
             description: req.body.description,
@@ -20,23 +16,19 @@ class ConstructionController extends Controller {
     })
 
     // READ
-    static getConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static get = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const construction = await ConstructionModel.getByColumns({id: id})
         res.json(construction.getObject())
     })
 
-    static getAllConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static all = (req, res) => Controller.execute(req, res, async (req, res) => {
         const constructions = await ConstructionModel.allByColumns()
         res.json(constructions)
     })
 
     // UPDATE
-    static getUpdateConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.json("Página a construir")
-    })
-
-    static postUpdateConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static update = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const construction = await ConstructionModel.getByColumns({id: id})
 
@@ -50,11 +42,7 @@ class ConstructionController extends Controller {
     })
 
     // DELETE
-    static getDeleteConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.json("Página a construir")
-    })
-
-    static postDeleteConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static delete = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const construction = await ConstructionModel.getByColumns({id: id})
 

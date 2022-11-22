@@ -1,25 +1,21 @@
 const express = require('express')
 
-const BuilderConstructionSummaryController = require('../controllers/BuilderConstructionSummaryController')
+const SummaryController = require('../controllers/BuilderConstructionSummaryController')
+const AuthMiddleware = require('../middlewares/AuthMiddleware')
 
-const builderConstructionSummaryRouter = express.Router()
+const Router = express.Router()
 
 // CREATE
-builderConstructionSummaryRouter.get("/api/portifolio-create", BuilderConstructionSummaryController.getCreateBuilderConstructionSummary)
-builderConstructionSummaryRouter.post("/api/portifolio", BuilderConstructionSummaryController.postCreateBuilderConstructionSummary)
+Router.post("/api/portifolios", AuthMiddleware.onlyLogged, SummaryController.create)
 
 // READ
-builderConstructionSummaryRouter.get("/api/portifolio", BuilderConstructionSummaryController.getAllBuilderConstructionSummary)
-builderConstructionSummaryRouter.get("/api/portifolio/:id", BuilderConstructionSummaryController.getBuilderConstructionSummary)
+Router.get("/api/portifolios", AuthMiddleware.onlyLogged, SummaryController.all)
+Router.get("/api/portifolios/:id", AuthMiddleware.onlyLogged, SummaryController.get)
 
 // UPDATE
-builderConstructionSummaryRouter.put("/api/portifolio/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary) // UPDATE API
-builderConstructionSummaryRouter.get("/api/portifolio/:id", BuilderConstructionSummaryController.getUpdateBuilderConstructionSummary)
-builderConstructionSummaryRouter.post("/api/portifolio/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary)
+Router.put("/api/portifolios/:id", AuthMiddleware.onlyLogged, SummaryController.update) // UPDATE API
 
 // DELETE
-builderConstructionSummaryRouter.delete("/api/portifolio/:id", BuilderConstructionSummaryController.postDeleteBuilderConstructionSummary) // DELETE API
-builderConstructionSummaryRouter.get("/api/portifolio-delete/:id", BuilderConstructionSummaryController.getUpdateBuilderConstructionSummary)
-builderConstructionSummaryRouter.post("/api/portifolio-delete/:id", BuilderConstructionSummaryController.postUpdateBuilderConstructionSummary)
+Router.delete("/api/portifolios/:id", AuthMiddleware.onlyLogged, SummaryController.delete) // DELETE API
 
-module.exports = builderConstructionSummaryRouter;
+module.exports = Router;
