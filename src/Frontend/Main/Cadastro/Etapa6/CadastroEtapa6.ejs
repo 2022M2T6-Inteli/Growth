@@ -17,12 +17,12 @@
     <div class="register-card-container">
         <div class="register-card">
             <div class="register-card-logo">
-                <img src="../../../../../imagens/Logo-Gradiente.png" alt="Logo">
+                <img src="/imagens/Logo-Gradiente.png" alt="Logo">
             </div>
             <div class="register-card-header">
                 <h1>Logo da Empresa</h1>
             </div>
-            <form class="register-card-form" method="get" action="../../Home/Home.html">
+            <form class="register-card-form" method="post">
                 <div class="img">
                     <label for="inputTag">
                         Select Image <br />
@@ -32,7 +32,7 @@
                         <span id="imageName"></span>
                     </label>
                 </div>
-                <button type="submit">Finalizar Cadastro</button>
+                <button type="submit" onclick="return enviarCadastro()">Finalizar Cadastro</button>
             </form>
         </div>
     </div>

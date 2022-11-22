@@ -107,11 +107,16 @@ class UserBuilderController extends Controller {
     })
 
     static getCadastroEtapa1 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa1/CadastroEtapa1', {});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa1/CadastroEtapa1', {error: req.query.error});
     })
 
     static getCadastroEtapa2 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa2/CadastroEtapa2', {});
+
+        if(req.body.password && req.body.email && req.body.password.length >= 8){
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa2/CadastroEtapa2', {});
+        }else{
+            res.redirect("/cadastro/etapa1?error=dados-incorretos")
+        }
     })
 
     static getCadastroEtapa3 = (req, res) => Controller.execute(req, res, async (req, res) => {
