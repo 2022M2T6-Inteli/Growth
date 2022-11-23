@@ -23,16 +23,39 @@
             <form class="register-card-form" method="post" action="/cadastro/etapa4">
                 <div class="form-item">
                     <span>Número de Funcionários</span>
-                    <input type="text" placeholder="Número de Funcionários" required autofocus>
+                    <input type="text" placeholder="Número de Funcionários" name="numFucnionarios" required autofocus>
+                    <!--<%# if(error){%>
+                        <span id="incorrect-data"> Insira o número de funcionários</span>
+                    <%# }%>-->
                 </div>
                 <div class="form-item">
                     <span>Telefone</span>
-                    <input type="text" placeholder="Digite seu Telefone" required>
+                    <input type="text" id="tel" placeholder="Digite seu Telefone" name="tel_empresa" maxlength="16" required>
+                    <!--<%# if(error){%>
+                        <span id="incorrect-data">Telefone inválido</span>
+                    <%# }%>-->
                 </div>
                 <button type="submit">Continuar</button>
             </form>
         </div>
     </div>
+    <script>
+        const tel = document.querySelector('#tel')
+
+        tel.addEventListener('keypress', () => {
+            let tel_length = tel.value.length
+
+            if (tel_length === 0){
+                tel.value += "("
+            }else if (tel_length === 3){
+                tel.value += ") "
+            }else if (tel_length === 6){
+                tel.value += " "
+            }else if (tel_length === 11){
+                tel.value += "-"
+            }
+        })
+    </script>
 </body>
 
 </html>

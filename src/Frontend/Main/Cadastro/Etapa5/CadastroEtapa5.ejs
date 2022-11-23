@@ -23,16 +23,39 @@
             <form class="register-card-form" method="post" action="/cadastro/etapa6">
                 <div class="form-item">
                     <span>E-mail do contador</span>
-                    <input type="text" placeholder="E-mail do contador" required autofocus>
+                    <input type="text" placeholder="E-mail do contador" name="emailContador" required autofocus>
+                    <!--<%# if(error){%>
+                        <span id="incorrect-data">E-mail inválido</span>
+                    <%# }%>-->
                 </div>
                 <div class="form-item">
                     <span>Telefone do Contador</span>
-                    <input type="text" placeholder="Telefone do contador" required>
+                    <input type="text" id="tel_contador" placeholder="Telefone do contador" name="telContador" maxlength="16" required>
+                    <!--<%# if(error){%>
+                        <span id="incorrect-data">Telefone inválido</span>
+                    <%# }%>-->
                 </div>
                 <button type="submit">Continuar</button>
             </form>
         </div>
     </div>
+    <script>
+        const tel_contador = document.querySelector('#tel_contador')
+
+        tel_contador.addEventListener('keypress', () => {
+            let tel_contadorlength = tel_contador.value.length
+
+            if (tel_contadorlength === 0){
+                tel_contador.value += "("
+            }else if (tel_contadorlength === 3){
+                tel_contador.value += ") "
+            }else if (tel_contadorlength === 6){
+                tel_contador.value += " "
+            }else if (tel_contadorlength === 11){
+                tel_contador.value += "-"
+            }
+        })
+    </script>
 </body>
 
 </html>

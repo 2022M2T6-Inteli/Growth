@@ -156,7 +156,10 @@ body {
     cursor: pointer;
 }
 
-
+#incorrect-data{
+    color: red;
+    font-size: small;
+}
 
 /* Responsividade */
 

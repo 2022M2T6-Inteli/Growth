@@ -120,7 +120,11 @@ class UserBuilderController extends Controller {
     })
 
     static getCadastroEtapa3 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa3/CadastroEtapa3', {});
+        //if(req.body.cnpj.length == 18){
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa3/CadastroEtapa3', {});
+       // }else{
+        //    res.redirect("/cadastro/etapa2?error=Dados-incorretos")
+       // }
     })
 
     static getCadastroEtapa4 = (req, res) => Controller.execute(req, res, async (req, res) => {

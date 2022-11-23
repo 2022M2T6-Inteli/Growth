@@ -23,20 +23,55 @@
             <form class="register-card-form" method="post" action="/cadastro/etapa5">
                 <div class="form-item">
                     <span>Nome do dono</span>
-                    <input type="text" placeholder="Nome do Dono" required autofocus>
+                    <input type="text" placeholder="Nome do Dono" name="nomeDono" required autofocus>
                 </div>
                 <div class="form-item">
                     <span>Cpf</span>
-                    <input type="text" placeholder="Cpf do Dono" required>
+                    <input type="text" id="cpf_dono" placeholder="Cpf do Dono" name="cpf_dono" maxlength="14" required>
+                    <!--<%# if(error){#%>
+                        <span id="incorrect-data">Cpf inválido</span>
+                    <#% }#%>-->
                 </div>
                 <div class="form-item">
                     <span>Telefone do dono</span>
-                    <input type="text" placeholder="Telefone do Dono" required>
+                    <input type="text" id="tel_dono" placeholder="Telefone do Dono" name="telDono" maxlength="16" required>
+                    <!--<%# if(error){%>
+                        <span id="incorrect-data">Telefone inválido</span>
+                    <%# }%> -->
                 </div>
                 <button type="submit">Continuar</button>
             </form>
         </div>
     </div>
+    <script>
+        const cpf_dono = document.querySelector('#cpf_dono')
+
+        cpf_dono.addEventListener('keypress', () => {
+            let cpf_donolength = cpf_dono.value.length
+
+            if (cpf_donolength === 3 || cpf_donolength === 7){
+                cpf_dono.value += '.'
+            }else if (cpf_donolength === 11){
+                cpf_dono.value += '-'
+            }
+        })
+
+        const tel_dono = document.querySelector('#tel_dono')
+
+        tel_dono.addEventListener('keypress', () => {
+            let tel_donolength = tel_dono.value.length
+
+            if (tel_donolength === 0){
+                tel_dono.value += "("
+            }else if (tel_donolength === 3){
+                tel_dono.value += ") "
+            }else if (tel_donolength === 6){
+                tel_dono.value += " "
+            }else if (tel_donolength === 11){
+                tel_dono.value += "-"
+            }
+        })
+    </script>
 </body>
 
 </html>

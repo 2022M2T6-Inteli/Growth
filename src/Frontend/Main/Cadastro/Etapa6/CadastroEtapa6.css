@@ -182,6 +182,10 @@ body{
     color:green;
 }
 
+#incorrect-data{
+    color: red;
+    font-size: small;
+}
 
 /* Responsividade */
 

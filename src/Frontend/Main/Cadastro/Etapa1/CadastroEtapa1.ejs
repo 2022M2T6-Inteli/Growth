@@ -26,17 +26,18 @@
                     <span id="form-item-icon" class="material-symbols-outlined">mail</span>
                     <input type="email" placeholder="Digite Seu E-mail" name="email"
                         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required autofocus>
+                    <!--<% if(error) {%>
+                        <span id="incorrect-data"> Informe um e-mail válido</span>
+                    <% }%>-->
                 </div>
                 <div class="form-item">
                     <span id="form-item-icon" class="material-symbols-outlined">lock</span>
                     <input type="password" placeholder="Digite Sua Senha" required name="password">
+                    <!--<% if(error) {%>
+                        <span id="incorrect-data"> Informe uma senha válida</span>
+                    <% }%>-->
                 </div>
                 <button type="submit">Continuar</button>
-                <div id="alertas">
-                    <% if(error) {%>
-                        <span>Dados incorretos</span>
-                    <% }%>
-                </div>
             </form>
         </div>
         <div class="register-card-social">

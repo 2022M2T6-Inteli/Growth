@@ -174,6 +174,10 @@ body {
     transform: scale(1.1);
 }
 
+#incorrect-data{
+    color: red;
+    font-size: small;
+}
 
 /* Responsividade */
 
