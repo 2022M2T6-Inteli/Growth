@@ -22,6 +22,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    margin: 0;
 }
 
 .register-card {
@@ -154,27 +156,4 @@ body {
 .register-card-form button:hover {
     background-color: rgba(0, 0, 0, .85);
     cursor: pointer;
-}
-
-#incorrect-data{
-    color: red;
-    font-size: small;
-}
-
-
-/* Responsividade */
-
-@media (max-width: 768px) {
-    body {
-        padding: 2rem 0;
-    }
-
-    .register-card {
-        width: 350px;
-        padding: 2rem;
-    }
-
-    .register-card-container {
-        width: 400px;
-    }
 }

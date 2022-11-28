@@ -20,20 +20,20 @@
             <div class="register-card-header">
                 <h2>Mais algumas informações sobre a sua empresa...</h2>
             </div>
-            <form class="register-card-form" method="post" action="/cadastro/etapa4">
+            <form class="register-card-form" method="post" action="">
                 <div class="form-item">
                     <span>Número de Funcionários</span>
-                    <input type="text" placeholder="Número de Funcionários" name="numFucnionarios" required autofocus>
-                    <!--<%# if(error){%>
-                        <span id="incorrect-data"> Insira o número de funcionários</span>
-                    <%# }%>-->
+                    <input type="text" placeholder="Número de Funcionários" name="numFuncionarios" required autofocus>
+                    <% if(error.numFuncionarios){%>
+                        <span id="incorrect-data"><%= error.numFuncionarios %></span>
+                    <% }%>
                 </div>
                 <div class="form-item">
                     <span>Telefone</span>
-                    <input type="text" id="tel" placeholder="Digite seu Telefone" name="tel_empresa" maxlength="16" required>
-                    <!--<%# if(error){%>
-                        <span id="incorrect-data">Telefone inválido</span>
-                    <%# }%>-->
+                    <input type="text" id="tel" placeholder="Digite seu Telefone" name="telEmpresa" maxlength="16" required>
+                    <% if(error.telEmpresa){%>
+                        <span id="incorrect-data"><%= error.telEmpresa %></span>
+                    <% }%>
                 </div>
                 <button type="submit">Continuar</button>
             </form>

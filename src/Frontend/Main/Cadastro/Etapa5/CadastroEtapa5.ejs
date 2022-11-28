@@ -20,20 +20,20 @@
             <div class="register-card-header">
                 <h1>Dados do Contador</h1>
             </div>
-            <form class="register-card-form" method="post" action="/cadastro/etapa6">
+            <form class="register-card-form" method="post" action="">
                 <div class="form-item">
                     <span>E-mail do contador</span>
                     <input type="text" placeholder="E-mail do contador" name="emailContador" required autofocus>
-                    <!--<%# if(error){%>
-                        <span id="incorrect-data">E-mail inválido</span>
-                    <%# }%>-->
+                    <% if(error.emailContador){%>
+                        <span id="incorrect-data"><%= error.emailContador %>></span>
+                    <% }%>
                 </div>
                 <div class="form-item">
                     <span>Telefone do Contador</span>
                     <input type="text" id="tel_contador" placeholder="Telefone do contador" name="telContador" maxlength="16" required>
-                    <!--<%# if(error){%>
-                        <span id="incorrect-data">Telefone inválido</span>
-                    <%# }%>-->
+                    <% if(error.telContador){%>
+                        <span id="incorrect-data"><%= error.telContador %>></span>
+                    <% }%>
                 </div>
                 <button type="submit">Continuar</button>
             </form>
