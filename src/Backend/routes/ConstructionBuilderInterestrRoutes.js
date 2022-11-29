@@ -19,6 +19,4 @@ Router.delete("/api/empreiteiro-obra-interesse/:constructionId/:builderId", Cont
 
 Router.delete("/api/empreiteiro-obra-interesse/:constructionId/:builderId", Controller.deleteBuilderInterest)
 
-Router.get("/busca", Controller.getBusca)
-
 module.exports = Router;
