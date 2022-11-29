@@ -1,176 +1,71 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="container-fluid printipal-container">
+    <div class="row">
+        <aside class="col-2 aside-filter" style="width: 100%">
+            <form action="" method="get">
+                <h2>Filtros</h2>
+                <section>
+                    <h3>Região</h3>
+                    <label for="state">Estado</label>
+                    <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+                        <option value="selecione">Selecione</option>
+                        <option value="parana">Paraná</option>
+                        <option value="sao-paulo">São Paulo</option>
+                        <option value="minas-gerais">Minas Gerais</option>
+                        <option value="bahia">Bahia</option>
+                        <option value="ceara">Ceará</option>
+                    </select>
+                    <label for="city">Cidade</label>
+                    <select name="city" id="city">
+                        <option value="selecione">Selecione</option>
+                        <option value="foz">Foz do Iguaçu</option>
+                        <option value="sao-paulo">São Paulo</option>
+                        <option value="bh">Belo Horizonte</option>
+                        <option value="for">Fortaleza</option>
+                    </select>
+                </section>
+                <section>
+                    <h3>Tags</h3>
+                    <div class="tags-active">
+                        <button type="button" class="btn-tag">+ Gesso</button> <button type="button"
+                            class="btn-tag">+ construtor</button>
 
-<head> <!-- Head com imports Boostrap, css e js -->
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="/frontend/Main/Busca/Busca.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
-    <title>Busca</title>
-</head>
+                    </div>
+                    <div class="tags-disable">
+                        <button type="button" class="btn-tag-i">+ Pintor </button> <button type="button"
+                            class="btn-tag-i">+ hidráulica </button>
 
-<body>
-    <nav class="navbar navbar-expand-lg shadow p-3  bg-white rounded sticky-top"> <!-- Navbar com principais links do site -->
-        <div class="container-fluid h-100">
-            <a class="navbar-brand h-100 d-flex align-items-center" href="../Home/Home.html">
-                <img src="/imagens/MRV_logo.png" alt="Logo" width="100" style="margin-left: 100px;">
-            </a>
-            <!--barra de pesquisa-->
-            <form class="d-flex w-50" role="search" method="get" action="../Busca/Busca.html">
-                <input class="form-control me-2" type="search" placeholder="buscar" aria-label="buscar">
-                <button class="btn btn-outline-success" type="submit">buscar</button>
+                    </div>
+                </section>
+                <section>
+                    <h3>Categoria do imóvel</h3>
+                    <label for="imovel">Tipo de imóvel</label>
+                    <select name="city" id="city">
+                        <option value="selecione">Selecione</option>
+                        <option value="apartamentos">apartamentos</option>
+                        <option value="lote">loteamento</option>
+                    </select>
+                    <label for="imovel">Estágio da obra</label>
+                    <select name="city" id="city">
+                        <option value="selecione">Selecione</option>
+                        <option value="terraplanagem">terraplanagem</option>
+                        <option value="fundacao">fundação</option>
+                        <option value="iniciada">obra iniciada</option>
+                        <option value="avancada">obras avançadas</option>
+                        <option value="acabamento">acabamento</option>
+                    </select>
+                </section>
+                <button type="submit">Filtrar</button>
             </form>
-            <a href="../Login/Login.html" class="btn btn-info btn-lg" style="background-color: #FF8B22; border-color: #FF8B22;"
-                role="button">Acesse sua conta</a>
-            <!--botão para o usuário fazer o cadastro-->
-            </a>
-        </div>
-        </div>
-    </nav>
-
-    <div class="container-fluid printipal-container">
-        <div class="row">
-            <aside class="col-2 aside-filter" style="width: 100%">
-                <form action="" method="get">
-                    <h2>Filtros</h2>
-                    <section>
-                        <h3>Região</h3>
-                        <label for="state">Estado</label>
-                        <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
-                            <option value="selecione">Selecione</option>
-                            <option value="parana">Paraná</option>
-                            <option value="sao-paulo">São Paulo</option>
-                            <option value="minas-gerais">Minas Gerais</option>
-                            <option value="bahia">Bahia</option>
-                            <option value="ceara">Ceará</option>
-                        </select>
-                        <label for="city">Cidade</label>
-                        <select name="city" id="city">
-                            <option value="selecione">Selecione</option>
-                            <option value="foz">Foz do Iguaçu</option>
-                            <option value="sao-paulo">São Paulo</option>
-                            <option value="bh">Belo Horizonte</option>
-                            <option value="for">Fortaleza</option>
-                        </select>
-                    </section>
-                    <section>
-                        <h3>Tags</h3>
-                        <div class="tags-active">
-                            <button type="button" class="btn-tag">+ Gesso</button> <button type="button"
-                                class="btn-tag">+ construtor</button>
-
-                        </div>
-                        <div class="tags-disable">
-                            <button type="button" class="btn-tag-i">+ Pintor </button> <button type="button"
-                                class="btn-tag-i">+ hidráulica </button>
-
-                        </div>
-                    </section>
-                    <section>
-                        <h3>Categoria do imóvel</h3>
-                        <label for="imovel">Tipo de imóvel</label>
-                        <select name="city" id="city">
-                            <option value="selecione">Selecione</option>
-                            <option value="apartamentos">apartamentos</option>
-                            <option value="lote">loteamento</option>
-                        </select>
-                        <label for="imovel">Estágio da obra</label>
-                        <select name="city" id="city">
-                            <option value="selecione">Selecione</option>
-                            <option value="terraplanagem">terraplanagem</option>
-                            <option value="fundacao">fundação</option>
-                            <option value="iniciada">obra iniciada</option>
-                            <option value="avancada">obras avançadas</option>
-                            <option value="acabamento">acabamento</option>
-                        </select>
-                    </section>
-                    <button type="submit">Filtrar</button>
-                </form>
-            </aside>
-            <main class="col-10"> <!--  Conteúdo principal da página  -->
-                <div class="row">
-                    <p class="results">Resultados para: <span>condomínios residenciais</span></p>
-                </div>
-                <div class="row">
-                    <div class="card mb-5" style="width: 800px; border-radius: 20px; margin-top: 20px;">
-                        <img src="/imagens/PaginaPrincipal/parqueDelSol.jpg" class="card-img-top2"
-                            alt="foto card">
-                        <div class="card-body">
-                            <h4 class="card-title mb-0">Parque del sol</h4>
-                            <h6 class="local">São josé dos campos-SP</h6>
-                            <div class="d-flex w-100 justify-content-start">
-                                <span class="btn btn-primary mr-2"
-                                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                                    type="submit">+ Pintor</span> <span class="btn btn-primary mr-2"
-                                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                                    type="submit">+ Apartamentos</span> <span class="btn btn-primary mr-2"
-                                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                                    type="submit">+ construtores</span>
-                            </div>
-                            <p class="card-text" style="text-align: start;">Grupo residencial, um mega parque com a
-                                junção de vários condomínios, cerca de 1400 studios,2000m2 de área construida localizado
-                                em
-                                Vitoria da Conquista próximo ao centro. blá blá blá blá blá blá blá rafa blá enya blá
-                                raab blá vitor blá arthur blá samuel blá eu...</p>
-                            <a href="#" class="btn btn-primary"
-                                style="background: linear-gradient(to right, #006B3F, #079D56); border: #006B3F;">Saiba
-                                Mais</a>
-                        </div>
-                    </div>
-                    <div class="card mb-5" style="width: 800px; border-radius: 20px;">
-                        <img src="/imagens/PaginaPrincipal/buenaVista.jpg" class="card-img-top p-0"
-                            style="height: 18rem; border-top-left-radius: 20px; border-top-right-radius: 20px;"
-                            alt="...">
-                        <div class="card-body" style="align-self: flex-start;">
-                            <h4 class="card-title mb-0" style="text-align: left;">Buena Vista</h4>
-                            <h6 class="local">Fortaleza-CE</h6>
-                            <div class="d-flex w-100 justify-content-start">
-                                <span class="btn btn-primary mr-2"
-                                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                                    type="submit">+ Pintor</span> <span class="btn btn-primary mr-2"
-                                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                                    type="submit">+ Apartamentos</span> <span class="btn btn-primary mr-2"
-                                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                                    type="submit">+ Mestre de obras</span>
-                            </div>
-                            <p class="card-text" style="text-align: start;">3000 apartamentos,com 65m², 2 quartos com
-                                luminárias, 1 suíte com ar condicionado, banheiro da suíte com box blindex, espelho e
-                                prateleiras de vidro, sala com luminária, banheiro social com box blindex, cozinha, área
-                                de serviço projetadas, varanda, 01 vaga.</p>
-                            <a href="#" class="btn btn-primary"
-                                style="background: linear-gradient(to right, #006B3F, #079D56); border: #006B3F;">Saiba
-                                Mais</a>
-                        </div>
-                    </div>
-                </div>
-            </main>
-        </div>
-    </div>
-    <footer>
-        <div class="container">
+        </aside>
+        <main class="col-10"> <!--  Conteúdo principal da página  -->
             <div class="row">
-                <div class="col-6">
-                    <h3>Contato</h3>
-                    <ul>
-                        <li><a href="https://www.mrv.com.br/">Site</a></li>
-                        <li><a href="https://www.linkedin.com/company/mrvengenharia/">LinkedIn</a></li>
-                        <li><a href="https://www.instagram.com/mrv/">Instagram</a></li>
-                    </ul>
-                </div>
-                <div class="col-6">
-                    <h3>Paginas</h3>
-                    <ul>
-                        <li><a href="../Home/Home.html">Home</a></li>
-                        <li><a href="../Institucional/institucional.html">Institucional</a></li>
-                        <li><a href="../../DashBoardADM/Home/Home.html">Dashboard</a></li>
-                    </ul>
-                </div>
+                <p class="results">Resultados para: <span>condomínios residenciais</span></p>
             </div>
-        </div>
-    </footer>
-</body>
-
-</html>
+            <div class="row">
+                <% for(let i = 0; i < obras.length; i++){ %>
+                    <%- include('../Componentes/CardObra/CardObra', obras[i]) %>
+                <% } %>
+            </div>
+        </main>
+    </div>
+</div>

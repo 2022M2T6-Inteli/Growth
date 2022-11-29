@@ -19,8 +19,4 @@ Router.put("/api/obras/:id", AuthMiddleware.onlyLoggedADM, ConstructionControlle
 // Delete
 Router.delete("/api/obras/:id", AuthMiddleware.onlyLoggedADM, ConstructionController.delete) // DELETE API
 
-// SITE
-Router.get("/busca", ConstructionController.all)
-Router.get("/obras/:id", ConstructionController.all)
-
 module.exports = Router;
