@@ -123,7 +123,7 @@ class UserBuilderController extends Controller {
             error.email = 'Email precisa estar corretamente formatado';
         }
         console.log('erro:', error)
-        if(Object.keys(error)){
+        if(Object.keys(error).length){
             res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa1/CadastroEtapa1', {error: error});
         }else{
             res.redirect('/cadastro/etapa2');
@@ -147,7 +147,7 @@ class UserBuilderController extends Controller {
             error.cnpj = "Cnpj inválido"
         }
         console.log(error)
-        if(Object.keys(error)){
+        if(Object.keys(error).length){
             res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa2/CadastroEtapa2', {error: error});
         }else{
             res.redirect('/cadastro/etapa3');
@@ -171,7 +171,7 @@ class UserBuilderController extends Controller {
             error.telEmpresa = "Telefone inválido"
         }
         console.log(error)
-        if(Object.keys(error)){
+        if(Object.keys(error).length){
             res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa3/CadastroEtapa3', {error: error});
         }else{
             res.redirect('/cadastro/etapa4');
@@ -200,7 +200,7 @@ class UserBuilderController extends Controller {
         }
 
         console.log(error)
-        if(Object.keys(error)){
+        if(Object.keys(error).length){
             res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa4/CadastroEtapa4', {error: error});
         }else{
             res.redirect('/cadastro/etapa5');
@@ -225,7 +225,7 @@ class UserBuilderController extends Controller {
         }
 
         console.log(error)
-        if(Object.keys(error)){
+        if(Object.keys(error).length){
             res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa4/CadastroEtapa4', {error: error});
         }else{
             res.redirect('/cadastro/etapa5');
