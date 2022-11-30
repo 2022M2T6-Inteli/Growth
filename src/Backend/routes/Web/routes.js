@@ -3,13 +3,15 @@ const express = require('express');
 
 // Web Routes
 const StructuralRouter = require('./StructuralRoutes');
-const CadastroRouter = require('./CreateUserRoutes');
-const EdicaoUsuarioRouter = require('./UpdateUserRoutes');
+const CreateUserRouter = require('./CreateUserRoutes');
+const UpdateUserRouter = require('./UpdateUserRoutes');
+const DashboardRoutes = require('./DashboardRoutes');
 
 const Router = express.Router();
 
 Router.use(StructuralRouter);
-Router.use('/cadastro', CadastroRouter);
-Router.use('/usuario', EdicaoUsuarioRouter);
+Router.use('/cadastro', CreateUserRouter);
+Router.use('/usuario', UpdateUserRouter);
+Router.use('/dashboard', DashboardRoutes);
 
 module.exports = Router;

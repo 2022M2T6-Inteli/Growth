@@ -1,0 +1,9 @@
+<main class="col-8">
+    <!--  Conteúdo principal da página  -->
+    <h1>Usuários</h1>
+    <div class="row">
+        <% for(let i = 0; i < administrators.length; i++){ %>
+            <%- include('../Componentes/CardAdministrator', administrators[i]) %>
+        <% } %>
+    </div>
+</main>
