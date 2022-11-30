@@ -15,20 +15,20 @@ Router.get("/obras/:id", Controller.getConstruction);
 
 Router.post("/obras", Controller.getConstruction);
 Router.post("/obras/:id", Controller.getConstruction);
-Router.post("/obras/:id/delete", Controller.getConstructions);
+Router.get("/obras/:id/deletar", Controller.deleteConstruction);
 
 Router.get("/usuarios", Controller.getUsers);
 Router.get("/usuarios/:id", Controller.getUser);
 
 Router.post("/usuarios", Controller.getUser);
 Router.post("/usuarios/:id", Controller.getUser);
-Router.post("/usuarios/:id/delete", Controller.getUsers);
+Router.get("/usuarios/:id/deletar", Controller.deleteUser);
 
 Router.get("/administradores", Controller.getAdministrators);
 Router.get("/administradores/:id", Controller.getAdministrator);
 
 Router.post("/administradores", Controller.getAdministrator);
 Router.post("/administradores/:id", Controller.getAdministrator);
-Router.post("/administradores/:id/delete", Controller.getAdministrators);
+Router.get("/administradores/:id/deletar", Controller.deleteAdministrator);
 
 module.exports = Router;

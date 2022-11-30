@@ -42,6 +42,14 @@ class WebDashboardController {
         });
     })
 
+    static deleteUser = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const user = await UserBuilderModel.getByColumns({id: req.params.id})
+
+        await user.delete();
+
+        res.redirect("/dashboard/usuarios");
+    })
+
     static getAdministrators = (req, res) => Controller.execute(req, res, async (req, res) => {
         const administrators = await UserAdministratorModel.allByColumns();
 
@@ -53,6 +61,14 @@ class WebDashboardController {
             currentPage: req.url,
             administrators: administrators
         });
+    })
+
+    static deleteAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const user = await UserAdministratorModel.getByColumns({id: req.params.id})
+
+        await user.delete();
+
+        res.redirect("/dashboard/administradores");
     })
 
     static getAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -122,6 +138,14 @@ class WebDashboardController {
                 throw error;
             }
         }
+    })
+
+    static deleteConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const construciton = await ConstrucitonModel.getByColumns({id: req.params.id})
+
+        await construciton.delete();
+
+        res.redirect("/dashboard/obras");
     })
 }
 

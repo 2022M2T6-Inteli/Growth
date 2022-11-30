@@ -117,6 +117,7 @@ aside-filter {
 }
 
 .card-body {
+  width: 100%;
   align-self: flex-start;
 }
 
