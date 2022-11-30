@@ -22,8 +22,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 0;
-    margin: 0;
 }
 
 .register-card {
@@ -156,4 +154,83 @@ body {
 .register-card-form button:hover {
     background-color: rgba(0, 0, 0, .85);
     cursor: pointer;
+}
+
+.register-card-social {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+    margin-top: 3rem;
+}
+
+.register-card-social>div {
+    opacity: .8;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: calc(1rem * .8);
+}
+
+.register-card-social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.register-card-social-btn a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    width: 50px;
+    height: 50px;
+    background: rgba(255, 255, 255, .6);
+    border-radius: 100px;
+    transition: all .5s;
+}
+
+.register-card-social-btn a:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+
+.img{
+    text-align:center;
+    margin-bottom: 55px;
+}
+
+.img input{
+    display: none;
+}
+
+.img label{
+    cursor:pointer;
+}
+
+#imageName{
+    color:green;
+}
+
+#incorrect-data{
+    color: red;
+    font-size: small;
+}
+
+/* Responsividade */
+
+@media (max-width: 768px) {
+    body {
+        padding: 2rem 0;
+    }
+
+    .register-card {
+        width: 350px;
+        padding: 2rem;
+    }
+
+    .register-card-container {
+        width: 400px;
+    }
 }
