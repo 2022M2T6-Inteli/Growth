@@ -52,12 +52,22 @@
                 <h1>Usuário</h1>
                 <div class="container">
                     <center>
-                        <a href=""><img class="imagensFoto" src="/imagens/Usuario/empreiteiro-1.jpg" width="200"></a>
+                    <div class="container-foto">
+                        <label for="file-input">
+                        <img class="imagensFoto" src="../../../../imagens/Usuario/empreiteiro-1.jpg" width="200">
+                        
+                        <div class="middle">
+                            <div class="">
+                                <img src="../../../../imagens/Usuario/edit-icon-png.png" width="140">
+                            </label>
+                            <input id="file-input" type="file" hidden/>
+                        </div>
+                        </div>
+                    </div>
                     </center><br><br>
 
-                    <center>
+
                         <div class="input-group mb-3">
-                            <button class="btEditar">Carregar foto <i class="bi bi-file-arrow-up"></i></button><br><br>
                             <form>
                                 <div class="row">
                                     <div class="col-12">
@@ -91,10 +101,9 @@
                                         <input type="text" class="form-control" placeholder="Digite o e-mail:"
                                             aria-label="Amount (to the nearest dollar)">
                                     </div>
-                                    <div class="col-6">
-                                        <label>Nome do dono:</label>
-                                        <br>
-                                        <input type="text" class="form-control" placeholder="Digite o nome do dono:"
+                                    <div class="col-9">
+                                        <label for="nomeDono">Nome do dono:</label><br>
+                                        <input type="text" class="form-control" id="nomeDono" placeholder="Digite o nome do dono:"
                                             aria-label="Amount (to the nearest dollar)">
                                     </div>
                                     <div class="col-6">
@@ -112,8 +121,8 @@
                                     <div class="col-6">
                                         <label>E-mail do contador:</label>
                                         <br>
-                                        <input type="text" class="form-control"
-                                            placeholder="Digite o e-mail do contador:" aria-describedby="basic-addon3">
+                                        <input type="text" class="form-control" placeholder="Digite o e-mail do contador:"
+                                            aria-describedby="basic-addon3">
                                     </div>
                                     <div class="col-6">
                                         <label>Telefone do contador:</label>
@@ -123,16 +132,16 @@
                                     </div>
 
                                 </div>
-                                <center>
-                                    <div class="col-6">
-                                        <input type="button" class="saveButton" value="Salvar">
-                                    </div>
-                                </center><br><br>
-                                <div class="info">Alguma informação</div>
                             </form>
-
-                        </div><br><br>
+                            
+                        </div>
                     </center>
+                    <center>
+                        <a href="Usuario.html">
+                        <input type="button" class="btn btn-outline-danger" value="Cancelar"></a>
+                        <a href="Usuario.html">
+                        <input type="button" class="btn btn-outline-success" value="Salvar"></a>
+                    </center><br><br>
                 </div>
             </main>
 
