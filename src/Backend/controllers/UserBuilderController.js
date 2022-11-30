@@ -107,7 +107,10 @@ class UserBuilderController extends Controller {
     })
 
     static getCadastroEtapa1 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa1/CadastroEtapa1', {error: {}});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+            error: {},
+            title: 'Cadastro | Etapa 1',
+            conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa1'});
     })
 
     static postCadastroEtapa1 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -124,14 +127,20 @@ class UserBuilderController extends Controller {
         }
         console.log('erro:', error)
         if(Object.keys(error).length){
-            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa1/CadastroEtapa1', {error: error});
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+                error: error,
+                title: 'Cadastro | Etapa 1',
+                conteudo:__dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa1'});
         }else{
             res.redirect('/cadastro/etapa2');
         }
     })
 
     static getCadastroEtapa2 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa2/CadastroEtapa2', {error: {}});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+            error: {},
+            title: 'Cadastro | Etapa 2',
+            conteudo:__dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa2'});
     })
     
     static postCadastroEtapa2 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -148,14 +157,20 @@ class UserBuilderController extends Controller {
         }
         console.log(error)
         if(Object.keys(error).length){
-            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa2/CadastroEtapa2', {error: error});
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+                error: error,
+                title:'Cadastro | Etapa 2',
+                conteudo:__dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa2'});
         }else{
             res.redirect('/cadastro/etapa3');
         }
     })
 
     static getCadastroEtapa3 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa3/CadastroEtapa3', {error: {}});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+            error: {},
+            title: 'Cadastro | Etapa 3',
+            conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa3'});
     })
 
     static postCadastroEtapa3 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -172,14 +187,20 @@ class UserBuilderController extends Controller {
         }
         console.log(error)
         if(Object.keys(error).length){
-            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa3/CadastroEtapa3', {error: error});
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+                error: error,
+                title: 'Cadastro | Etapa 3',
+                conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa3'});
         }else{
             res.redirect('/cadastro/etapa4');
         }
     })
 
     static getCadastroEtapa4 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa4/CadastroEtapa4', {error: {}});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+            error: {},
+            title: 'Cadastro | Etapa 4',
+            conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa4'});
     })
 
     static postCadastroEtapa4 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -187,7 +208,7 @@ class UserBuilderController extends Controller {
 
         const error = {};
 
-        if(nomeDono.typeof != 'string' || nomeDono.length < 6){
+        if( nomeDono.length < 6){
             error.nomeDono = "Digite o nome do dono"
         }
 
@@ -201,14 +222,20 @@ class UserBuilderController extends Controller {
 
         console.log(error)
         if(Object.keys(error).length){
-            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa4/CadastroEtapa4', {error: error});
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+                error: error,
+                title: 'Cadastro | Etapa 4',
+                conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa4'});
         }else{
             res.redirect('/cadastro/etapa5');
         }
     })
 
     static getCadastroEtapa5 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa5/CadastroEtapa5', {error: {}});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+            error: {},
+            title: 'Cadastro | Etapa 5',
+            conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa5'});
     })
 
     static postCadastroEtapa5 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -224,25 +251,40 @@ class UserBuilderController extends Controller {
             error.cnpj = "Telefone inválido"
         }
 
-        console.log(error)
         if(Object.keys(error).length){
-            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa4/CadastroEtapa4', {error: error});
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+                error: error,
+                title: 'Cadastro | Etapa 5',
+                conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa5'});
+                console.log("oi")
         }else{
-            res.redirect('/cadastro/etapa5');
+            res.redirect('/cadastro/etapa6');
         }
     })
 
     static getCadastroEtapa6 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa6/CadastroEtapa6', {error: {}});
+        res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage', {
+            error: {},
+            title: 'Cadastro | Etapa 6',
+            conteudo: __dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa6'});
     })
 
     static postCadastroEtapa6 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        if(req.body.foto){
-            res.redirect('/home')
-        }else{
-            res.render(__dirname + '/../../Frontend/Main/Cadastro/Etapa6/CadastroEtapa6')
+        const {img} = req.body;
+
+        const error = {};
+
+
+        if(Object.keys(error).length){
+            res.render(__dirname + '/../../Frontend/Main/Cadastro/Componentes/RegisterPage',{
+                error: error,
+                title: 'Cadastro | Etapa 6',
+                conteudo:__dirname + '/../../Frontend/Main/Cadastro/CadastroEtapa6'});
         }
-    })
+        else{
+            res.redirect('/home');
+        }
+        })
 
     static getEdicaoUsuarioEmpresa = (req, res) => Controller.execute(req, res, async (req, res) => {
         res.render(__dirname + '/../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoEmpresa');
