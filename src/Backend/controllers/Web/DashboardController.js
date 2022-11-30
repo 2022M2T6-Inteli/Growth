@@ -57,9 +57,9 @@ class WebDashboardController {
 
     static getAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
         try {
-            // const administrator = await UserAdministratorModel.getByColumns({
-            //     id: id
-            // });
+            const administrator = await UserAdministratorModel.getByColumns({
+                id: req.params.id
+            });
 
 
             res.render('dashboard/Componentes/page', {
@@ -73,46 +73,39 @@ class WebDashboardController {
         } catch (error) {
             if (error instanceof APIError && error.status == 404) {
                 res.redirect("/dashboard/administradores")
+            }else {
+                throw error;
             }
         }
     })
 
     static getUser = (req, res) => Controller.execute(req, res, async (req, res) => {
         try {
-            // const user = await UserModel.getByColumns({
-            //     id: id
-            // });
+            const user = await UserBuilderModel.getByColumns({
+                id: req.params.id
+            });
 
-            console.log("oi")
             res.render('dashboard/Componentes/page', {
                 title: user.name,
-                css: '/dashboard/Usuarios/Usuarios.css',
-                conteudo: __dirname + '/../../../Frontend/Dashboard/Usuarios/Usuarios',
+                css: '/dashboard/Usuario/Usuario.css',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Usuario/Usuario',
                 secondAside: '',
                 currentPage: 's',
-                user: {},
-                users: []
+                user: user
             });
-            console.log("oi2")
 
         } catch (error) {
             if (error instanceof APIError && error.status == 404) {
                 res.redirect("/dashboard/usuarios")
+            } else {
+                throw error;
             }
         }
     })
 
     static getConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
         try {
-            console.log("oi")
-
-            const construction = {};
-            // await ConstrucitonModel.getByColumns({
-            //     id: id
-            // });
-
-            console.log("oi2")
-
+            const construction = await ConstrucitonModel.getByColumns({id: req.params.id});
 
             res.render('dashboard/Componentes/page', {
                 title: 'Usuários',
@@ -125,6 +118,8 @@ class WebDashboardController {
         } catch (error) {
             if (error instanceof APIError && error.status == 404) {
                 res.redirect("/dashboard/obras")
+            }else {
+                throw error;
             }
         }
     })
