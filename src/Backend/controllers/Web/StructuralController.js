@@ -1,32 +1,34 @@
-const Controller = require("./Controller");
+const Controller = require("../Controller");
 
-const ConstrucitonModel = require('../models/ConstructionModel');
-const APIError = require("../services/ErrorService");
+const ConstrucitonModel = require('../../models/ConstructionModel');
 
-class StructuralController {
+class WebStructuralController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Componentes/page', {
+        const obras = await ConstrucitonModel.allByColumns();
+        
+        res.render('Main/Componentes/page', {
             title: 'Conexão MRV', 
-            css: '/frontend/Main/Home/Home.css',
-            conteudo: __dirname + '/../../Frontend/Main/Home/Home'
+            css: '/main/Home/Home.css',
+            conteudo:  __dirname + '/../../../Frontend/Main/Home/Home',
+            obras: obras
         });
     })
 
     static getBusca = (req, res) => Controller.execute(req, res, async (req, res) => {
         const obras = await ConstrucitonModel.allByColumns({});
         
-        res.render(__dirname + '/../../Frontend/Main/Componentes/page', {
+        res.render('Main/Componentes/page', {
             title: 'Busca | Conexão MRV', 
-            css: '/frontend/Main/Busca/Busca.css',
+            css: '/main/Busca/Busca.css',
             conteudo: __dirname + '/../../Frontend/Main/Busca/Busca',
             obras: obras
         });
     })
 
     static getInstitucional = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../Frontend/Main/Componentes/page', {
+        res.render('Main/Componentes/page', {
             title: 'Institucional | Conexão MRV', 
-            css: '/frontend/Main/Institucional/Institucional.css',
+            css: '/main/Institucional/Institucional.css',
             conteudo: __dirname + '/../../Frontend/Main/Institucional/Institucional'
         });
     })
@@ -35,9 +37,9 @@ class StructuralController {
         try {
             const obra = await ConstrucitonModel.getByColumns({id: req.params.id});
             
-            res.render(__dirname + '/../../Frontend/Main/Componentes/page', {
+            res.render('Main/Componentes/page', {
                 title: `${obra.name} | Conexão MRV`, 
-                css: '/frontend/Main/Obra/Obra.css',
+                css: '/main/Obra/Obra.css',
                 conteudo: __dirname + '/../../Frontend/Main/Obra/Obra',
                 obra: obra
             });   
@@ -46,6 +48,13 @@ class StructuralController {
         }
     })
     
+    static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../../Frontend/Main/Login/Login', {});
+    })
+
+    static postLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render(__dirname + '/../../../Frontend/Main/Login/Login', {});
+    })
 }
 
-module.exports = StructuralController;
+module.exports = WebStructuralController;

@@ -11,11 +11,14 @@ const app = express()
 // Define onde está o banco de dados que será usado
 ConnectionService.setDatabase(__dirname + '/database.db');
 app.set('view engine', 'ejs')
+app.set('views', __dirname + '/../Frontend')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-app.use('/frontend', express.static(__dirname + '/../Frontend'))
+app.use('/main', express.static(__dirname + '/../Frontend/Main'))
+app.use('/dashboard', express.static(__dirname + '/../Frontend/DashboardADM'))
+
 app.use('/imagens', express.static(__dirname + '/../../imagens'))
 
 app.use(routes)
