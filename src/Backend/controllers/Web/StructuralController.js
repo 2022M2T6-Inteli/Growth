@@ -17,10 +17,10 @@ class WebStructuralController {
     static getBusca = (req, res) => Controller.execute(req, res, async (req, res) => {
         const obras = await ConstrucitonModel.allByColumns({});
         
-        res.render('Main/Componentes/page', {
+        res.render('main/Componentes/page', {
             title: 'Busca | Conexão MRV', 
-            css: '/main/Busca/Busca.css',
-            conteudo: __dirname + '/../../Frontend/Main/Busca/Busca',
+            css: 'main/Busca/Busca.css',
+            conteudo: __dirname + '/../../../Frontend/Main/Busca/Busca',
             obras: obras
         });
     })
@@ -29,7 +29,7 @@ class WebStructuralController {
         res.render('Main/Componentes/page', {
             title: 'Institucional | Conexão MRV', 
             css: '/main/Institucional/Institucional.css',
-            conteudo: __dirname + '/../../Frontend/Main/Institucional/Institucional'
+            conteudo: __dirname + '/../../../Frontend/Main/Institucional/Institucional'
         });
     })
 
@@ -40,7 +40,7 @@ class WebStructuralController {
             res.render('Main/Componentes/page', {
                 title: `${obra.name} | Conexão MRV`, 
                 css: '/main/Obra/Obra.css',
-                conteudo: __dirname + '/../../Frontend/Main/Obra/Obra',
+                conteudo: __dirname + '/../../../Frontend/Main/Obra/Obra',
                 obra: obra
             });   
         } catch (error) {
@@ -49,11 +49,23 @@ class WebStructuralController {
     })
     
     static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/Login/Login', {});
+        res.render('Main/Login/Login', {error: {}});
     })
 
     static postLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/Login/Login', {});
+        const {password, email} = req.body;
+
+        const error = {};
+
+        if(password.length < 8) {
+            error.password = 'Senha precisa ter mais de 8 caracteres';
+        }
+
+        if(!email.includes('@')){
+            error.email = 'Email precisa estar corretamente formatado';
+        }
+
+        res.render('Main/Login/Login', {error: error});
     })
 }
 

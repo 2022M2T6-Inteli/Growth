@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
-    <link rel="stylesheet" href="/frontend/Main/Login/Login.css">
+    <link rel="stylesheet" href="main/Login/Login.css">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
@@ -25,10 +25,16 @@
                 <div class="form-item">
                     <span id="form-item-icon" class="material-symbols-outlined">mail</span>
                     <input type="text" placeholder="Digite Seu Email" required autofocus>
+                    <% if(error.email) {%>
+                        <span id="incorrect-data"><%= error.email %></span>
+                    <% }%>
                 </div>
                 <div class="form-item">
                     <span id="form-item-icon" class="material-symbols-outlined">lock</span>
                     <input type="password" placeholder="Digite Sua Senha" required>
+                    <% if(error.password) {%>
+                        <span id="incorrect-data"><%= error.password %></span>
+                    <% }%>
                 </div>
                 <div class="form-item-other">
                     <div class="checkbox">
