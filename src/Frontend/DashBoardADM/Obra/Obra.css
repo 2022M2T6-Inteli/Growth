@@ -5,7 +5,7 @@ body {
 }
 
 .modal{
-    z-index:1;
+    z-index: 3;
     position: fixed;
     top:0;
     left:0;
@@ -23,8 +23,8 @@ body {
 }
 
 .modal-content{
-    
-    background-color: white;
+    border: none;
+    background-color: transparent;
     padding: 16px 24px;    
     width: fit-content;
     height: fit-content;
@@ -58,42 +58,40 @@ body {
 
 }
 
-.btEditar {
-    border-radius: 15px;
-    position: absolute;
-    left: 70%;
-    background-color: #FF8B22; /* Green */
-    background: linear-gradient(355.23deg, #FF8B22 7.7%, #FFB719 82.04%), #D9D9D9;
-    border: none;
-    color: white;
-    padding: 0px 5px;
-    margin: 0px 5px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    transform: translate(-0%,-50%);
-  }
-  
-  .btEditar:hover {
-    background-color: #FFB719;
-    background: linear-gradient(355.23deg, #FFB719 7.7%, #FF8B22 82.04%), #D9D9D9;
-    cursor: pointer;
-  }
-
 .saveButton {
     color: #FFFFFF;
-    background-color: #079D56;
-    border: none;
+    background-color: transparent;
+    border-color: #079D56;
     padding: 20px 120px;
 }
 
 .saveButton:hover {
-    background-color: #00D38D;
+    background-color: #079D56;
+}
+
+.cancelButton {
+    color: #FFFFFF;
+    background-color: #f72828;
+    border: none;
+    padding: 20px 120px;
+}
+.cancelButton:hover {
+  background-color: #ff5a5a;
+}
+
+input::-webkit-file-upload-button {
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+  padding: 20px 50px;
+}
+input::-webkit-file-upload-button:hover {
+  background-color: #ffc107;
+  cursor: pointer;
 }
 
 input {
-    font-size: 15px;
+  font-size: 15px;
     border-radius: 5px;
 }
 
@@ -111,21 +109,12 @@ label {
     border: none;
   }
 
-  .info {
-    width: 660px;
-    height: 40px;
-    background-color: #D9D9D9;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%,1020%);
-  }
-
   *:hover, *:active {
     outline: none;
   }
   
   main {
-    padding-top: 50px;
+    padding: 50px;
     height: 100vh;
     overflow-y: scroll;
     display: flex;
@@ -139,10 +128,12 @@ label {
     padding: 0px;
   }
   main .container .row {
+    width: 100%;
     color: #747474;
     background-color: white;
-    margin: 20px 0px;
-    padding: 20px 100px;
+    margin-bottom: 10px;
+    margin-left: 0px;
+    padding: 20px;
     border-radius: 10px;
     border: #D9D9D9 solid 1px;
   }

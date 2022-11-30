@@ -54,13 +54,13 @@
                 <div class="container">
                     <center>
                         <button class="imgBorder" onclick="showModal('modal-1')">
-                            <img class="imagensFoto" src="/imagens/Obra/obra-1.jpg" width="230">
+                            <img class="imagensFoto" src="../../../../imagens/Obra/obra-1.jpg" width="280">
                         </button>
                         <button class="imgBorder" onclick="showModal('modal-2')">
-                            <img class="imagensFoto" src="/imagens/Obra/obra-2.jpg" width="140">
+                            <img class="imagensFoto" src="../../../../imagens/Obra/obra-2.jpg" width="165">
                         </button>
                         <button class="imgBorder" onclick="showModal('modal-3')">
-                            <img class="imagensFoto" src="/imagens/Obra/obra-3.jpg" width="170">
+                            <img class="imagensFoto" src="../../../../imagens/Obra/obra-3.jpg" width="190">
                         </button>
 
                         <div class="modal" id="modal-1">
@@ -69,7 +69,7 @@
                                     &times;
                                 </span>
                                 <center>
-                                    <img class="imagensFoto" src="/imagens/Obra/obra-1.jpg" width="650">
+                                    <img class="imagensFoto" src="../../../../imagens/Obra/obra-1.jpg" width="650">
                                 </center>
                             </div>
                         </div>
@@ -79,7 +79,7 @@
                                     &times;
                                 </span>
                                 <center>
-                                    <img class="imagensFoto" src="/imagens/Obra/obra-2.jpg" width="650">
+                                    <img class="imagensFoto" src="../../../../imagens/Obra/obra-2.jpg" width="650">
                                 </center>
                             </div>
                         </div>
@@ -89,7 +89,7 @@
                                     &times;
                                 </span>
                                 <center>
-                                    <img class="imagensFoto" src="/imagens/Obra/obra-3.jpg" width="650">
+                                    <img class="imagensFoto" src="../../../../imagens/Obra/obra-3.jpg" width="650">
                                 </center>
                             </div>
                         </div>
@@ -98,44 +98,49 @@
 
 
                     <div class="input-group mb-3">
-                        <button class="btEditar">Carregar foto <i class="bi bi-file-arrow-up"></i><button><br>
-                        <div class="row">
+                        <div class="row" style="border-radius: 10px;">
                             <div class="col-6">
                                 <form>
-                                    <label for="nrCPF">CPF do dono:</label><input type="text" class="form-control"
-                                        id="txtCPF" placeholder="Digite o CPF do dono:" aria-describedby="basic-addon3">
+                                    <label for="tituloObra">Título:</label>
+                                    <input type="text" class="form-control" id="tituloObra" placeholder="Digite o Nome da Obra:" aria-describedby="basic-addon3">
                                 </form>
                             </div>
                             <div class="col-6">
                                 <form>
-                                    <label for="nrTelefone">Telefone do dono:</label><input type="text"
-                                        class="form-control" id="nrTelefone" placeholder="Digite o telefone do dono:"
+                                    <label for="localObra">Localização:</label>
+                                        <input type="text" class="form-control" id="localObra" placeholder="Digite aqui a localização da obra:"
                                         aria-describedby="basic-addon3">
                                 </form>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-6">
+                        <div class="row" style="border-radius: 10px;">
+                            <div class="col-4">
                                 <form>
-                                    <label for="txtemail">E-mail do contador:</label><input type="text"
-                                        class="form-control" id="txtEmail" placeholder="Digite o e-mail do contador:"
-                                        aria-describedby="basic-addon3">
+                                    <label for="descObra">Descrição:</label>
+                                        <textarea rows="12" cols="50" type="text"
+                                        class="form-control" id="descObra" placeholder="Digite aqui a descrição da obra:"
+                                        aria-describedby="basic-addon3"></textarea>
                                 </form>
                             </div>
-                            <div class="col-6">
+                            <div class="col-5">
                                 <form>
-                                    <label for="telContador">Telefone do contador:</label><br><input type="text"
-                                        class="form-control" id="telContador"
-                                        placeholder="Digite o telefone do contador" aria-describedby="basic-addon3">
+                                    <label for="imgObra">Imagem principal:</label>
+                                    <input type="file" id="imgObraPrincipal" name="imgPrinc" accept="image/*" class="btn btn-outline-warning"><p>
+                                    <label for="imgObra">Outras imagens:</label>
+                                    <input type="file" id="imgObraSecundaria" name="imgSec" accept="image/*" class="btn btn-outline-warning"><p>
+                                    <label for="imgObra">Imagem da planta:</label>
+                                    <input type="file" id="imgObraPlanta" name="imgPlanta" accept="image/*" class="btn btn-outline-warning">
                                 </form>
                             </div>
                         </div>
-                        <div class="info">Alguma informação</div>
 
                     </div>
                 </div>
                 <center>
-                    <input type="button" class="saveButton" value="Salvar">
+                    <a href="/Frontend/DashBoardADM/Obras/Obras.html">
+                    <input type="button" class="btn btn-outline-danger" value="Cancelar"></a>
+                    <a href="/Frontend/DashBoardADM/Obras/Obras.html">
+                    <input type="button" class="btn btn-outline-success" value="Salvar"></a>
                 </center>
         </div>
         </main>
