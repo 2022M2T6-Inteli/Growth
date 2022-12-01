@@ -1,7 +1,16 @@
 <main class="col-8">
     <!--  Conteúdo principal da página  -->
-    <h1>Usuários</h1>
+    
     <div class="container">
+        <div class="row">
+            <div class="col-10">
+                <h1>Usuários</h1>
+            </div>
+            <div class="col-2">
+                <a href=""><button type="button" class="btn btn-success">Adicionar</button></a>
+                
+            </div>
+        </div>
         <% for(let i = 0; i < administrators.length; i++){ %>
             <%- include('../Componentes/CardAdministrator', administrators[i]) %>
         <% } %>
