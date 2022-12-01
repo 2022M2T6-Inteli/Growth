@@ -79,6 +79,8 @@ class UserBuilderModel extends Model {
         if(this.password_hash != crypto.pbkdf2Sync(password, this.password_salt, 1000, 64, 'sha1').toString(`hex`)){
             throw new APIError("Senha Incorreta", 403);
         }
+
+        return true
     }
 
     // SETTERS

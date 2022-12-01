@@ -13,7 +13,7 @@ class AuthMiddleware {
 
     static onlyLoggedSite = (req, res, next) => Middleware.execute(req, res, next, (req, res) => {
         try {
-            AuthService.getIdFromToken(req.headers.authorization);
+            AuthService.getIdFromToken(req.cookies['AuthToken']);
         } catch(error) {
             if(error instanceof APIError && error.status == 403){ 
                 res.redirect('/login');
@@ -23,7 +23,7 @@ class AuthMiddleware {
 
     static onlyLoggedADMSite = (req, res, next) => Middleware.execute(req, res, next, (req, res) => {
         try {
-            AuthService.getIdFromToken(req.headers.authorization);
+            AuthService.getIdFromToken(req.cookies['AuthToken']);
         } catch(error) {
             if(error instanceof APIError && error.status == 403){ 
                 res.redirect('/');

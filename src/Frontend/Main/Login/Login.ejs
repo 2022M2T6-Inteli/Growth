@@ -21,17 +21,17 @@
                 <h1>Fazer Login</h1>
                 <div>Faça o login para usar a plataforma</div>
             </div>
-            <form class="login-card-form">
+            <form class="login-card-form" method="post">
                 <div class="form-item">
                     <span id="form-item-icon" class="material-symbols-outlined">mail</span>
-                    <input type="text" placeholder="Digite Seu Email" required autofocus>
+                    <input type="text" placeholder="Digite Seu Email" name='email' required autofocus>
                     <% if(error.email) {%>
                         <span id="incorrect-data"><%= error.email %></span>
                     <% }%>
                 </div>
                 <div class="form-item">
                     <span id="form-item-icon" class="material-symbols-outlined">lock</span>
-                    <input type="password" placeholder="Digite Sua Senha" required>
+                    <input type="password" name='password' placeholder="Digite Sua Senha" required>
                     <% if(error.password) {%>
                         <span id="incorrect-data"><%= error.password %></span>
                     <% }%>

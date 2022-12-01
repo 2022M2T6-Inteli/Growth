@@ -6,13 +6,13 @@ const AuthMiddleware = require('../../middlewares/AuthMiddleware')
 
 const Router = express.Router()
 
-Router.get("/contador", AuthMiddleware.onlyLogged, Controller.getEdicaoUsuarioContador)
-Router.post("/contador", AuthMiddleware.onlyLogged, Controller.getEdicaoUsuarioContador)
+Router.get("/contador", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioContador)
+Router.post("/contador", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioContador)
 
-Router.get("/empresa", AuthMiddleware.onlyLogged, Controller.getEdicaoUsuarioEmpresa)
-Router.post("/empresa", AuthMiddleware.onlyLogged, Controller.getEdicaoUsuarioEmpresa)
+Router.get("/empresa", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioEmpresa)
+Router.post("/empresa", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioEmpresa)
 
-Router.get("/dono", AuthMiddleware.onlyLogged, Controller.getEdicaoUsuarioDono)
-Router.get("/dono", AuthMiddleware.onlyLogged, Controller.getEdicaoUsuarioDono)
+Router.get("/dono", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
+Router.get("/dono", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
 
 module.exports = Router;

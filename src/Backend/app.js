@@ -1,11 +1,13 @@
 // Requires
 const express = require('express')
+const cookieParser = require('cookie-parser')
+
 const ConnectionService = require('./services/ConnectionService')
 
 // Routes
 const routes = require('./routes/Routes');
 
-const port = 3000;
+const port = 3001;
 const app = express()
 
 // Define onde está o banco de dados que será usado
@@ -15,6 +17,7 @@ app.set('views', __dirname + '/../Frontend')
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
+app.use(cookieParser());
 
 app.use('/main', express.static(__dirname + '/../Frontend/Main'))
 app.use('/dashboard', express.static(__dirname + '/../Frontend/Dashboard'))

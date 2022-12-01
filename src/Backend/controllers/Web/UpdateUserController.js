@@ -5,27 +5,27 @@ const ConstrucitonModel = require('../../models/ConstructionModel');
 class WebUpdateUserController {
 
     static getEdicaoUsuarioEmpresa = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoEmpresa');
+        res.render('Main/EdicaoUsuario/EdicaoEmpresa');
     })
 
     static postEdicaoUsuarioEmpresa = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoEmpresa');
+        res.render('Main/EdicaoUsuario/EdicaoEmpresa');
     })
 
     static getEdicaoUsuarioDono = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoDono');
+        res.render('Main/EdicaoUsuario/EdicaoDono');
     })
 
     static postEdicaoUsuarioDono = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoDono');
+        res.render('Main/EdicaoUsuario/EdicaoDono');
     })
 
     static getEdicaoUsuarioContador = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoContador'   );
+        res.render('Main/EdicaoUsuario/EdicaoContador'   );
     })
 
     static postEdicaoUsuarioContador = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render(__dirname + '/../../../Frontend/Main/EdicaoUsuario/Edicao/EdicaoContador'   );
+        res.render('Main/EdicaoUsuario/EdicaoContador'   );
     })
     
 }
