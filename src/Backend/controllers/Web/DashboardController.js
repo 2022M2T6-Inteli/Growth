@@ -5,6 +5,7 @@ const UserBuilderModel = require("../../models/UserModel");
 const UserAdministratorModel = require("../../models/AdministratorModel");
 const APIError = require("../../services/ErrorService");
 
+
 class WebDashboardController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
         res.render('dashboard/Componentes/page', {
@@ -28,7 +29,95 @@ class WebDashboardController {
             constructions: constructions
         });
     })
+    static getCriarUsuario = (req, res) => Controller.execute(req, res, async (req, res) => {
+            res.render('dashboard/Cadastro/pages', {
+                error: {},
+                title: 'Criar Usuário',
+                css: '/dashboard/Cadastro/Usuario/Usuario.css',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Cadastro/Usuario/Usuario',
+                currentPage: req.url,
+                secondAside: {},
+            });
+        })
+    
+    static postCriarUsuario = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const {password, email, razaoSocial, cnpj,  numFuncionarios, telEmpresa, nomeDono, cpfDono, telDono, emailContador, telContador} = req.body;
 
+        const error = {};
+
+        if(password.length < 8) {
+            error.password = 'Senha precisa ter mais de 8 caracteres';
+        }
+
+        if(!email.includes('@')){
+            error.email = 'Email precisa estar corretamente formatado';
+        }
+
+        if(razaoSocial.length === 0){
+            error.razaoSocial = "Digite a Razão Social"
+        }
+
+        if(cnpj.length < 18){
+            error.cnpj = "Cnpj inválido"
+        }
+
+        if(numFuncionarios.length === 0){
+            error.numFuncionarios = "Digite o número de funcionários"
+        }
+
+        if(telEmpresa.length < 16 || telEmpresa.length > 16){
+            error.telEmpresa = "Telefone inválido"
+        }
+
+        if( nomeDono.length < 6){
+            error.nomeDono = "Digite o nome do dono"
+        }
+
+        if(cpfDono.length < 14){
+            error.cnpj = "Cpf inválido"
+        }
+
+        if(telDono.length < 16 || telDono.length > 16){
+            error.telDono = "Telefone inválido"
+        }
+
+
+        if(!emailContador.includes('@')){
+            error.emailContador = "Digite um email válido"
+        }
+
+        if(telContador.length < 16 || telContador.length > 16){
+            error.cnpj = "Telefone inválido"
+        }
+
+        
+        if(Object.keys(error).length){
+            res.render('dashboard/Cadastro/pages', {
+                error: error,
+                title: 'Criar Usuário',
+                conteudo: __dirname + '../../../../Frontend/Dashboard/Cadastro/Usuario/Usuario',
+                css: '/dashboard/Cadastro/Usuario/Usuario.css',
+                currentPage: req.url,
+                secondAside: {},
+            });
+        }else{
+            const createBuilder = new UserBuilderModel({
+                name: req.body.razaoSocial,
+                email: req.body.email,
+                password: req.body.password,
+                cellphone: req.body.telEmpresa,
+                cnpj: req.body.cnpj,
+                employees_number: req.body.numFuncionarios,
+                owner_name: req.body.nomeDono,
+                owner_cellphone: req.body.telDono,
+                owner_cpf: req.body.cpfDono,
+                owner_birth_date: '22323334',
+            });
+            await createBuilder.insert()
+            res.redirect('/dashboard/Usuarios');
+        }
+    })
+    
     static getUsers = (req, res) => Controller.execute(req, res, async (req, res) => {
         const users = await UserBuilderModel.allByColumns();
 
@@ -42,13 +131,60 @@ class WebDashboardController {
         });
     })
 
+    
     static deleteUser = (req, res) => Controller.execute(req, res, async (req, res) => {
         const user = await UserBuilderModel.getByColumns({id: req.params.id})
-
+        
         await user.delete();
-
+        
         res.redirect("/dashboard/usuarios");
     })
+    
+   
+
+
+
+    static getCriarAdm = (req, res) => Controller.execute(req, res, async (req, res) => {
+            res.render('dashboard/Cadastro/pages', {
+                error: {},
+                title: 'Criar Administrador',
+                css: '/dashboard/Cadastro/Administrador/Administrador.css',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Cadastro/Administrador/Administrador',
+                currentPage: req.url,
+            });
+        })
+
+        static postCriarAdm = (req, res) => Controller.execute(req, res, async (req, res) => {
+            const {email, name} = req.body;
+    
+            const error = {};
+    
+            if(!email.includes('@')){
+                error.email = "Digite um email válido"
+            }
+    
+            if(name.length <= 5){
+                error.name = "Nome inválido"
+            }
+            
+            if(Object.keys(error).length){
+                res.render('dashboard/Cadastro/pages', {
+                    error: error,
+                    title: 'Criar Administrador',
+                    css: '/dashboard/Cadastro/Administrador/Administrador.css',
+                    conteudo: __dirname + '/../../../Frontend/Dashboard/Cadastro/Administrador/Administrador',
+                    currentPage: req.url
+                });
+            }else{
+                const createBuilder = new UserAdministratorModel({
+                    name: req.body.name,
+                    email: req.body.email,
+                    password: req.body.password,
+                });
+                await createBuilder.insert()
+                res.redirect('/dashboard/administradores/');
+            }
+        })
 
     static getAdministrators = (req, res) => Controller.execute(req, res, async (req, res) => {
         const administrators = await UserAdministratorModel.allByColumns();
@@ -62,6 +198,7 @@ class WebDashboardController {
             administrators: administrators
         });
     })
+    
 
     static deleteAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
         const user = await UserAdministratorModel.getByColumns({id: req.params.id})
@@ -108,6 +245,7 @@ class WebDashboardController {
                 secondAside: '',
                 currentPage: 's',
                 user: user
+                
             });
 
         } catch (error) {

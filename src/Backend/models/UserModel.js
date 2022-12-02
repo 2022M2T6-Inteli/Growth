@@ -10,6 +10,7 @@ class UserBuilderModel extends Model {
     cellphone;
     cnpj;
     employees_number;
+    password;
     password_hash;
     password_salt;
     owner_name;
@@ -187,4 +188,4 @@ class UserBuilderModel extends Model {
     }
 }
 
-module.exports = UserBuilderModel
+module.exports = UserBuilderModel;
