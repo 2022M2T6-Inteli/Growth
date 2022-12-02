@@ -1,6 +1,8 @@
 const Controller = require("../Controller");
 
-const ConstrucitonModel = require('../../models/ConstructionModel');
+const UserBuilderModel = require('../../models/UserModel');
+
+var data = new Object();
 
 class WebCreateUserController {
     static getCadastroEtapa1 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -29,6 +31,8 @@ class WebCreateUserController {
                 title: 'Etapa 1',
                 conteudo:__dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa1'});
         }else{
+                data.email = req.body.email;
+                data.password = req.body.password;
             res.redirect('/cadastro/etapa2');
         }
     })
@@ -59,7 +63,9 @@ class WebCreateUserController {
                 title:'Etapa 2',
                 conteudo:__dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa2'});
         }else{
-            res.redirect('/cadastro/etapa3');
+            data.razaoSocial = req.body.razaoSocial;
+            data.cnpj = req.body.razaoSocial;
+            res.redirect('/cadastro/etapa3')            
         }
     })
 
@@ -89,6 +95,8 @@ class WebCreateUserController {
                 title: 'Etapa 3',
                 conteudo: __dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa3'});
         }else{
+            data.numFuncionarios = req.body.numFuncionarios;
+            data.telEmpresa = req.body.telEmpresa;
             res.redirect('/cadastro/etapa4');
         }
     })
@@ -124,6 +132,9 @@ class WebCreateUserController {
                 title: 'Etapa 4',
                 conteudo: __dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa4'});
         }else{
+            data.nomeDono = req.body.nomeDono;
+            data.cpfDono = req.body.cpfDono;
+            data.telDono = req.body.telDono;
             res.redirect('/cadastro/etapa5');
         }
     })
@@ -155,6 +166,8 @@ class WebCreateUserController {
                 conteudo: __dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa5'});
                 console.log("oi")
         }else{
+            data.emailContador = req.body.emailContador;
+            data.telContador = req.body.telContador;
             res.redirect('/cadastro/etapa6');
         }
     })
@@ -179,7 +192,22 @@ class WebCreateUserController {
                 conteudo:__dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa6'});
         }
         else{
+            
+            const createBuilder = new UserBuilderModel({
+                name: data.razaoSocial,
+                email: data.email,
+                cellphone: data.telEmpresa,
+                cnpj: data.cnpj,
+                employees_number: data.numFuncionarios,
+                password: data.password,
+                owner_name: data.nomeDono,
+                owner_cellphone: data.telDono,
+                owner_cpf: data.cpfDono,
+                owner_birth_date: '22323334',
+            });
             res.redirect('/home');
+            await createBuilder.insert()
+            console.log(createBuilder)
         }
         })
 }

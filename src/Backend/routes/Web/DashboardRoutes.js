@@ -27,6 +27,12 @@ Router.get("/usuarios/:id/deletar", Controller.deleteUser);
 Router.get("/administradores", Controller.getAdministrators);
 Router.get("/administradores/:id", Controller.getAdministrator);
 
+Router.get("/criarUsuario", Controller.getCriarUsuario);
+Router.post("/criarUsuario", Controller.postCriarUsuario);
+
+Router.get("/criarAdm", Controller.getCriarAdm);
+Router.post("/criarAdm", Controller.postCriarAdm);
+
 Router.post("/administradores", Controller.getAdministrator);
 Router.post("/administradores/:id", Controller.getAdministrator);
 Router.get("/administradores/:id/deletar", Controller.deleteAdministrator);
