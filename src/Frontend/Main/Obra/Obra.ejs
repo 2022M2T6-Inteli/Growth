@@ -1,3 +1,4 @@
+<script src ="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 <div class="container-fluid printipal-container p-3">
     <div class="row">
         <div class="col-12 d-block mb-4">
@@ -32,10 +33,7 @@
 
         </div>
         <div class="col-4 d-flex align-items-center justify-content-center">
-            <a href="#" class="btn btn-primary" id="bnt-i"
-                style="background: linear-gradient(to right, #006B3F, #079D56); border: #006B3F;font-size: large;">Tenho
-                <br>
-                interesse</a>
+            <a  id="bnt-i">Tenho interesse</a>
         </div>
     </div>
     <div id="desc" class="row mx-5">
@@ -80,5 +78,12 @@
                     class="img-fluid" id="imagem" alt="..."></div>
         </div>
     </div>
+    <script>
+        $('#bnt-i').on('click', function() {
+            $('#bnt-i').css('background', 'white');
+            $('#bnt-i').css('color', '#079D56');
+            $('#bnt-i').text("Seu interesse foi registrado");
+        });
+    </script>
 </div>
 </div>
