@@ -24,65 +24,65 @@
                 <div class="col-12">
                     <label>Razão social:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite a razão social" aria-label="Username"
+                    <input type="text" class="form-control" value="<%= user.name%>" aria-label="Username"
                         aria-describedby="basic-addon1" name="razaoSocial">
                 </div>
                 <div class="col-9">
                     <label>CNPJ:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o CNPJ:" aria-label="Username"
+                    <input type="text" class="form-control" value="<%= user.cnpj %>" aria-label="Username"
                         aria-describedby="basic-addon1" name="cnpj">
                 </div>
                 <div class="col-6">
                     <label>Número de Funcionários:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o número de funcionários:"
+                    <input type="text" class="form-control" value="<%= user.employees_number %>"
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="col-6">
                     <label>Telefone:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o telefone:"
+                    <input type="text" class="form-control" value="<%= user.cellphone %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-6">
                     <label>E-mail:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o e-mail:"
+                    <input type="text" class="form-control" value="<%= user.email %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-9">
                     <label for="nomeDono">Nome do dono:</label><br>
-                    <input type="text" class="form-control" id="nomeDono" placeholder="Digite o nome do dono:"
+                    <input type="text" class="form-control" id="nomeDono" value="<%= user.owner_name %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-6">
                     <label>CPF do dono:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o CPF do dono:"
+                    <input type="text" class="form-control" value="<%= user.owner_cpf %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>Telefone do dono:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o telefone do dono:"
+                    <input type="text" class="form-control" value="<%= user.owner_cellphone %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>E-mail do contador:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o e-mail do contador:"
+                    <input type="text" class="form-control" value="<%=  %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>Telefone do contador:</label>
                     <br>
-                    <input type="text" class="form-control" placeholder="Digite o telefone do contador"
+                    <input type="text" class="form-control" value="<%=  %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <a href="Usuario.html">
+                        <a href="">
                             <input type="button" id="button" class="btn btn-success" value="Salvar">
                         </a>
                     </div>
