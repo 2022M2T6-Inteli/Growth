@@ -26,6 +26,7 @@ class TagController extends Controller {
 
     static getAllTag = (req, res) => Controller.execute(req, res, async (req, res) => {
         const tag = await TagModel.allByColumns()
+        
         res.json(tag)
     })
 

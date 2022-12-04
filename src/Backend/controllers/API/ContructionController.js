@@ -1,6 +1,7 @@
 const ConstructionModel = require("../../models/ConstructionModel");
 const Controller = require("../Controller");
 
+
 class ConstructionController extends Controller {
     // CREATE
     static create = (req, res) => Controller.execute(req, res, async (req, res) => {
