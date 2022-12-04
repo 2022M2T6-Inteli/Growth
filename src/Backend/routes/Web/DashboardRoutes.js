@@ -24,7 +24,8 @@ Router.get("/usuarios", Controller.getUsers);
 Router.get("/usuarios/:id", Controller.getUser);
 
 Router.post("/usuarios", Controller.getUser);
-Router.post("/usuarios/:id", Controller.getUser);
+Router.get("/usuarios/:id", Controller.getUpdateUser);
+Router.post("/usuarios/:id", Controller.postUpdateUser);
 Router.get("/usuarios/:id/deletar", Controller.deleteUser);
 
 Router.get("/administradores", Controller.getAdministrators);
@@ -37,7 +38,8 @@ Router.get("/criarAdm", Controller.getCriarAdm);
 Router.post("/criarAdm", Controller.postCriarAdm);
 
 Router.post("/administradores", Controller.getAdministrator);
-Router.post("/administradores/:id", Controller.getAdministrator);
+Router.get("/administradores/:id", Controller.getUpdateAdministrator);
+Router.post("/administradores/:id", Controller.postUpdateAdministrator)
 Router.get("/administradores/:id/deletar", Controller.deleteAdministrator);
 
 module.exports = Router;

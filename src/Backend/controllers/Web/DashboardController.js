@@ -247,6 +247,7 @@ class WebDashboardController {
         });
     })
     
+    
 
     static deleteAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
         const user = await UserAdministratorModel.getByColumns({id: req.params.id})
@@ -280,6 +281,42 @@ class WebDashboardController {
         }
     })
 
+    static getUpdateAdministrator = (req, res) => Controller.execute(req, res, async (req, res) => {
+        try {
+            const administrator = await UserAdministratorModel.getByColumns({
+                id: req.params.id
+            });
+
+
+            res.render('dashboard/Componentes/page', {
+                title: administrator.name,
+                css: '/dashboard/Administrador/Administrador.css',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Administrador/Administrador',
+                secondAside: '',
+                currentPage: req.url,
+                administrator: administrator
+            });
+        } catch (error) {
+            if (error instanceof APIError && error.status == 404) {
+                res.redirect("/dashboard/administradores")
+            }else {
+                throw error;
+            }
+        }
+    })
+
+    static postUpdateAdministrator = (req, res) => Controller.execute(req, res, async (req, res) =>{
+        const id = req.params.id;
+        const administrator = await UserAdministratorModel.getByColumns({id: id})
+
+        administrator.setName(req.body.name);
+        administrator.setEmail(req.body.email);
+
+        administrator.update();
+
+        res.redirect('/dashboard/administradores')
+    })
+
     static getUser = (req, res) => Controller.execute(req, res, async (req, res) => {
         try {
             const user = await UserBuilderModel.getByColumns({
@@ -295,6 +332,7 @@ class WebDashboardController {
                 user: user
                 
             });
+            
 
         } catch (error) {
             if (error instanceof APIError && error.status == 404) {
@@ -303,6 +341,50 @@ class WebDashboardController {
                 throw error;
             }
         }
+    })
+
+    static getUpdateUser = (req, res) => Controller.execute(req, res, async (req, res) => {
+        try {
+            const user = await UserBuilderModel.getByColumns({
+                id: req.params.id
+            });
+
+            res.render('dashboard/Componentes/page', {
+                title: user.name,
+                css: '/dashboard/Usuario/Usuario.css',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Usuario/Usuario',
+                secondAside: '',
+                currentPage: req.url,
+                user: user
+                
+            });
+        } catch (error) {
+            if (error instanceof APIError && error.status == 404) {
+                res.redirect("/dashboard/usuarios")
+            } else {
+                throw error;
+            }
+        }
+    })
+
+
+    static postUpdateUser = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const id = req.params.id;
+        const user = await UserBuilderModel.getByColumns({id: id})
+
+        user.setName(req.body.razaoSocial);
+        user.setEmail(req.body.email);
+        user.setCellphone(req.body.telEmpresa);
+        user.setCnpj(req.body.cnpj);
+        user.setEmployeesNumber(req.body.numFuncionarios);
+        user.setOwnerName(req.body.nomeDono);
+        user.setOwnerCellphone(req.body.telDono);
+        user.setOwnerCpf(req.body.cpfDono);
+
+        user.update();
+
+        res.redirect('/dashboard/administradores')
+
     })
 
     static getConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {

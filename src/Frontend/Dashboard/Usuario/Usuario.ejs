@@ -36,36 +36,36 @@
                 <div class="col-6">
                     <label>Número de Funcionários:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%= user.employees_number %>"
+                    <input type="text" class="form-control" name="numFuncionarios" value="<%= user.employees_number %>"
                         aria-label="Username" aria-describedby="basic-addon1">
                 </div>
                 <div class="col-6">
                     <label>Telefone:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%= user.cellphone %>"
+                    <input type="text" class="form-control" name="telEmpresa" value="<%= user.cellphone %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-6">
                     <label>E-mail:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%= user.email %>"
+                    <input type="text" class="form-control" name="email" value="<%= user.email %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-9">
                     <label for="nomeDono">Nome do dono:</label><br>
-                    <input type="text" class="form-control" id="nomeDono" value="<%= user.owner_name %>"
+                    <input type="text" class="form-control" id="nomeDono" name="nomeDono" value="<%= user.owner_name %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-6">
                     <label>CPF do dono:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%= user.owner_cpf %>"
+                    <input type="text" class="form-control" name="cpfDono" value="<%= user.owner_cpf %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>Telefone do dono:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%= user.owner_cellphone %>"
+                    <input type="text" class="form-control" name="telDono" value="<%= user.owner_cellphone %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
@@ -83,7 +83,7 @@
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <a href="">
-                            <input type="button" id="button" class="btn btn-success" value="Salvar">
+                            <input type="submit" id="button" class="btn btn-success" value="Salvar">
                         </a>
                     </div>
                 </div>
