@@ -29,6 +29,58 @@ class WebDashboardController {
             constructions: constructions
         });
     })
+
+    static getCreateObras = (req, res) => Controller.execute(req, res, async (req,res) => {
+        res.render('dashboard/Cadastro/pages',{
+            erro: {},
+            title: 'Criação de obra',
+            conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/Obra',
+            css: '/dashboard/Obra/Obra.css',
+            secondAside:{},
+            currentPage: req.url
+        });
+    })
+
+    static postCreateObras = (req,res) => Controller.execute(req, res, async (req,res) => {
+        const {name, description} = req.body;
+
+        const error = {};
+
+        if(name.length < 5){
+            error.name = "Nome muito pequeno"
+        }
+
+        if(description.length < 10){
+            error.description = "Descrição muito pequena"
+        }
+
+        //if(cidade.length > 1){
+        //    error.cidade = "Coloque o id da cidade"
+        //}
+
+        if(Object.keys(error).lenght){
+            res.render('dashboard/Cadastro/pages', {
+                error: error,
+                title: 'Criação de obra',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/Obra',
+                css: '/dashboard/Obra/Obra.css',
+                secondAside: {},
+                currentPage: req.url
+            });
+            console.log(error)
+        }else{
+
+            const createObras = new ConstrucitonModel({
+            name: req.body.name,
+            description: req.body.description,
+            city_id: req.body.city_id
+            });
+            await createObras.insert()
+            res.redirect('/dashboard/obras')
+
+        }
+    })
+
     static getCriarUsuario = (req, res) => Controller.execute(req, res, async (req, res) => {
             res.render('dashboard/Cadastro/pages', {
                 error: {},
@@ -114,7 +166,7 @@ class WebDashboardController {
                 owner_birth_date: '22323334',
             });
             await createBuilder.insert()
-            res.redirect('/dashboard/Usuarios');
+            res.redirect('/dashboard/usuarios');
         }
     })
     
@@ -140,11 +192,7 @@ class WebDashboardController {
         res.redirect("/dashboard/usuarios");
     })
     
-   
-
-
-
-    static getCriarAdm = (req, res) => Controller.execute(req, res, async (req, res) => {
+       static getCriarAdm = (req, res) => Controller.execute(req, res, async (req, res) => {
             res.render('dashboard/Cadastro/pages', {
                 error: {},
                 title: 'Criar Administrador',

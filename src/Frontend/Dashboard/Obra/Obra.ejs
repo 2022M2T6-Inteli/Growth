@@ -48,54 +48,48 @@
 
 
         <div class="input-group mb-3">
-            <div class="row" id="row" style="border-radius: 10px;">
-                <div class="col-6">
-                    <form>
-                        <label for="tituloObra">Título:</label>
-                        <input type="text" class="form-control" id="tituloObra" placeholder="Digite o Nome da Obra:"
-                            aria-describedby="basic-addon3">
-                    </form>
+            <form method="post">
+                <div class="row" id="row" style="border-radius: 10px;">
+                    <div class="col-6">
+                                <label for="tituloObra">Título:</label>
+                                <input type="text" class="form-control" id="tituloObra" name="name" placeholder="Digite o Nome da Obra:"
+                                    aria-describedby="basic-addon3">
+                    </div>
+                    <div class="col-6">
+                            <label for="localObra">Localização:</label>
+                            <input type="text" name="city_id" class="form-control" id="localObra"
+                                placeholder="Digite aqui a localização da obra:" aria-describedby="basic-addon3">
+                    </div>
                 </div>
-                <div class="col-6">
-                    <form>
-                        <label for="localObra">Localização:</label>
-                        <input type="text" class="form-control" id="localObra"
-                            placeholder="Digite aqui a localização da obra:" aria-describedby="basic-addon3">
-                    </form>
-                </div>
-            </div>
-            <div class="row" id="row" style="border-radius: 10px;">
-                <div class="col-4">
-                    <form>
+                <div class="row" id="row" style="border-radius: 10px;">
+                    <div class="col-4">
                         <label for="descObra">Descrição:</label>
-                        <textarea rows="12" cols="50" type="text" class="form-control" id="descObra"
+                            <textarea rows="12" cols="50" type="text" name="description" class="form-control" id="descObra"
                             placeholder="Digite aqui a descrição da obra:" aria-describedby="basic-addon3"></textarea>
-                    </form>
-                </div>
-                <div class="col-5">
-                    <form>
+                    </div>
+                    <div class="col-5">
                         <label for="imgObra">Imagem principal:</label>
                         <input type="file" id="imgObraPrincipal" name="imgPrinc" accept="image/*"
-                            class="btn btn-outline-warning">
-                        <p>
-                            <label for="imgObra">Outras imagens:</label>
-                            <input type="file" id="imgObraSecundaria" name="imgSec" accept="image/*"
-                                class="btn btn-outline-warning">
-                        <p>
-                            <label for="imgObra">Imagem da planta:</label>
-                            <input type="file" id="imgObraPlanta" name="imgPlanta" accept="image/*"
-                                class="btn btn-outline-warning">
-                    </form>
-                </div>
-            </div>
+                        class="btn btn-outline-warning">
+                        <br>
+                        <label for="imgObra">Outras imagens:</label>
+                        <input type="file" id="imgObraSecundaria" name="imgSec" accept="image/*"
+                        class="btn btn-outline-warning">
+                        <br>
+                        <label for="imgObra">Imagem da planta:</label>
+                        <input type="file" id="imgObraPlanta" name="imgPlanta" accept="image/*"
+                        class="btn btn-outline-warning">
+                        
+                    </div>
+                </div>    
                 <div class="col-12 d-flex justify-content-center">
-                    <a href="Usuario.html">
-                        <input type="button" id="button" class="btn btn-success" value="Salvar">
+                    <a href="">
+                        <input type="submit" id="button" class="btn btn-success" value="Salvar">
                     </a>
-            </div>
+                </div>
+            </form>
         </div>
     </div>
     <center>
     </center>
-    </div>
 </main>
