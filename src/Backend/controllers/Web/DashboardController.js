@@ -383,7 +383,7 @@ class WebDashboardController {
 
         user.update();
 
-        res.redirect('/dashboard/administradores')
+        res.redirect('/dashboard/usuarios')
 
     })
 
