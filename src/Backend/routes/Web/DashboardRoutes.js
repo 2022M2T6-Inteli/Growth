@@ -42,4 +42,9 @@ Router.get("/administradores/:id", Controller.getUpdateAdministrator);
 Router.post("/administradores/:id", Controller.postUpdateAdministrator)
 Router.get("/administradores/:id/deletar", Controller.deleteAdministrator);
 
+Router.get("/tags", Controller.getListAllTags);
+Router.post("/tags", Controller.postCreateTag);
+Router.post("/tags/:id", Controller.postUpdateTag)
+Router.get("/tags/:id/deletar", Controller.getDeleteTag);
+
 module.exports = Router;
