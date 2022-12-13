@@ -9,7 +9,7 @@
             <form class="register-card-form" method="post" action="">
                 <div class="form-item">
                     <span>E-mail do contador</span>
-                    <input type="text" placeholder="E-mail do contador" name="emailContador" required autofocus>
+                    <input type="text" id="emailContador" placeholder="E-mail do contador" name="emailContador" required autofocus>
                     <% if(error.emailContador){%>
                         <span id="incorrect-data"><%= error.emailContador %></span>
                     <% }%>

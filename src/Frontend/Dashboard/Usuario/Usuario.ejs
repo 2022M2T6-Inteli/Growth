@@ -52,21 +52,27 @@
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-9">
-                    <label for="nomeDono">Nome do dono:</label><br>
+                    <label for="nomeDono">Nome do responsável:</label><br>
                     <input type="text" class="form-control" id="nomeDono" name="nomeDono" value="<%= user.owner_name %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-6">
-                    <label>CPF do dono:</label>
+                    <label>CPF do responsável:</label>
                     <br>
                     <input type="text" class="form-control" maxlength="14" id="cpfDono" name="cpfDono" value="<%= user.owner_cpf %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
-                    <label>Telefone do dono:</label>
+                    <label>Telefone do responsável:</label>
                     <br>
                     <input type="text" class="form-control" maxlength="16" id="telDono" name="telDono" value="<%= user.owner_cellphone %>"
                         aria-describedby="basic-addon3">
+                </div>
+                <div class="col-6">
+                    <label>Data de nascimento do responsável:</label>
+                    <br>
+                    <input type="text" class="form-control" placeholder="Digite a data de nascimento do responsável:"
+                        aria-describedby="basic-addon3" name="owner_birth_date" id="owner_birth_date" maxlength="10" value="<%= user.owner_birth_date %>" required>
                 </div>
                 <div class="col-6">
                     <label>E-mail do contador:</label>
@@ -169,6 +175,16 @@
                 tel_contador.value += " "
             }else if (tel_contadorlength === 11){
                 tel_contador.value += "-"
+            }
+        })
+
+        const owner_birth_date = document.querySelector('#owner_birth_date')
+        
+        owner_birth_date.addEventListener('keypress', () => {
+            let owner_birth_date_lenght = owner_birth_date.value.length
+
+            if (owner_birth_date_lenght === 2 || owner_birth_date_lenght === 5){
+                owner_birth_date.value += "/"
             }
         })
 

@@ -25,7 +25,7 @@
                     <label>Razão social:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite a razão social" aria-label="Username"
-                        aria-describedby="basic-addon1" name="razaoSocial" required>
+                        aria-describedby="basic-addon1" id="razaoSocial" name="razaoSocial" required>
                     <% if(error.razaoSocial) {%>
                         <span class="incorrect-data"><%= error.razaoSocial %></span>
                     <% } %>
@@ -34,7 +34,7 @@
                     <label>CNPJ:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o CNPJ:" aria-label="Username"
-                        aria-describedby="basic-addon1" name="cnpj" required>
+                        aria-describedby="basic-addon1" maxlength="18" id="cnpj" name="cnpj" required>
                         <% if(error.cnpj) {%>
                             <span class="incorrect-data"><%= error.cnpj %></span>
                         <% } %>
@@ -43,7 +43,7 @@
                     <label>Número de Funcionários:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o número de funcionários:"
-                        aria-label="Username" name="numFuncionarios" aria-describedby="basic-addon1" required>
+                        aria-label="Username" name="numFuncionarios" id="numFuncionarios" aria-describedby="basic-addon1" required>
                         <% if(error.numFuncionarios) {%>
                             <span class="incorrect-data"><%= error.numFuncionarios %></span>
                         <% } %>
@@ -52,7 +52,7 @@
                     <label>Telefone:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o telefone:"
-                        aria-label="Amount (to the nearest dollar)" name="telEmpresa" required>
+                        aria-label="Amount (to the nearest dollar)" maxlength="16" id="telEmpresa" name="telEmpresa" required>
                         <% if(error.telEmpresa) {%>
                             <span class="incorrect-data"><%= error.telEmpresa %></span>
                         <% } %>
@@ -61,7 +61,7 @@
                     <label>E-mail:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o e-mail:"
-                        aria-label="Amount (to the nearest dollar)" name="email" required>
+                        aria-label="Amount (to the nearest dollar)" id="email" name="email" required>
                         <% if(error.email) {%>
                             <span class="incorrect-data"><%= error.email %></span>
                         <% } %>
@@ -76,7 +76,7 @@
                         <% } %>
                 </div>
                 <div class="col-9">
-                    <label for="nomeDono">Nome do dono:</label><br>
+                    <label for="nomeDono">Nome do responsável:</label><br>
                     <input type="text" class="form-control" id="nomeDono" placeholder="Digite o nome do dono:"
                         aria-label="Amount (to the nearest dollar)" name="nomeDono" required>
                         <% if(error.nomeDono) {%>
@@ -84,22 +84,31 @@
                         <% } %>
                 </div>
                 <div class="col-6">
-                    <label>CPF do dono:</label>
+                    <label>CPF do responsável:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o CPF do dono:"
-                        aria-describedby="basic-addon3" name="cpfDono" required>
+                        aria-describedby="basic-addon3" maxlength="14" name="cpfDono" id="cpfDono" required>
                         <% if(error.cpfDono) {%>
                             <span class="incorrect-data"><%= error.cpfDono %></span>
                         <% } %>
                 </div>
                 <div class="col-6">
-                    <label>Telefone do dono:</label>
+                    <label>Telefone do responsável:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o telefone do dono:"
-                        aria-describedby="basic-addon3" name="telDono" required>
+                        aria-describedby="basic-addon3" maxlength="16" id="telDono" name="telDono" required>
                         <% if(error.telDono) {%>
                             <span class="incorrect-data"><%= error.telDono %></span>
                         <% } %>
+                </div>
+                <div class="col-6">
+                    <label>Data de nascimento do responsável:</label>
+                    <br>
+                    <input type="text" class="form-control" placeholder="Digite a data de nascimento do responsável:"
+                        aria-describedby="basic-addon3" name="owner_birth_date" maxlength="10" id="owner_birth_date" required>
+                        <% if(error.owner_birth_date){%>
+                            <span id="incorrect-data"><%= error.owner_birth_date %></span>
+                        <% }%>
                 </div>
                 <div class="col-6">
                     <label>E-mail do contador:</label>
@@ -114,7 +123,7 @@
                     <label>Telefone do contador:</label>
                     <br>
                     <input type="text" class="form-control" placeholder="Digite o telefone do contador"
-                        aria-describedby="basic-addon3" name="telContador" required>
+                        aria-describedby="basic-addon3" maxlength="16" id="telContador" name="telContador" required>
                         <% if(error.telContador) {%>
                             <span class="incorrect-data"><%= error.telContador %></span>
                         <% } %>
@@ -136,3 +145,89 @@
     </center><br><br>
     </div>
 </main>
+<script>
+    const cnpj = document.querySelector('#cnpj')
+
+    cnpj.addEventListener('keypress', () => {
+    let cnpjlength = cnpj.value.length
+
+        if (cnpjlength === 2 || cnpjlength === 6){
+            cnpj.value += "."
+        }else if (cnpjlength === 10){
+            cnpj.value += "/"
+        }else if (cnpjlength === 15){
+            cnpj.value += "-"
+        }
+    })
+
+    const tel = document.querySelector('#telEmpresa')
+
+    tel.addEventListener('keypress', () => {
+        let tel_length = tel.value.length
+
+        if (tel_length === 0){
+            tel.value += "("
+        }else if (tel_length === 3){
+            tel.value += ") "
+        }else if (tel_length === 6){
+            tel.value += " "
+        }else if (tel_length === 11){
+            tel.value += "-"
+        }
+    })
+
+    const cpf_dono = document.querySelector('#cpfDono')
+
+    cpf_dono.addEventListener('keypress', () => {
+        let cpf_donolength = cpf_dono.value.length
+
+        if (cpf_donolength === 3 || cpf_donolength === 7){
+            cpf_dono.value += '.'
+        }else if (cpf_donolength === 11){
+            cpf_dono.value += '-'
+        }
+    })
+
+    const tel_dono = document.querySelector('#telDono')
+
+    tel_dono.addEventListener('keypress', () => {
+        let tel_donolength = tel_dono.value.length
+
+        if (tel_donolength === 0){
+            tel_dono.value += "("
+        }else if (tel_donolength === 3){
+            tel_dono.value += ") "
+        }else if (tel_donolength === 6){
+            tel_dono.value += " "
+        }else if (tel_donolength === 11){
+            tel_dono.value += "-"
+        }
+    })
+
+    const tel_contador = document.querySelector('#telContador')
+
+    tel_contador.addEventListener('keypress', () => {
+        let tel_contadorlength = tel_contador.value.length
+
+        if (tel_contadorlength === 0){
+            tel_contador.value += "("
+        }else if (tel_contadorlength === 3){
+            tel_contador.value += ") "
+        }else if (tel_contadorlength === 6){
+            tel_contador.value += " "
+        }else if (tel_contadorlength === 11){
+            tel_contador.value += "-"
+        }
+    })
+
+    const owner_birth_date = document.querySelector('#owner_birth_date')
+    
+    owner_birth_date.addEventListener('keypress', () => {
+        let owner_birth_date_lenght = owner_birth_date.value.length
+
+        if (owner_birth_date_lenght === 2 || owner_birth_date_lenght === 5){
+            owner_birth_date.value += "/"
+        }
+    })
+
+</script>

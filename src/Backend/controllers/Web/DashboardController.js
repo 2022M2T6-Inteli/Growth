@@ -164,7 +164,7 @@ class WebDashboardController {
                 owner_name: req.body.nomeDono,
                 owner_cellphone: req.body.telDono,
                 owner_cpf: req.body.cpfDono,
-                owner_birth_date: '22323334',
+                owner_birth_date: req.body.owner_birth_date,
                 counter_email: req.body.emailContador,
                 counter_cellphone: req.body.telContador
             });

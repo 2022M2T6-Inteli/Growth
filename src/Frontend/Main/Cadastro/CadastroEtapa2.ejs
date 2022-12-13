@@ -12,7 +12,7 @@
             <form class="register-card-form" method="post" action="">
                 <div class="form-item">
                     <span>Razão Social</span>
-                    <input type="text" placeholder="Digite a Razão Social" name="razaoSocial" required autofocus>
+                    <input type="text" placeholder="Digite a Razão Social" name="razaoSocial" id="razaoSocial" required autofocus>
                     <% if(error.razaoSocial) {%>
                         <span id="incorrect-data"><%= error.razaoSocial %></span>
                     <% }%>

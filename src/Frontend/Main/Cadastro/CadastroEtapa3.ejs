@@ -9,7 +9,7 @@
             <form class="register-card-form" method="post" action="">
                 <div class="form-item">
                     <span>Número de Funcionários</span>
-                    <input type="text" placeholder="Número de Funcionários" name="numFuncionarios" required autofocus>
+                    <input type="text" placeholder="Número de Funcionários" name="numFuncionarios" id="numFuncionarios" required autofocus>
                     <% if(error.numFuncionarios){%>
                         <span id="incorrect-data"><%= error.numFuncionarios %></span>
                     <% }%>

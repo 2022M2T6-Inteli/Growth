@@ -139,7 +139,7 @@ class WebCreateUserController {
             data.nomeDono = req.body.nomeDono;
             data.cpfDono = req.body.cpfDono;
             data.telDono = req.body.telDono;
-            data.owner_birth_date = req.body.owner_birth_date/
+            data.owner_birth_date = req.body.owner_birth_date;
             res.redirect('/cadastro/etapa5');
         }
     })
@@ -211,7 +211,7 @@ class WebCreateUserController {
                 owner_cpf: data.cpfDono,
                 counter_email: data.email_contador,
                 counter_cellphone: data.tel_contador,
-                owner_birth_date: '22323334',
+                owner_birth_date: data.owner_birth_date,
             });
             res.redirect('/home');
             await createBuilder.insert()
