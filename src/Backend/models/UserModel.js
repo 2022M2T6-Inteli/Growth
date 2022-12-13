@@ -17,6 +17,8 @@ class UserBuilderModel extends Model {
     owner_cellphone;
     owner_cpf;
     owner_birth_date;
+    counter_email;
+    counter_cellphone;
     creation_date;
     update_date;
     avatar_image_id;
@@ -48,6 +50,8 @@ class UserBuilderModel extends Model {
         this.setCreationDate(userBuilderInfo.creation_date)
         this.setUpdateDate(userBuilderInfo.update_date)
         this.setAvatarImageId(userBuilderInfo.avatar_image_id)
+        this.setCounterEmail(userBuilderInfo.counter_email)
+        this.setCounterCellphone(userBuilderInfo.counter_cellphone)
     }
 
     // Preenche as informações do objeto de forma a preparar para a criação de um registro
@@ -62,6 +66,8 @@ class UserBuilderModel extends Model {
         this.setOwnerCellphone(userBuilderInfo.owner_cellphone)
         this.setOwnerCpf(userBuilderInfo.owner_cpf)
         this.setOwnerBirthDate(userBuilderInfo.owner_birth_date)
+        this.setCounterEmail(userBuilderInfo.counter_email)
+        this.setCounterCellphone(userBuilderInfo.counter_cellphone)
     }
 
     // Seta a senha criptografada e o salt com base em uma senha passada por parâmetro
@@ -153,6 +159,17 @@ class UserBuilderModel extends Model {
     
     setAvatarImageId(avatar_image_id) {
         this.avatar_image_id = avatar_image_id;
+    }
+
+    setCounterEmail(counter_email) {
+        if(counter_email && counter_email.length < 7){
+            throw new APIError("Email precisa ser válido", 403);
+        }
+        this.counter_email = counter_email;
+    }
+
+    setCounterCellphone(counter_cellphone) {
+        this.counter_cellphone = counter_cellphone;
     }
 
     // Retorna um usuário com base nas colunas passadas por parâmetro

@@ -22,7 +22,7 @@ class WebStructuralController {
         
         res.render('main/Componentes/page', {
             title: 'Busca | Conexão MRV', 
-            css: 'main/Busca/Busca.css',
+            css: '/main/Busca/Busca.css',
             conteudo: __dirname + '/../../../Frontend/Main/Busca/Busca',
             obras: obras
         });

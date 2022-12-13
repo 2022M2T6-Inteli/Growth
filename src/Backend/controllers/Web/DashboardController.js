@@ -165,6 +165,8 @@ class WebDashboardController {
                 owner_cellphone: req.body.telDono,
                 owner_cpf: req.body.cpfDono,
                 owner_birth_date: '22323334',
+                counter_email: req.body.emailContador,
+                counter_cellphone: req.body.telContador
             });
             await createBuilder.insert()
             res.redirect('/dashboard/usuarios');
@@ -381,6 +383,8 @@ class WebDashboardController {
         user.setOwnerName(req.body.nomeDono);
         user.setOwnerCellphone(req.body.telDono);
         user.setOwnerCpf(req.body.cpfDono);
+        user.setCounterEmail(req.body.emailContador);
+        user.setCounterCellphone(req.body.telContador);
 
         user.update();
 

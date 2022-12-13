@@ -30,7 +30,7 @@
                 <div class="col-9">
                     <label>CNPJ:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%= user.cnpj %>" aria-label="Username"
+                    <input type="text" class="form-control" id="cnpj" maxlength="18" value="<%= user.cnpj %>" aria-label="Username"
                         aria-describedby="basic-addon1" name="cnpj">
                 </div>
                 <div class="col-6">
@@ -42,7 +42,7 @@
                 <div class="col-6">
                     <label>Telefone:</label>
                     <br>
-                    <input type="text" class="form-control" name="telEmpresa" value="<%= user.cellphone %>"
+                    <input type="text" class="form-control" maxlength="16" id="telEmpresa" name="telEmpresa" value="<%= user.cellphone %>"
                         aria-label="Amount (to the nearest dollar)">
                 </div>
                 <div class="col-6">
@@ -59,25 +59,25 @@
                 <div class="col-6">
                     <label>CPF do dono:</label>
                     <br>
-                    <input type="text" class="form-control" name="cpfDono" value="<%= user.owner_cpf %>"
+                    <input type="text" class="form-control" maxlength="14" id="cpfDono" name="cpfDono" value="<%= user.owner_cpf %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>Telefone do dono:</label>
                     <br>
-                    <input type="text" class="form-control" name="telDono" value="<%= user.owner_cellphone %>"
+                    <input type="text" class="form-control" maxlength="16" id="telDono" name="telDono" value="<%= user.owner_cellphone %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>E-mail do contador:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%=  %>"
+                    <input type="email" class="form-control" name="emailContador" value="<%= user.counter_email  %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="col-6">
                     <label>Telefone do contador:</label>
                     <br>
-                    <input type="text" class="form-control" value="<%=  %>"
+                    <input type="text" class="form-control" maxlength="16" id="telContador" name="telContador" value="<%= user.counter_cellphone %>"
                         aria-describedby="basic-addon3">
                 </div>
                 <div class="row">
@@ -97,3 +97,79 @@
     </center><br><br>
     </div>
 </main>
+<script>
+    const cnpj = document.querySelector('#cnpj')
+
+    cnpj.addEventListener('keypress', () => {
+    let cnpjlength = cnpj.value.length
+
+        if (cnpjlength === 2 || cnpjlength === 6){
+            cnpj.value += "."
+        }else if (cnpjlength === 10){
+            cnpj.value += "/"
+        }else if (cnpjlength === 15){
+            cnpj.value += "-"
+        }
+    })
+
+    const tel = document.querySelector('#telEmpresa')
+
+        tel.addEventListener('keypress', () => {
+            let tel_length = tel.value.length
+
+            if (tel_length === 0){
+                tel.value += "("
+            }else if (tel_length === 3){
+                tel.value += ") "
+            }else if (tel_length === 6){
+                tel.value += " "
+            }else if (tel_length === 11){
+                tel.value += "-"
+            }
+        })
+
+        const cpf_dono = document.querySelector('#cpfDono')
+
+        cpf_dono.addEventListener('keypress', () => {
+            let cpf_donolength = cpf_dono.value.length
+
+            if (cpf_donolength === 3 || cpf_donolength === 7){
+                cpf_dono.value += '.'
+            }else if (cpf_donolength === 11){
+                cpf_dono.value += '-'
+            }
+        })
+
+        const tel_dono = document.querySelector('#telDono')
+
+        tel_dono.addEventListener('keypress', () => {
+            let tel_donolength = tel_dono.value.length
+
+            if (tel_donolength === 0){
+                tel_dono.value += "("
+            }else if (tel_donolength === 3){
+                tel_dono.value += ") "
+            }else if (tel_donolength === 6){
+                tel_dono.value += " "
+            }else if (tel_donolength === 11){
+                tel_dono.value += "-"
+            }
+        })
+
+        const tel_contador = document.querySelector('#telContador')
+
+        tel_contador.addEventListener('keypress', () => {
+            let tel_contadorlength = tel_contador.value.length
+
+            if (tel_contadorlength === 0){
+                tel_contador.value += "("
+            }else if (tel_contadorlength === 3){
+                tel_contador.value += ") "
+            }else if (tel_contadorlength === 6){
+                tel_contador.value += " "
+            }else if (tel_contadorlength === 11){
+                tel_contador.value += "-"
+            }
+        })
+
+</script>

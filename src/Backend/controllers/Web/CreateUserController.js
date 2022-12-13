@@ -109,7 +109,7 @@ class WebCreateUserController {
     })
 
     static postCadastroEtapa4 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        const {nomeDono, cpfDono, telDono} = req.body;
+        const {nomeDono, cpfDono, telDono, owner_birth_date} = req.body;
 
         const error = {};
 
@@ -125,6 +125,10 @@ class WebCreateUserController {
             error.telDono = "Telefone inválido"
         }
 
+        if(owner_birth_date.length < 10 || owner_birth_date.length > 10){
+            error.owner_birth_date = "Data formatada incorrentamente"
+        }
+
         console.log(error)
         if(Object.keys(error).length){
             res.render('main/Cadastro/Componentes/RegisterPage', {
@@ -135,6 +139,7 @@ class WebCreateUserController {
             data.nomeDono = req.body.nomeDono;
             data.cpfDono = req.body.cpfDono;
             data.telDono = req.body.telDono;
+            data.owner_birth_date = req.body.owner_birth_date/
             res.redirect('/cadastro/etapa5');
         }
     })
@@ -144,6 +149,7 @@ class WebCreateUserController {
             error: {},
             title: 'Etapa 5',
             conteudo: __dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa5'});
+
     })
 
     static postCadastroEtapa5 = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -166,8 +172,8 @@ class WebCreateUserController {
                 conteudo: __dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa5'});
                 console.log("oi")
         }else{
-            data.emailContador = req.body.emailContador;
-            data.telContador = req.body.telContador;
+            data.email_contador = req.body.emailContador;
+            data.tel_contador = req.body.telContador;
             res.redirect('/cadastro/etapa6');
         }
     })
@@ -203,6 +209,8 @@ class WebCreateUserController {
                 owner_name: data.nomeDono,
                 owner_cellphone: data.telDono,
                 owner_cpf: data.cpfDono,
+                counter_email: data.email_contador,
+                counter_cellphone: data.tel_contador,
                 owner_birth_date: '22323334',
             });
             res.redirect('/home');
