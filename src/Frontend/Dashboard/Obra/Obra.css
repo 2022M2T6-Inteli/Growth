@@ -30,6 +30,13 @@ body {
     height: fit-content;
     border-radius: 0.5rem;
 }
+
+#buttons{
+  display: flex;
+  justify-content: center;
+  gap: 300px;
+}
+
 .close-button{
    float: right;
    width: 24px;
