@@ -35,7 +35,7 @@ class WebDashboardController {
         res.render('dashboard/Cadastro/pages', {
             erro: {},
             title: 'Criação de obra',
-            conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/Obra',
+            conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/CriarObra',
             css: '/dashboard/Obra/Obra.css',
             secondAside: {},
             currentPage: req.url
@@ -413,7 +413,7 @@ class WebDashboardController {
         }
     })
 
-    static postConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+    static postUpdateConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
         const id = req.params.id;
         const construciton = await ConstrucitonModel.getByColumns({ id: id })
 
