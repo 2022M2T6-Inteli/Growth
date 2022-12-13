@@ -51,26 +51,27 @@
                 <div class="row" id="row" style="border-radius: 10px;">
                     <div class="col-6">
                         <label for="tituloObra">Título:</label>
-                        <input type="text" class="form-control" id="tituloObra" name="name" placeholder="Digite o Nome da Obra:"
+                        <input type="text" class="form-control" id="tituloObra" name="name" value="<%= construction.name %>" placeholder="Digite o Nome da Obra:"
                             aria-describedby="basic-addon3">
                     </div>
                     <div class="col-6">
                         <label for="localObra">Localização:</label>
                         <input type="text" name="city_id" class="form-control" id="localObra"
-                                placeholder="Digite aqui a localização da obra:" aria-describedby="basic-addon3">
+                                placeholder="Digite aqui a localização da obra:" value="<%= construction.city_id %>" aria-describedby="basic-addon3">
                     </div>
                 </div>
                 <div class="row" id="row" style="border-radius: 10px;">
                     <div class="col-6">
                         <label for="descObra">Descrição:</label>
-                        <textarea rows="12" cols="50" type="text" name="description" class="form-control" id="descObra"
+                        <input type="hidden" id="descricao" value="<%= construction.description %>">
+                        <textarea rows="12" cols="50" type="text" name="description" class="form-control"  id="descObra"
                             placeholder="Digite aqui a descrição da obra:" aria-describedby="basic-addon3">
                         </textarea>
                     </div>
                     <div class="col-6">
                         <div class="row">
                             <label for="imgObra">Imagem principal:</label>
-                            <input type="file" id="imgObraPrincipal" name="imgPrinc" accept="image/*"
+                            <input type="file" id="imgObraPrincipal" name="imgPrinc" value="<%= %>" accept="image/*"
                             class="btn btn-outline-warning">
                             <br>
                                 <label for="imgObra">Outras imagens:</label>
@@ -93,3 +94,6 @@
     <center>
     </center>
 </main>
+<script>
+    document.getElementById('descObra').value = document.getElementById('descricao').value
+</script>

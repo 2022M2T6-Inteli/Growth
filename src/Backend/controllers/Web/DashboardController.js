@@ -413,6 +413,20 @@ class WebDashboardController {
         }
     })
 
+    static postConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const id = req.params.id;
+        const construciton = await ConstrucitonModel.getByColumns({ id: id })
+
+        construciton.setName(req.body.name);
+        construciton.setCityId(req.body.city_id);
+        construciton.setDescription(req.body.description);
+
+        construciton.update();
+
+        res.redirect('/dashboard/obras')
+
+    })
+
     static deleteConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
         const construciton = await ConstrucitonModel.getByColumns({ id: req.params.id })
 

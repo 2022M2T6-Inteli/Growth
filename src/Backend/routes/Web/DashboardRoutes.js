@@ -17,7 +17,8 @@ Router.get("/createObras", Controller.getCreateObras);
 Router.post("/createObras", Controller.postCreateObras);
 
 Router.post("/obras", Controller.getConstruction);
-Router.post("/obras/:id", Controller.getConstruction);
+Router.get("/obras/:id", Controller.getConstruction);
+Router.post("/obras/:id", Controller.postConstruction);
 Router.get("/obras/:id/deletar", Controller.deleteConstruction);
 
 Router.get("/usuarios", Controller.getUsers);
