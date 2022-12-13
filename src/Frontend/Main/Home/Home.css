@@ -32,23 +32,22 @@
     padding: 0px;
     float: right;
     height: 400px;
-    width: 800px;
 }
 
 .title {
     color: #FFFFFF;
-    margin-top: 30px;
-    margin-left: 300px;
-    margin-right: 1000px;
+    margin-top: 80px;
+    margin-left: 100px;
+    margin-right: 800px;
 
 }
 
 .explicacao {
     color: #FFFFFF;
-    margin-left: 325px;
+    margin-left: 185px;
     text-align: start;
-    margin-right: 1000px;
-    font-size: large;
+    margin-right: 800px;
+    font-size: small;
 }
 
 .card-img-top2 {
