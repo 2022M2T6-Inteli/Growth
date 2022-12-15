@@ -24,7 +24,7 @@
                         <span id="incorrect-data"><%= error.cnpj %></span>
                     <% }%>
                 </div>
-                <button type="submit">Continuar</button>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
             </form>
         </div>
     </div>
@@ -42,4 +42,20 @@
                 cnpj.value += "-"
             }
         })
+
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("razao_social", String(document.getElementById('razaoSocial').value), 30)
+            createCookie("cnpj", String(document.getElementById('cnpj').value), 30)
+        }
     </script>

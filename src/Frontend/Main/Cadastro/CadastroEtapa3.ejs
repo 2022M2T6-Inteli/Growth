@@ -16,17 +16,17 @@
                 </div>
                 <div class="form-item">
                     <span>Telefone</span>
-                    <input type="text" id="tel" placeholder="Digite seu Telefone" name="telEmpresa" maxlength="16" required>
+                    <input type="text" id="telEmpresa" placeholder="Digite seu Telefone" name="telEmpresa" maxlength="16" required>
                     <% if(error.telEmpresa){%>
                         <span id="incorrect-data"><%= error.telEmpresa %></span>
                     <% }%>
                 </div>
-                <button type="submit">Continuar</button>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
             </form>
         </div>
     </div>
     <script>
-        const tel = document.querySelector('#tel')
+        const tel = document.querySelector('#telEmpresa')
 
         tel.addEventListener('keypress', () => {
             let tel_length = tel.value.length
@@ -41,4 +41,19 @@
                 tel.value += "-"
             }
         })
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("num_func", String(document.getElementById('numFuncionarios').value), 30)
+            createCookie("tel_empresa", String(document.getElementById('telEmpresa').value), 30)
+        }
     </script>

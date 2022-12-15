@@ -21,7 +21,25 @@
                         <span id="incorrect-data"><%= error.password %></span>
                     <% }%>
                 </div>
-                <button type="submit">Continuar</button>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
             </form>
         </div>
     </div>
+
+    <script>
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("email", String(document.getElementById('email').value), 30)
+            createCookie("senha", String(document.getElementById('password').value), 30)
+        }
+    </script>

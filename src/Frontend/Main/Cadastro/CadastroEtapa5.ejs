@@ -21,7 +21,7 @@
                         <span id="incorrect-data"><%= error.telContador %></span>
                     <% }%>
                 </div>
-                <button type="submit">Continuar</button>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
             </form>
         </div>
     </div>
@@ -41,4 +41,19 @@
                 tel_contador.value += "-"
             }
         })
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("email_contador", String(document.getElementById('emailContador').value), 30)
+            createCookie("tel_contador", String(document.getElementById('tel_contador').value), 30)
+        }
     </script>

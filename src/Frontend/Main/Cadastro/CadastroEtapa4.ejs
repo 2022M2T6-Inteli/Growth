@@ -16,14 +16,14 @@
                 </div>
                 <div class="form-item">
                     <span>Cpf do responsável</span>
-                    <input type="text" id="cpf_dono" placeholder="Cpf do Dono" name="cpfDono" maxlength="14" required>
+                    <input type="text" id="cpfDono" placeholder="Cpf do Dono" name="cpfDono" maxlength="14" required>
                     <% if(error.cpfDono){%>
                         <span id="incorrect-data"><%= error.cpfDono %></span>
                     <% }%>
                 </div>
                 <div class="form-item">
                     <span>Telefone do responsável</span>
-                    <input type="text" id="tel_dono" placeholder="Telefone do Dono" name="telDono" maxlength="16" required>
+                    <input type="text" id="telDono" placeholder="Telefone do Dono" name="telDono" maxlength="16" required>
                     <% if(error.telDono){%>
                         <span id="incorrect-data"><%= error.telDono %></span>
                     <% }%>
@@ -35,12 +35,12 @@
                         <span id="incorrect-data"><%= error.owner_birth_date %></span>
                     <% }%>
                 </div>
-                <button type="submit">Continuar</button>
+                <button type="submit" onclick="armazenarCookies()">Continuar</button>
             </form>
         </div>
     </div>
     <script>
-        const cpf_dono = document.querySelector('#cpf_dono')
+        const cpf_dono = document.querySelector('#cpfDono')
 
         cpf_dono.addEventListener('keypress', () => {
             let cpf_donolength = cpf_dono.value.length
@@ -52,7 +52,7 @@
             }
         })
 
-        const tel_dono = document.querySelector('#tel_dono')
+        const tel_dono = document.querySelector('#telDono')
 
         tel_dono.addEventListener('keypress', () => {
             let tel_donolength = tel_dono.value.length
@@ -77,4 +77,21 @@
                 owner_birth_date.value += "/"
             }
         })
+        function createCookie(name,value,minutes) {
+        if (minutes) {
+            var date = new Date();
+            date.setTime(date.getTime()+(minutes*60*1000));
+            var expires = "; expires="+date.toGMTString();
+        }else{
+            var expires = "";
+        }
+        document.cookie = name+"="+value+expires+"; path=/";
+        }
+
+        function armazenarCookies(){
+            createCookie("nome_dono", String(document.getElementById('nomeDono').value), 30)
+            createCookie("tel_dono", String(document.getElementById('telDono').value), 30)
+            createCookie("cpf_dono", String(document.getElementById('cpfDono').value), 30)
+            createCookie("owner_birth_date", String(document.getElementById('owner_birth_date').value), 30)
+        }
     </script>
