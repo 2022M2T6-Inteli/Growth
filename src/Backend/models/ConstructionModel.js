@@ -106,6 +106,22 @@ class ConstructionModel extends Model {
         }
     }
 
+    static async pegarId(params = []){
+        const rows = await this.allSQL(
+            `SELECT id 
+            FROM cmrv_construction
+            ${params.length ? `WHERE ${Object.keys(params).map(key => `${key} = $${key}`).join(" AND ")}` : ``}`,
+            params
+        )
+
+        if(rows.length){
+            return rows.map(rowInfo => new ConstructionModel(rowInfo).getObject())
+        }else{
+            throw new APIError("Obra não encontrada", 404);
+        }
+    }
+
+
 }
 
 module.exports = ConstructionModel;
