@@ -579,6 +579,73 @@ class WebDashboardController {
             }
         }
     })
+
+    static getObraTags = (req, res) =>  Controller.execute(req, res, async (req, res) => {
+        try {
+            const obra = await ConstrucitonModel.getByColumns({id: req.params.id})
+            const tagsEscolhidas = await ConstrucitonModel.allSQL(`
+                SELECT cmrv_tag.*
+                FROM cmrv_tag
+                    INNER JOIN cmrv_tag_construction ON cmrv_tag_construction.tag_id = cmrv_tag.id
+                WHERE cmrv_tag_construction.construction_id = ${req.params.id}
+            `)
+
+            const tags = await ConstrucitonModel.allSQL(`
+                SELECT cmrv_tag.*
+                FROM cmrv_tag
+            `)
+
+            const tagsNaoSelecionadas = tags.filter(tag => {
+                let obraTem = false;
+                tagsEscolhidas.forEach(element => {
+                    if(element.id == tag.id) obraTem = true;
+                });
+
+                return !obraTem;
+            })
+
+            res.render('dashboard/Componentes/page', {
+                title: 'Tags',
+                css: '/dashboard/Tags/Tags.css',
+                conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/tag',
+                secondAside: '',
+                currentPage: req.url,
+                obra: obra,
+                tagsEscolhidas: tagsEscolhidas,
+                tagsNaoSelecionadas: tagsNaoSelecionadas,
+            });
+        } catch (error) {
+            console.log(error);
+            res.redirect(`/dashboard/obras/${req.params.id}`)
+        }
+        
+    })
+
+    static getCreateOrDeleteObraTags = (req, res) =>  Controller.execute(req, res, async (req, res) => {
+        try {
+
+            const obra = await ConstrucitonModel.getByColumns({id: req.params.idObra});
+            const tag = await TagModel.getByColumns({id: req.params.idTag});
+
+            const relacao = await TagModel.getSQL(`
+            SELECT cmrv_tag_construction.*
+            FROM cmrv_tag_construction
+            WHERE cmrv_tag_construction.construction_id = ${obra.id} AND cmrv_tag_construction.tag_id = ${tag.id}`);
+
+
+            if(relacao && relacao.construction_id) {
+                await TagModel.deleteSQL(`DELETE FROM cmrv_tag_construction WHERE cmrv_tag_construction.construction_id = ${obra.id} AND cmrv_tag_construction.tag_id = ${tag.id}`)
+            } else {
+                await TagModel.insertSQL(`INSERT INTO cmrv_tag_construction (construction_id, tag_id) VALUES (${obra.id}, ${tag.id})`); 
+            }
+
+
+        } catch (error) {
+            console.log(error);
+        }
+
+        res.redirect(`/dashboard/obras/${req.params.idObra}/tags`)
+    })
 }
 
 module.exports = WebDashboardController;

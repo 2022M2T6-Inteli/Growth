@@ -25,7 +25,7 @@ body {
 }
 
 footer {
-    margin-top: 200px;
+    padding: 130px 0px !important;
     width: 100%;
     background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
     color: white;

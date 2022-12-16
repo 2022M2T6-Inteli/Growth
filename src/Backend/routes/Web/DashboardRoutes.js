@@ -20,6 +20,8 @@ Router.post("/createObras", AuthMiddleware.onlyLoggedADMSite, Controller.postCre
 Router.post("/obras", AuthMiddleware.onlyLoggedADMSite, Controller.getConstruction);
 Router.get("/obras/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getConstruction);
 Router.post("/obras/:id", AuthMiddleware.onlyLoggedADMSite, Controller.postUpdateConstruction);
+Router.get("/obras/:id/tags", AuthMiddleware.onlyLoggedADMSite, Controller.getObraTags);
+Router.get("/obras/:idObra/tags/:idTag", AuthMiddleware.onlyLoggedADMSite, Controller.getCreateOrDeleteObraTags);
 
 Router.get("/obras/:id/deletar", AuthMiddleware.onlyLoggedADMSite, Controller.deleteConstruction);
 
