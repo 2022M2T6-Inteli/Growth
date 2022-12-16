@@ -174,31 +174,6 @@ class WebCreateUserController {
     })
 
     static postCadastroEtapa6 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        const {img} = req.body;
-
-        const error = {};
-
-
-        if(Object.keys(error).length){
-            res.render('main/Cadastro/Componentes/RegisterPage',{
-                error: error,
-                title: 'Etapa 6',
-                conteudo:__dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa6'});
-        }
-        else{
-            res.redirect('/cadastro/etapa7');
-
-        }
-        })
-
-    static getCadastroEtapa7 = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render('main/Cadastro/Componentes/RegisterPage', {
-            error: {},
-            title: 'Etapa 7',
-            conteudo: __dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa7'});
-    })
-
-    static postCadastroEtapa7 = (req, res) => Controller.execute(req, res, async (req, res) => {
         const {password, email, razaoSocial, cnpj, numFuncionarios, telEmpresa, nomeDono, cpfDono, telDono, owner_birth_date, emailContador, telContador, img} = req.body;
 
         const error = {};
@@ -254,7 +229,7 @@ class WebCreateUserController {
         if(Object.keys(error).length){
             res.render('main/Cadastro/Componentes/RegisterPage',{
                 error: error,
-                title: 'Etapa 7',
+                title: 'Etapa 6',
                 conteudo:__dirname + '../../../../Frontend/Main/Cadastro/CadastroEtapa7'});
                 console.log("oii")
         }
