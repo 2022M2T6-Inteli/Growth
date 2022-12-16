@@ -15,4 +15,11 @@ Router.post("/empresa", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsua
 Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
 Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsuarioDono)
 
+Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
+Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsuarioDono)
+
+Router.all("*", AuthMiddleware.onlyLoggedSite, (req, res) => {
+    res.redirect("/usuario/contador")
+})
+
 module.exports = Router;

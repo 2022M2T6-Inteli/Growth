@@ -46,7 +46,7 @@ class CityModel extends Model {
     }
 
     setName(name){
-        if(name && name.length <= 5) {
+        if(name && name.length <= 0) {
             throw new APIError("Nome precisa ter mais que 5 caracteres", 403);
         }
 

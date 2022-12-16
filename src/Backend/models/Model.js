@@ -10,7 +10,7 @@ class Model {
         this.tableName = params['tableName'];
         this.identifierColumns = params['identifierColumns'];
         if(params.codeColumns && params.codeColumns.length){
-            this.codeColumns.concat(params.codeColumns)
+            this.codeColumns = this.codeColumns.concat(params.codeColumns)
         }
     }
 
@@ -31,9 +31,11 @@ class Model {
 
     // Retorna como Entries ([[key, value]]) todos os atributos da classe que não sejam de lógica como tableName e identifierColumns
     getObjectEntries() {
-        return Object.entries(this).filter(entrie => {
+        const entries = Object.entries(this).filter(entrie => {
             return !this.codeColumns.includes(entrie[0])
         })
+
+        return entries;
     }
 
 

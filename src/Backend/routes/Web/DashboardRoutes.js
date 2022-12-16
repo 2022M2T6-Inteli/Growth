@@ -49,4 +49,8 @@ Router.post("/tags", Controller.postCreateTag);
 Router.post("/tags/:id", Controller.postUpdateTag)
 Router.get("/tags/:id/deletar", Controller.getDeleteTag);
 
+Router.all("*", (req, res) => {
+    res.redirect("/dashboard/");
+})
+
 module.exports = Router;

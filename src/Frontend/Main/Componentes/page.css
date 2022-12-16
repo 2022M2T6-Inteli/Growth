@@ -1,0 +1,50 @@
+:root{
+    --primary-color: #006B3F;
+    --primary-color-light: #079D56;
+    
+    --second-color: #FF8B22;
+    --second-color-light: #FFB719;
+}
+
+nav > div > div > a {
+    text-decoration: none !important;
+    color: var(--second-color) !important;
+}
+
+nav > div > div > a:hover {
+    color: var(--second-color-light) !important;
+}
+
+
+
+footer {
+    width: 100%;
+    background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
+    color: white;
+
+    padding: 20px 0px;
+}
+
+footer h3 {
+    color: white;
+    border-bottom: white solid 1px;
+}
+
+footer .col-6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+footer ul {
+    list-style-type: none;
+}
+
+footer ul a {
+    color: white;
+}
+
+footer ul a:hover {
+    color: white;
+}

@@ -276,7 +276,6 @@ class WebCreateUserController {
             });
             res.redirect('/home');
             await createBuilder.insert()
-            console.log(createBuilder)
         }
         })
 }

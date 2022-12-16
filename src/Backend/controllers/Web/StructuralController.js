@@ -4,15 +4,16 @@ const ConstrucitonModel = require('../../models/ConstructionModel');
 const UserModel = require('../../models/UserModel');
 const AuthService = require('../../services/AuthService');
 const APIError = require("../../services/ErrorService");
+const WebController = require("./WebController");
 
-class WebStructuralController {
+class WebStructuralController extends WebController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
         const obras = await ConstrucitonModel.allByColumns();
         
-        res.render('Main/Componentes/page', {
+        return this.renderWithPage(req, res, {
             title: 'Conexão MRV', 
             css: '/main/Home/Home.css',
-            conteudo:  __dirname + '/../../../Frontend/Main/Home/Home',
+            conteudo: 'Home/Home',
             obras: obras
         });
     })
@@ -20,19 +21,19 @@ class WebStructuralController {
     static getBusca = (req, res) => Controller.execute(req, res, async (req, res) => {
         const obras = await ConstrucitonModel.allByColumns({});
         
-        res.render('main/Componentes/page', {
+        return this.renderWithPage(req, res, {
             title: 'Busca | Conexão MRV', 
             css: '/main/Busca/Busca.css',
-            conteudo: __dirname + '/../../../Frontend/Main/Busca/Busca',
+            conteudo: 'Busca/Busca',
             obras: obras
         });
     })
 
     static getInstitucional = (req, res) => Controller.execute(req, res, async (req, res) => {
-        res.render('Main/Componentes/page', {
+        return this.renderWithPage(req, res, {
             title: 'Institucional | Conexão MRV', 
             css: '/main/Institucional/Institucional.css',
-            conteudo: __dirname + '/../../../Frontend/Main/Institucional/Institucional'
+            conteudo: 'Institucional/Institucional'
         });
     })
 
@@ -40,10 +41,10 @@ class WebStructuralController {
         try {
             const obra = await ConstrucitonModel.getByColumns({id: req.params.id});
             
-            res.render('Main/Componentes/page', {
+            return this.renderWithPage(req, res, {
                 title: `${obra.name} | Conexão MRV`, 
                 css: '/main/Obra/Obra.css',
-                conteudo: __dirname + '/../../../Frontend/Main/Obra/Obra',
+                conteudo: 'Obra/Obra',
                 obra: obra
             });   
         } catch (error) {
@@ -82,11 +83,18 @@ class WebStructuralController {
             } catch (error) {
                 if(error instanceof APIError) {
                     res.render('Main/Login/Login',{error: {password: 'credenciais incorretadas', email: 'credenciais incorretadas'}})                    
+                }else {
+                    throw error;
                 }
-                throw error;
             }
         }
     })
+
+    static getLogout = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.clearCookie("AuthToken");
+        res.redirect('/');
+    })
+
 }
 
 module.exports = WebStructuralController;

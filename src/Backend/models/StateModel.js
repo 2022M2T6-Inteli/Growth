@@ -9,7 +9,7 @@ class StateModel extends Model {
     capital_city;
 
     constructor(stateInfo) {
-        super({ 'tableName': 'ibge_state', 'identifierColumns': ['id'], 'codeColumns': ['state']})
+        super({ 'tableName': 'ibge_state', 'identifierColumns': ['id'], 'codeColumns': ['capital_city']})
 
         if(stateInfo.id){
             this.setState(stateInfo)
@@ -91,6 +91,7 @@ class StateModel extends Model {
         if(rowInfo){
             return new StateModel(rowInfo)
         }else{
+            console.log(params)
             throw new APIError("Estado não encontrado", 404);
         }
     }

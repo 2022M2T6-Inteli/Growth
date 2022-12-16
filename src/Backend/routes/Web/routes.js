@@ -9,9 +9,9 @@ const DashboardRoutes = require('./DashboardRoutes');
 
 const Router = express.Router();
 
-Router.use(StructuralRouter);
 Router.use('/cadastro', CreateUserRouter);
 Router.use('/usuario', UpdateUserRouter);
 Router.use('/dashboard', DashboardRoutes);
+Router.use(StructuralRouter);
 
 module.exports = Router;

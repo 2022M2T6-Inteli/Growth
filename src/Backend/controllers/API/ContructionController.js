@@ -1,5 +1,10 @@
+const e = require("express");
+const CityModel = require("../../models/CityModel");
 const ConstructionModel = require("../../models/ConstructionModel");
+const StateModel = require("../../models/StateModel");
+const CSVService = require("../../services/CSVService");
 const Controller = require("../Controller");
+const axios = require('axios').default;
 
 
 class ConstructionController extends Controller {
@@ -26,6 +31,14 @@ class ConstructionController extends Controller {
     static all = (req, res) => Controller.execute(req, res, async (req, res) => {
         const constructions = await ConstructionModel.allByColumns()
         res.json(constructions)
+    })
+    
+    static AllConstructionsCSV = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const constructions = await ConstructionModel.allByColumns({});
+        const csv = new CSVService(constructions);
+
+        res.setHeader('Content-Type', 'text/csv')
+        res.send(csv.getCSVString());
     })
 
     // UPDATE

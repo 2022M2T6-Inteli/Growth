@@ -11,6 +11,7 @@ Router.post("/", AuthMiddleware.onlyLoggedADM, ConstructionController.create)
 
 // Read
 Router.get("/", ConstructionController.all)
+Router.get("/csv", ConstructionController.AllConstructionsCSV)
 Router.get("/:id", ConstructionController.get)
 
 // Update
