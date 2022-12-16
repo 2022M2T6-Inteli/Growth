@@ -84,6 +84,7 @@ class Model {
 
     static async allSQL(query, params) {
         return ConnectionService.all(query, params);
+    
     }
 
     // Insere um registro no banco de dados com os valores que estão na classe

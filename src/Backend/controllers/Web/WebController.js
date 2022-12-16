@@ -12,9 +12,13 @@ class WebController {
         const conteudo = params.conteudo ? (__dirname + '/../../../Frontend/Main/' + params.conteudo) : undefined
         delete params.conteudo;
 
+        const search = params.search || req.query.search || undefined;
+        delete params.search;
+
         return res.render('Main/Componentes/page', {
             logado: logado,
             conteudo: conteudo,
+            search: search,
             ...params,
         });
     }

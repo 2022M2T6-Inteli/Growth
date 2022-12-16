@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg shadow p-3  bg-white rounded sticky-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-light  bg-white rounded sticky-top">
   <!-- Navbar com principais links do site -->
   <div class="container-fluid h-100">
     <a class="navbar-brand h-100 d-flex align-items-center" href="/home">
@@ -6,7 +6,7 @@
     </a>
     <!--barra de pesquisa-->
     <form class="d-flex w-50" role="search" action="/Busca" method="get">
-      <input class="form-control me-2" type="search" placeholder="buscar" aria-label="buscar" style="font-size: small;">
+      <input class="form-control me-2" type="search" placeholder="buscar" name="search" aria-label="buscar" style="font-size: small;" id="search" value="<%= search %>">
       <button class="btn btn-outline-success" type="submit" style="font-size: small;">buscar</button>
     </form>
     <% if(locals.logado && logado){ %>

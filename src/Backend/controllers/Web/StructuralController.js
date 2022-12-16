@@ -1,10 +1,12 @@
 const Controller = require("../Controller");
 
 const ConstrucitonModel = require('../../models/ConstructionModel');
+const TagModel = require("../../models/TagModel");
 const UserModel = require('../../models/UserModel');
 const AuthService = require('../../services/AuthService');
 const APIError = require("../../services/ErrorService");
 const WebController = require("./WebController");
+const axios = require('axios').default;
 
 class WebStructuralController extends WebController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
@@ -19,13 +21,40 @@ class WebStructuralController extends WebController {
     })
 
     static getBusca = (req, res) => Controller.execute(req, res, async (req, res) => {
-        const obras = await ConstrucitonModel.allByColumns({});
+        const obras = await ConstrucitonModel.allSQL(`
+            SELECT cmrv_construction.* 
+            FROM cmrv_construction
+                INNER JOIN ibge_city ON ibge_city.id = cmrv_construction.city_id
+                INNER JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+            WHERE 
+                cmrv_construction.name LIKE '%${req.params.search || ''}%'
+                ${req.params.state ? `AND ibge_state.uf = '${req.params.state}'` : ''}
+                ${req.params.city ? `AND ibge_city.id = '${req.params.city}'` : ''}
+        `)
+
+        const estados = (await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")).data.map(element => {
+            element.selected = req.query.state == element.sigla
+            return element;
+        });
+
+        console.log(estados)
+    
+        let tags = [];
+        try {
+            tags = await TagModel.allByColumns();
+        } catch (error) {
+            tags = []
+        }
         
         return this.renderWithPage(req, res, {
             title: 'Busca | Conexão MRV', 
             css: '/main/Busca/Busca.css',
             conteudo: 'Busca/Busca',
-            obras: obras
+            obras: obras,
+            estados: estados,
+            city: req.query.city,
+            search: req.query.search,
+            tags: tags
         });
     })
 

@@ -22,8 +22,6 @@ Router.post("/etapa5", Controller.postCadastroEtapa5)
 Router.get("/etapa6", Controller.getCadastroEtapa6)
 Router.post("/etapa6", Controller.postCadastroEtapa6)
 
-Router.get("/etapa7", Controller.getCadastroEtapa7)
-Router.post("/etapa7", Controller.postCadastroEtapa7)
 
 Router.all("*", (req, res) => {
     res.redirect("/cadastro/etapa1");
