@@ -72,7 +72,20 @@ class WebStructuralController extends WebController {
 
     static getObra = (req, res) => Controller.execute(req, res, async (req, res) => {
         try {
-            const obra = await ConstrucitonModel.getByColumns({id: req.params.id});
+            const obra = await ConstrucitonModel.getSQL(`
+            SELECT cmrv_construction.*,
+                ibge_city.name AS city_name,
+                ibge_state.name AS state_name
+            FROM cmrv_construction
+                LEFT JOIN ibge_city ON ibge_city.id = cmrv_construction.city_id
+                LEFT JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+            WHERE 
+                cmrv_construction.id = '${req.params.id}'
+        `)
+
+        if(!obra) {
+            return res.redirect("/busca");
+        }
             
             return this.renderWithPage(req, res, {
                 title: `${obra.name} | Conexão MRV`, 

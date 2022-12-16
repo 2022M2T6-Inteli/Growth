@@ -1,6 +1,8 @@
 const Controller = require("../Controller");
 
 const UserBuilderModel = require('../../models/UserModel');
+const { getSQL } = require("../../models/UserModel");
+const AuthService = require("../../services/AuthService");
 
 var data = new Object();
 
@@ -24,7 +26,12 @@ class WebCreateUserController {
         if(!email.includes('@')){
             error.email = 'Email precisa estar corretamente formatado';
         }
-        console.log('erro:', error)
+        const user = await UserBuilderModel.getSQL(`SELECT * FROM cmrv_user_builder WHERE email = '${email}'`);
+        
+        if(user && user.id){
+            error.email = "Já existe uma conta cadastrada com esse email"
+        }
+
         if(Object.keys(error).length){
             res.render('main/Cadastro/Componentes/RegisterPage', {
                 error: error,
@@ -249,9 +256,10 @@ class WebCreateUserController {
                 counter_cellphone: req.body.telContador,
                 owner_birth_date: req.body.owner_birth_date,
             });
-            res.redirect('/home');
+
             await createBuilder.insert()
-            console.log(createBuilder)
+            res.cookie('AuthToken',AuthService.makeToken(createBuilder.id));
+            res.redirect("/")
         }
         })
 }
