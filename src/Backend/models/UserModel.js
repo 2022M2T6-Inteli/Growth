@@ -203,6 +203,21 @@ class UserBuilderModel extends Model {
             throw new APIError("Empreiteiros não encontrados", 404);
         }
     }
+
+    static async pegarId(params = []){
+        const rows = await this.allSQL(
+            `SELECT id 
+            FROM cmrv_user_builder
+            ${params.length ? `WHERE ${Object.keys(params).map(key => `${key} = $${key}`).join(" AND ")}` : ``}`,
+            params
+        )
+
+        if(rows.length){
+            return rows.map(rowInfo => new UserBuilderModel(rowInfo).getObject())
+        }else{
+            throw new APIError("Obra não encontrada", 404);
+        }
+    }
 }
 
 module.exports = UserBuilderModel;

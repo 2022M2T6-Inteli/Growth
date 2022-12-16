@@ -11,12 +11,16 @@ const axios = require('axios').default
 
 class WebDashboardController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const obras = await ConstrucitonModel.pegarId();
+        const users = await UserBuilderModel.pegarId();
         res.render('dashboard/Componentes/page', {
             title: 'Home',
             css: '/dashboard/Home/Home.css',
             conteudo: __dirname + '/../../../Frontend/Dashboard/Home/Home',
             secondAside: null,
-            currentPage: req.url
+            currentPage: req.url,
+            obras: obras,
+            users: users
         });
     })
 

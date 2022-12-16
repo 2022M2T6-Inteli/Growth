@@ -14,6 +14,7 @@
     <link href="/dashboard/Componentes/Page.css" rel="stylesheet">
     <link href="<%= css %>" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 
@@ -75,6 +76,33 @@
                         </script>
         </div>
     </div>
+    <script>
+    var usuarios = document.getElementById('usuarios-cadastrados').value;
+    var obras = document.getElementById('obras-cadastradas').value;
+    let chart1 = document.getElementById('chart1');
+
+    new Chart(chart1, {
+        type: 'bar',
+        data: {
+            labels: ['Relação Empreiteiros X Obras'],
+            datasets: [{
+                label: 'Empreiteiros',
+                data: [usuarios],
+                borderWidth: 1,
+                backgroundColor: ["#006B3F", "#079D56", "#00D38D", "#82EA5B", "#FF8B22", "#FFB719", "#793F98", "#AC41D8", "#F7287C", "#FF5AAD", "#FFF028",]
+            },
+            {
+                label: 'Obras',
+                data: [obras],
+                borderWidth: 1,
+                backgroundColor: ["#079D56", "#00D38D", "#82EA5B", "#FF8B22", "#FFB719", "#793F98", "#AC41D8", "#F7287C", "#FF5AAD", "#FFF028",]
+            }]
+            
+        }
+        
+    });
+
+    </script>
 </body>
 
 </html>

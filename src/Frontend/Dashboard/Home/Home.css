@@ -67,6 +67,7 @@ aside nav ul li:hover {
 aside nav ul li.active {
   background: linear-gradient(355.23deg, #FF8B22 7.7%, #FFB719 82.04%), #D9D9D9;
   font-size: 1.2rem;
+  width: 90%;
 }
 aside nav ul li a {
   width: 100%;
