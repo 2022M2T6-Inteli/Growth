@@ -12,9 +12,16 @@ const axios = require('axios').default;
 
 class WebStructuralController extends WebController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
-        const obras = await ConstrucitonModel.allByColumns();
+        let obras = await ConstrucitonModel.allSQL(`
+        SELECT cmrv_construction.*,
+            ibge_city.name AS city_name,
+            ibge_state.name AS state_name
+        FROM cmrv_construction
+            INNER JOIN ibge_city ON ibge_city.id = cmrv_construction.city_id
+            INNER JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+    `);
 
-        await Promise.all(obras.map(async obra => {
+        obras = await Promise.all(obras.map(async obra => {
             obra.ObraTags = await ConstrucitonModel.allSQL(`
             SELECT cmrv_tag.*
             FROM cmrv_tag
