@@ -12,11 +12,8 @@ Router.post("/contador", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsu
 Router.get("/empresa", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioEmpresa)
 Router.post("/empresa", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsuarioEmpresa)
 
-Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
-Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsuarioDono)
-
-Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
-Router.get("/responsavel", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsuarioDono)
+Router.get("/dono", AuthMiddleware.onlyLoggedSite, Controller.getEdicaoUsuarioDono)
+Router.get("/dono", AuthMiddleware.onlyLoggedSite, Controller.postEdicaoUsuarioDono)
 
 Router.all("*", AuthMiddleware.onlyLoggedSite, (req, res) => {
     res.redirect("/usuario/contador")
