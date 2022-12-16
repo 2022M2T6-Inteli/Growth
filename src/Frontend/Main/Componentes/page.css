@@ -6,6 +6,10 @@
     --second-color-light: #FFB719;
 }
 
+nav{
+    width: auto;
+}
+
 nav > div > div > a {
     text-decoration: none !important;
     color: var(--second-color) !important;

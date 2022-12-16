@@ -1,38 +1,175 @@
-    <div class="register-card-container">
-        <div class="register-card">
-            <div class="register-card-logo">
-                <img src="/imagens/Logo-Gradiente.png" alt="Logo">
+<div class="register-card-final-container">
+    <div class="register-card-final">
+        <div class="register-card-final-logo">
+            <img src="/imagens/Logo-Gradiente.png" alt="Logo">
+        </div>
+        <div class="register-card-final-header">
+            <h1>Veja se seus dados estão corretos</h1>
+        </div>
+        <form class="register-card-final-form" method="post" action="">
+            <div class="form-item">
+                <span id="form-item-icon" class="material-symbols-outlined">mail</span>
+                <input type="email" id="email" placeholder="Digite Seu Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" name='email' required autofocus>
+                <% if(error.email) {%>
+                    <span id="incorrect-data"><%= error.email %></span>
+                <% }%>
             </div>
-            <div class="register-card-header">
-                <h1>Logo da Empresa</h1>
+            <div class="form-item">
+                <span id="form-item-icon" class="material-symbols-outlined">lock</span>
+                <input type="password" id="password" name='password' placeholder="Digite Sua Senha" required>
+                <% if(error.password) {%>
+                    <span id="incorrect-data"><%= error.password %></span>
+                <% }%>
             </div>
-            <form class="register-card-form" method="post">
-                <div class="img">
-                    <label for="inputTag">
-                        Select Image <br />
-                        <i class="fa fa-2x fa-camera"></i>
-                        <input id="inputTag" type="file" name="foto"/>
-                        <br />
-                        <span id="imageName"></span>
-                    </label>
-                    <% if(error.img){%>
-                        <span id="incorrect-data"><%= error.img %></span>
-                    <% }%>       
-                </div>
-                <button type="submit">Continuar</button>
-            </form>
-        </div>          
+            <div class="form-item">
+                <span>Razão Social</span>
+                <input type="text" placeholder="Digite a Razão Social" name="razaoSocial" id="razaoSocial" required autofocus>
+                <% if(error.razaoSocial) {%>
+                    <span id="incorrect-data"><%= error.razaoSocial %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>CNPJ</span>
+                <input type="text" id="cnpj" placeholder="Digite o CNPJ" maxlength="18" required name="cnpj">
+                <% if(error.cnpj){%>
+                    <span id="incorrect-data"><%= error.cnpj %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Número de Funcionários</span>
+                <input type="text" placeholder="Número de Funcionários" name="numFuncionarios" id="numFuncionarios" required autofocus>
+                <% if(error.numFuncionarios){%>
+                    <span id="incorrect-data"><%= error.numFuncionarios %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Telefone</span>
+                <input type="text" id="telEmpresa" placeholder="Digite seu Telefone" name="telEmpresa" maxlength="16" required>
+                <% if(error.telEmpresa){%>
+                    <span id="incorrect-data"><%= error.telEmpresa %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Nome do responsável</span>
+                <input type="text" placeholder="Nome do Dono" name="nomeDono" id="nomeDono" required autofocus>
+                <% if(error.nomeDono) {%>
+                    <span id="incorrect-data"><%= error.nomeDono %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Cpf do responsável</span>
+                <input type="text" id="cpfDono" placeholder="Cpf do Dono" name="cpfDono" maxlength="14" required>
+                <% if(error.cpfDono){%>
+                    <span id="incorrect-data"><%= error.cpfDono %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Telefone do responsável</span>
+                <input type="text" id="telDono" placeholder="Telefone do Dono" name="telDono" maxlength="16" required>
+                <% if(error.telDono){%>
+                    <span id="incorrect-data"><%= error.telDono %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Data de nascimento do responsável</span>
+                <input type="text" id="owner_birth_date" placeholder="Data de nascimento" name="owner_birth_date" maxlength="10" required>
+                <% if(error.owner_birth_date){%>
+                    <span id="incorrect-data"><%= error.owner_birth_date %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>E-mail do contador</span>
+                <input type="text" id="emailContador" placeholder="E-mail do contador" name="emailContador" required autofocus>
+                <% if(error.emailContador){%>
+                    <span id="incorrect-data"><%= error.emailContador %></span>
+                <% }%>
+            </div>
+            <div class="form-item">
+                <span>Telefone do Contador</span>
+                <input type="text" id="telContador" placeholder="Telefone do contador" name="telContador" maxlength="16" required>
+                <% if(error.telContador){%>
+                    <span id="incorrect-data"><%= error.telContador %></span>
+                <% }%>
+            </div>
+            <button type="submit" onclick="deleteCookies()">Finalizar Cadastro</button>
+        </form>
     </div>
+</div>
+<script>
+    function createCookie(name,value,minutes) {
+    if (minutes) {
+        var date = new Date();
+        date.setTime(date.getTime()+(minutes*60*1000));
+        var expires = "; expires="+date.toGMTString();
+    }else{
+        var expires = "";
+    }
+    document.cookie = name+"="+value+expires+"; path=/";
+    }
 
-    <script>
-        function createCookie(name,value,minutes) {
-        if (minutes) {
-            var date = new Date();
-            date.setTime(date.getTime()+(minutes*60*1000));
-            var expires = "; expires="+date.toGMTString();
-        }else{
-            var expires = "";
-        }
-        document.cookie = name+"="+value+expires+"; path=/";
-        }
-    </script>
+    function mostrarCookies(){
+        var email = getCookie("email");
+        var password = getCookie("senha");
+        var razaoSocial = getCookie("razao_social");
+        var cnpj = getCookie("cnpj");
+        var numFuncionarios = getCookie("num_func");
+        var telEmpresa = getCookie("tel_empresa");
+        var nomeDono = getCookie("nome_dono");
+        var telDono = getCookie("tel_dono");
+        var cpfDono = getCookie("cpf_dono");
+        var owner_birth_date = getCookie("owner_birth_date");
+        var emailContador = getCookie("email_contador");
+        var telContador = getCookie("tel_contador");
+        document.getElementById("email").value = String(email)
+        document.getElementById("password").value = String(password)
+        document.getElementById("razaoSocial").value = String(razaoSocial)
+        document.getElementById("cnpj").value = String(cnpj)
+        document.getElementById("numFuncionarios").value = String(numFuncionarios)
+        document.getElementById("telEmpresa").value = String(telEmpresa)
+        document.getElementById("nomeDono").value = String(nomeDono)
+        document.getElementById("telDono").value = String(telDono)
+        document.getElementById("cpfDono").value = String(cpfDono)
+        document.getElementById("owner_birth_date").value = String(owner_birth_date)
+        document.getElementById("emailContador").value = String(emailContador)
+        document.getElementById("telContador").value = String(telContador)
+        console.log(email)
+        console.log(password)
+        console.log(razaoSocial)
+        console.log(cnpj)
+        console.log(numFuncionarios)
+        console.log(telEmpresa)
+        console.log(nomeDono)
+        console.log(telDono)
+        console.log(cpfDono)
+        console.log(owner_birth_date)
+        console.log(emailContador)
+        console.log(telContador)
+    }
+
+    function deleteCookies(){
+        eraseCookie("email");
+        eraseCookie("senha");
+        eraseCookie("razao_social");
+        eraseCookie("cnpj");
+        eraseCookie("num_func");
+        eraseCookie("tel_empresa");
+        eraseCookie("nome_dono");
+        eraseCookie("tel_dono");
+        eraseCookie("cpf_dono");
+        eraseCookie("owner_birth_date");
+        eraseCookie("email_contador");
+        eraseCookie("tel_contador");
+    }
+    
+
+
+    function getCookie(name) {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; ${name}=`);
+        if (parts.length === 2) return parts.pop().split(';').shift();
+    }
+
+    function eraseCookie(nome) {
+        document.cookie = nome +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
+</script>
