@@ -13,6 +13,18 @@ const axios = require('axios').default;
 class WebStructuralController extends WebController {
     static getHome = (req, res) => Controller.execute(req, res, async (req, res) => {
         const obras = await ConstrucitonModel.allByColumns();
+
+        await Promise.all(obras.map(async obra => {
+            obra.ObraTags = await ConstrucitonModel.allSQL(`
+            SELECT cmrv_tag.*
+            FROM cmrv_tag
+                INNER JOIN cmrv_tag_construction ON cmrv_tag_construction.tag_id = cmrv_tag.id
+            WHERE cmrv_tag_construction.construction_id = ${obra.id}
+        `)
+
+        return obra;
+        }))
+
         
         return this.renderWithPage(req, res, {
             title: 'Conexão MRV', 
@@ -35,6 +47,17 @@ class WebStructuralController extends WebController {
                 ${req.query.state ? `AND ibge_state.uf = '${req.query.state}'` : ''}
                 ${req.query.city ? `AND ibge_city.id = '${req.query.city}'` : ''}
         `)
+
+        await Promise.all(obras.map(async obra => {
+            obra.ObraTags = await ConstrucitonModel.allSQL(`
+            SELECT cmrv_tag.*
+            FROM cmrv_tag
+                INNER JOIN cmrv_tag_construction ON cmrv_tag_construction.tag_id = cmrv_tag.id
+            WHERE cmrv_tag_construction.construction_id = ${obra.id}
+        `)
+
+        return obra;
+        }))
 
         const estados = (await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")).data.map(element => {
             element.selected = req.query.state == element.sigla
@@ -84,13 +107,22 @@ class WebStructuralController extends WebController {
                 cmrv_construction.id = '${req.params.id}'
         `)
 
+        
+
         if(!obra) {
             return res.redirect("/busca");
         }
 
         let jaRegistrouInteresse = false
+        let tags = [];
         try {
-            const id = AuthService.getIdFromToken(req.cookies['AuthToken'])
+            tags = await ConstrucitonModel.allSQL(`
+            SELECT cmrv_tag.*
+            FROM cmrv_tag
+                INNER JOIN cmrv_tag_construction ON cmrv_tag_construction.tag_id = cmrv_tag.id
+            WHERE cmrv_tag_construction.construction_id = ${obra.id}
+        `)
+        const id = AuthService.getIdFromToken(req.cookies['AuthToken'])
             
             jaRegistrouInteresse = (await UserBuilderModel.getSQL(`
                 SELECT cmrv_user_builder.* 
@@ -109,12 +141,14 @@ class WebStructuralController extends WebController {
         }
 
         obra.jaRegistrouInteresse = jaRegistrouInteresse;
+        obra.tags = tags;
             
             return this.renderWithPage(req, res, {
                 title: `${obra.name} | Conexão MRV`, 
                 css: '/main/Obra/Obra.css',
                 conteudo: 'Obra/Obra',
-                obra: obra
+                obra: obra,
+                tags: tags
             });   
         } catch (error) {
             res.redirect("/busca");

@@ -6,11 +6,11 @@
         <% } else { %>
             <h6 class="local">Cidade não registrada</h6>
         <% } %>
-        <div class="d-flex w-100 justify-content-start">
-            <% if(locals.tags) { %>
-                <% tags.map(tag => { %>
+        <div class="d-flex w-100 justify-content-start" style="max-height: 200px; overflow-y:auto;">
+            <% if(locals.ObraTags) { %>
+                <% ObraTags.map(tag => { %>
                     <span class="btn btn-primary mr-2"
-                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
+                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small; margin: 0px 5px;"
                     type="submit"><%= tag.name %></span>
                 <% }) %>
             <% } %>
