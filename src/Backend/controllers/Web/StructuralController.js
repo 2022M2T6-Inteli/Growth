@@ -7,6 +7,7 @@ const AuthService = require('../../services/AuthService');
 const APIError = require("../../services/ErrorService");
 const WebController = require("./WebController");
 const StateModel = require("../../models/StateModel");
+const UserBuilderModel = require("../../models/UserModel");
 const axios = require('axios').default;
 
 class WebStructuralController extends WebController {
@@ -86,6 +87,28 @@ class WebStructuralController extends WebController {
         if(!obra) {
             return res.redirect("/busca");
         }
+
+        let jaRegistrouInteresse = false
+        try {
+            const id = AuthService.getIdFromToken(req.cookies['AuthToken'])
+            
+            jaRegistrouInteresse = (await UserBuilderModel.getSQL(`
+                SELECT cmrv_user_builder.* 
+                FROM cmrv_user_builder
+                    INNER JOIN cmrv_construction_builder_interest ON cmrv_construction_builder_interest.builder_id = cmrv_user_builder.id
+                WHERE cmrv_construction_builder_interest.construction_id = ${obra.id} AND cmrv_user_builder.id = ${id}
+            `)).id
+
+             console.log
+
+            console.log(jaRegistrouInteresse)
+
+        } catch (error) {
+            jaRegistrouInteresse = false
+            console.log(error);
+        }
+
+        obra.jaRegistrouInteresse = jaRegistrouInteresse;
             
             return this.renderWithPage(req, res, {
                 title: `${obra.name} | Conexão MRV`, 
@@ -97,7 +120,22 @@ class WebStructuralController extends WebController {
             res.redirect("/busca");
         }
     })
-    
+
+    static getCreateInteresse = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const obraId = req.params.id;
+
+        try {
+            const userId = AuthService.getIdFromToken(req.cookies['AuthToken'])
+            const id = await UserBuilderModel.insertSQL(`INSERT INTO cmrv_construction_builder_interest (construction_id, builder_id) VALUES (${obraId}, ${userId})`)
+            console.log(id)
+        } catch (error) {
+            console.log(error)
+        }
+
+        res.redirect(`/obra/${obraId}`)
+
+    })
+
     static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
         res.render('Main/Login/Login', {error: {}});
     })

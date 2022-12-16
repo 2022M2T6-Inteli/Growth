@@ -445,6 +445,14 @@ class WebDashboardController {
                 return element;
             });
 
+            const usuariosQueRegistraramInteresse = await UserBuilderModel.allSQL(`
+                SELECT cmrv_user_builder.* 
+                FROM cmrv_user_builder
+                    INNER JOIN cmrv_construction_builder_interest ON cmrv_construction_builder_interest.builder_id = cmrv_user_builder.id
+                WHERE cmrv_construction_builder_interest.construction_id = ${obra.id}
+            `)
+
+
             res.render('dashboard/Componentes/page', {
                 title: 'Usuários',
                 css: '/dashboard/Obra/Obra.css',
@@ -454,7 +462,8 @@ class WebDashboardController {
                 construction: obra,
                 city: obra.city_id,
                 estadoUF: obra.state_uf,
-                estados: estados
+                estados: estados,
+                usersInteressados: usuariosQueRegistraramInteresse
             });
         } catch (error) {
             if (error instanceof APIError && error.status == 404) {

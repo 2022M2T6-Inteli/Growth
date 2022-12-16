@@ -29,8 +29,8 @@
         </div>
         <div class="col-4 d-flex align-items-center justify-content-center">
             <% if(locals.logado && logado) {%>
-                <% if(obra.interesse) { %>
-                    <button id="bnt-i">Tenho interesse</button>
+                <% if(!obra.jaRegistrouInteresse) { %>
+                    <a href="/obra/<%=obra.id%>/interesse"><button id="bnt-i">Tenho interesse</button></a>
                 <% } else {%>
                     <button id="bnt-i">Você registrou seu interesse</button>
                 <% } %>

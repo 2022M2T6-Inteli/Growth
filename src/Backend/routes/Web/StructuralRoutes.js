@@ -13,11 +13,13 @@ Router.get("/", Controller.getHome)
 Router.get("/login", Controller.getLogin)
 Router.post("/login", Controller.postLogin)
 
+
 Router.get("/logout", Controller.getLogout)
 
 Router.get("/institucional", Controller.getInstitucional)
 
 Router.get("/obra/:id", Controller.getObra)
+Router.get("/obra/:id/interesse", Controller.getCreateInteresse)
 
 Router.all("*", (req, res) => {
     res.redirect("/");

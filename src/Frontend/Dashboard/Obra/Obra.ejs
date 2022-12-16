@@ -56,9 +56,28 @@
                     </a>
                 </div>
             </form>
+            <div class="container-fluid">
+        <div class="row">
+            <% if(locals.usersInteressados){ %>
+                <h2>Usuários Interessados</h2>
+            <% usersInteressados.map(user => {%>
+                <div class="col-4" style="display: flex; justify-content: space-around; border: 2px solid black; background-color: white;">
+                    <a href="/dashboard/usuarios/<%=user.id%>">
+                        <div> 
+                            Nome:
+                            <strong><%= user.name %></strong>
+                        </div>
+                        <div>
+                            Número de funcionários:
+                            <%= user.employees_number %>
+                        </div>
+                    </a>
+                </div>
+            <% }) %>
+            <% } %>
+        </div>
     </div>
-    <center>
-    </center>
+    </div>
 </main>
 <script>
     document.getElementById('descObra').value = document.getElementById('descricao').value
