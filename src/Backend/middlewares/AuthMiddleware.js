@@ -23,10 +23,10 @@ class AuthMiddleware {
 
     static onlyLoggedADMSite = (req, res, next) => Middleware.execute(req, res, next, (req, res) => {
         try {
-            AuthService.getIdFromToken(req.cookies['AuthToken']);
+            AuthService.getIdFromToken(req.cookies['AuthToken'], 'adm');
         } catch(error) {
             if(error instanceof APIError && error.status == 403){ 
-                res.redirect('/');
+                res.redirect('/dashboard/login');
             }
         }
     })

@@ -1,53 +1,54 @@
 const express = require('express')
 
-const Controller = require('../../controllers/Web/DashboardController')
+const Controller = require('../../controllers/Web/DashboardController');
+const AuthMiddleware = require('../../middlewares/AuthMiddleware');
 
 const Router = express.Router()
 
-Router.get("/", Controller.getHome);
-Router.get("/home", Controller.getHome);
+Router.get("/", AuthMiddleware.onlyLoggedADMSite, Controller.getHome);
+Router.get("/home", AuthMiddleware.onlyLoggedADMSite, Controller.getHome);
 
-Router.get("/login", Controller.getHome);
-Router.post("/login", Controller.getHome);
+Router.get("/obras", AuthMiddleware.onlyLoggedADMSite, Controller.getConstructions);
+Router.get("/obras/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getConstruction);
 
-Router.get("/obras", Controller.getConstructions);
-Router.get("/obras/:id", Controller.getConstruction);
+Router.get("/login", Controller.getLogin);
+Router.post("/login", Controller.postLogin);
 
-Router.get("/createObras", Controller.getCreateObras);
-Router.post("/createObras", Controller.postCreateObras);
+Router.get("/createObras", AuthMiddleware.onlyLoggedADMSite, Controller.getCreateObras);
+Router.post("/createObras", AuthMiddleware.onlyLoggedADMSite, Controller.postCreateObras);
 
-Router.post("/obras", Controller.getConstruction);
-Router.get("/obras/:id", Controller.getConstruction);
-Router.post("/obras/:id", Controller.postUpdateConstruction);
+Router.post("/obras", AuthMiddleware.onlyLoggedADMSite, Controller.getConstruction);
+Router.get("/obras/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getConstruction);
+Router.post("/obras/:id", AuthMiddleware.onlyLoggedADMSite, Controller.postUpdateConstruction);
 
-Router.get("/obras/:id/deletar", Controller.deleteConstruction);
+Router.get("/obras/:id/deletar", AuthMiddleware.onlyLoggedADMSite, Controller.deleteConstruction);
 
-Router.get("/usuarios", Controller.getUsers);
-Router.get("/usuarios/:id", Controller.getUser);
+Router.get("/usuarios", AuthMiddleware.onlyLoggedADMSite, Controller.getUsers);
+Router.get("/usuarios/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getUser);
 
-Router.post("/usuarios", Controller.getUser);
-Router.get("/usuarios/:id", Controller.getUpdateUser);
-Router.post("/usuarios/:id", Controller.postUpdateUser);
-Router.get("/usuarios/:id/deletar", Controller.deleteUser);
+Router.post("/usuarios", AuthMiddleware.onlyLoggedADMSite, Controller.getUser);
+Router.get("/usuarios/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getUpdateUser);
+Router.post("/usuarios/:id", AuthMiddleware.onlyLoggedADMSite, Controller.postUpdateUser);
+Router.get("/usuarios/:id/deletar", AuthMiddleware.onlyLoggedADMSite, Controller.deleteUser);
 
-Router.get("/administradores", Controller.getAdministrators);
-Router.get("/administradores/:id", Controller.getAdministrator);
+Router.get("/administradores", AuthMiddleware.onlyLoggedADMSite, Controller.getAdministrators);
+Router.get("/administradores/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getAdministrator);
 
-Router.get("/criarUsuario", Controller.getCriarUsuario);
-Router.post("/criarUsuario", Controller.postCriarUsuario);
+Router.get("/criarUsuario", AuthMiddleware.onlyLoggedADMSite, Controller.getCriarUsuario);
+Router.post("/criarUsuario", AuthMiddleware.onlyLoggedADMSite, Controller.postCriarUsuario);
 
-Router.get("/criarAdm", Controller.getCriarAdm);
-Router.post("/criarAdm", Controller.postCriarAdm);
+Router.get("/criarAdm", AuthMiddleware.onlyLoggedADMSite, Controller.getCriarAdm);
+Router.post("/criarAdm", AuthMiddleware.onlyLoggedADMSite, Controller.postCriarAdm);
 
-Router.post("/administradores", Controller.getAdministrator);
-Router.get("/administradores/:id", Controller.getUpdateAdministrator);
-Router.post("/administradores/:id", Controller.postUpdateAdministrator)
-Router.get("/administradores/:id/deletar", Controller.deleteAdministrator);
+Router.post("/administradores", AuthMiddleware.onlyLoggedADMSite, Controller.getAdministrator);
+Router.get("/administradores/:id", AuthMiddleware.onlyLoggedADMSite, Controller.getUpdateAdministrator);
+Router.post("/administradores/:id", AuthMiddleware.onlyLoggedADMSite, Controller.postUpdateAdministrator)
+Router.get("/administradores/:id/deletar", AuthMiddleware.onlyLoggedADMSite, Controller.deleteAdministrator);
 
-Router.get("/tags", Controller.getListAllTags);
-Router.post("/tags", Controller.postCreateTag);
-Router.post("/tags/:id", Controller.postUpdateTag)
-Router.get("/tags/:id/deletar", Controller.getDeleteTag);
+Router.get("/tags", AuthMiddleware.onlyLoggedADMSite, Controller.getListAllTags);
+Router.post("/tags", AuthMiddleware.onlyLoggedADMSite, Controller.postCreateTag);
+Router.post("/tags/:id", AuthMiddleware.onlyLoggedADMSite, Controller.postUpdateTag)
+Router.get("/tags/:id/deletar", AuthMiddleware.onlyLoggedADMSite, Controller.getDeleteTag);
 
 Router.all("*", (req, res) => {
     res.redirect("/dashboard/");

@@ -6,6 +6,7 @@ const UserModel = require('../../models/UserModel');
 const AuthService = require('../../services/AuthService');
 const APIError = require("../../services/ErrorService");
 const WebController = require("./WebController");
+const StateModel = require("../../models/StateModel");
 const axios = require('axios').default;
 
 class WebStructuralController extends WebController {
@@ -22,22 +23,22 @@ class WebStructuralController extends WebController {
 
     static getBusca = (req, res) => Controller.execute(req, res, async (req, res) => {
         const obras = await ConstrucitonModel.allSQL(`
-            SELECT cmrv_construction.* 
+            SELECT cmrv_construction.*,
+                ibge_city.name AS city_name,
+                ibge_state.name AS state_name
             FROM cmrv_construction
                 INNER JOIN ibge_city ON ibge_city.id = cmrv_construction.city_id
                 INNER JOIN ibge_state ON ibge_state.id = ibge_city.state_id
             WHERE 
-                cmrv_construction.name LIKE '%${req.params.search || ''}%'
-                ${req.params.state ? `AND ibge_state.uf = '${req.params.state}'` : ''}
-                ${req.params.city ? `AND ibge_city.id = '${req.params.city}'` : ''}
+                cmrv_construction.name LIKE '%${req.query.search || ''}%'
+                ${req.query.state ? `AND ibge_state.uf = '${req.query.state}'` : ''}
+                ${req.query.city ? `AND ibge_city.id = '${req.query.city}'` : ''}
         `)
 
         const estados = (await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")).data.map(element => {
             element.selected = req.query.state == element.sigla
             return element;
         });
-
-        console.log(estados)
     
         let tags = [];
         try {
@@ -45,6 +46,8 @@ class WebStructuralController extends WebController {
         } catch (error) {
             tags = []
         }
+
+        console.log(obras[0])
         
         return this.renderWithPage(req, res, {
             title: 'Busca | Conexão MRV', 
@@ -52,6 +55,7 @@ class WebStructuralController extends WebController {
             conteudo: 'Busca/Busca',
             obras: obras,
             estados: estados,
+            estadoUF: req.query.state,
             city: req.query.city,
             search: req.query.search,
             tags: tags

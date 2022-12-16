@@ -3,7 +3,11 @@
     <div class="row">
         <div class="col-12 d-block mb-4">
             <h1><%= obra.name %></h1>
-            <h3><%= obra.city_id %></h3>
+            <% if(obra.city_name) {%>
+                <h3><%= obra.city_name %> - <%= obra.state_name%></h3>
+            <% } else { %>
+                <h3>Localização não registrada</h3>
+            <% } %>
         </div>
     </div>
     <div class="row mx-5 mb-5">
@@ -11,42 +15,42 @@
             <div class="row">
                 <div class="col-12">
                     <div class="row">
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Gesso</span></div>
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Rafa</span></div>
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Pintor</span></div>
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Pintor</span></div>
-                    </div>
-                    <div class="row">
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Gesso</span></div>
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Enya</span></div>
-                        <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center"><span
-                                 class="tag">Pintor</span></div>
+                        <% if(obra.tags) { %>
+                            <% obra.tags.map(tag => { %>
+                                <div class="col-2 col-sm-3 d-flex justify-content-center align-items-center">
+                                    <span class="tag"><%= tag.nome %></span>
+                                </div>
+                            <% }) %>
+                        <% } %>
                     </div>
                 </div>
             </div>
 
         </div>
         <div class="col-4 d-flex align-items-center justify-content-center">
-            <a  id="bnt-i">Tenho interesse</a>
+            <% if(locals.logado && logado) {%>
+                <% if(obra.interesse) { %>
+                    <button id="bnt-i">Tenho interesse</button>
+                <% } else {%>
+                    <button id="bnt-i">Você registrou seu interesse</button>
+                <% } %>
+            <% } else { %>
+                <button  disabled id="btn btn-primary">Faça login para registrar interesse</button>
+            <% } %>
         </div>
     </div>
     <div id="desc" class="row mx-5">
         <div class="col-6">
             <p class="text-warp " style="margin-left: 82px;line-height: 40px; font-size: large;"> <%= obra.description %> </p>
         </div>
-        <div class="col-6"><img
+        <!-- <div class="col-6"><img
                 src="/imagens/Obra/plantaCondominio.jpg"
-                class="rounded w-75 h-50" alt="..."></div>
+                class="rounded w-75 h-50" alt="...">
+        </div> -->
     </div>
 </div>
 
-<div class="container-fluid mb-5">
+<!-- <div class="container-fluid mb-5">
     <h2>IMAGENS</h2>
     <div class="col-12" id="fotos">
         <div class="row">
@@ -84,6 +88,4 @@
             $('#bnt-i').css('color', '#079D56');
             $('#bnt-i').text("Seu interesse foi registrado");
         });
-    </script>
-</div>
-</div>
+    </script> -->

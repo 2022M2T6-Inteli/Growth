@@ -1,57 +1,42 @@
 <main class="col-8">
-    <!--  Conteúdo principal da página  -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script>const selectedCityId = "<%= city %>"; const selectedStateUf = "<%=estadoUF%>"</script>
+
+    <script src="/dashboard/Obra/Obra.js"></script>
     <h1>Obra</h1>
-    
-        <center>
-                <img class="imagensFoto" src="../../../../imagens/Obra/obra-1.jpg" width="280">
-                <img class="imagensFoto" src="../../../../imagens/Obra/obra-2.jpg" width="165">
-                <img class="imagensFoto" src="../../../../imagens/Obra/obra-3.jpg" width="190">
 
-            <div class="modal" id="modal-1">
-                <div class="modal-content">
-                    <span class="close-button" onclick="closeModal('modal-1')">
-                        &times;
-                    </span>
-                    <center>
-                        <img class="imagensFoto" src="../../../../imagens/Obra/obra-1.jpg" width="650">
-                    </center>
-                </div>
-            </div>
-            <div class="modal" id="modal-2">
-                <div class="modal-content">
-                    <span class="close-button" onclick="closeModal('modal-2')">
-                        &times;
-                    </span>
-                    <center>
-                        <img class="imagensFoto" src="../../../../imagens/Obra/obra-2.jpg" width="650">
-                    </center>
-                </div>
-            </div>
-            <div class="modal" id="modal-3">
-                <div class="modal-content">
-                    <span class="close-button" onclick="closeModal('modal-3')">
-                        &times;
-                    </span>
-                    <center>
-                        <img class="imagensFoto" src="../../../../imagens/Obra/obra-3.jpg" width="650">
-                    </center>
-                </div>
-            </div>
-
-        </center><br>
-
-    <div class="container">
+    <center>
+        <div class="container">
             <form method="post">
                 <div class="row" id="row" style="border-radius: 10px;">
                     <div class="col-6">
                         <label for="tituloObra">Título:</label>
-                        <input type="text" class="form-control" id="tituloObra" name="name" placeholder="Digite o Nome da Obra:"
+                        <input type="text" required class="form-control" id="tituloObra" name="name"
+                            placeholder="Digite o Nome da Obra:"
                             aria-describedby="basic-addon3">
                     </div>
                     <div class="col-6">
-                        <label for="localObra">Localização:</label>
-                        <input type="text" name="city_id" class="form-control" id="localObra"
-                                placeholder="Digite aqui a localização da obra:"  aria-describedby="basic-addon3">
+                        <div class="row">
+                            <div class="col-12">
+                                <label for="state">Estado</label>
+                                <select class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                                    name="state" id="state">
+                                    <option value="">Selecione</option>
+                                    <% estados.map(estado=> { %>
+                                        <option value="<%= estado.sigla %>" <%=estado.selected ? 'selected' : '' %> >
+                                            <%= estado.nome %>
+                                        </option>
+                                    <% }) %>
+                                </select>
+                            </div>
+                            <div class="col-12">
+                                <label for="city">Cidade</label>
+                            <select name="city" id="city" required>
+                                <option value="">Selecione</option>
+                            </select>
+                            </div>
+                            
+                        </div>
                     </div>
                 </div>
                 <div class="row" id="row" style="border-radius: 10px;">

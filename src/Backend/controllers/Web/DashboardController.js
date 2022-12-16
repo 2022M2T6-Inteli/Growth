@@ -5,6 +5,8 @@ const UserBuilderModel = require("../../models/UserModel");
 const UserAdministratorModel = require("../../models/AdministratorModel");
 const APIError = require("../../services/ErrorService");
 const TagModel = require("../../models/TagModel");
+const AuthService = require("../../services/AuthService");
+const axios = require('axios').default
 
 
 class WebDashboardController {
@@ -19,7 +21,18 @@ class WebDashboardController {
     })
 
     static getConstructions = (req, res) => Controller.execute(req, res, async (req, res) => {
-        const constructions = await ConstrucitonModel.allByColumns();
+        const constructions =  await ConstrucitonModel.allSQL(`
+            SELECT cmrv_construction.*,
+                ibge_city.name AS city_name,
+                ibge_state.name AS state_name
+            FROM cmrv_construction
+                INNER JOIN ibge_city ON ibge_city.id = cmrv_construction.city_id
+                INNER JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+            WHERE 
+                cmrv_construction.name LIKE '%${req.query.search || ''}%'
+                ${req.query.state ? `AND ibge_state.uf = '${req.query.state}'` : ''}
+                ${req.query.city ? `AND ibge_city.id = '${req.query.city}'` : ''}
+        `)
 
         res.render('dashboard/Componentes/page', {
             title: 'Obras',
@@ -32,12 +45,20 @@ class WebDashboardController {
     })
 
     static getCreateObras = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const estados = (await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")).data.map(element => {
+            element.selected = req.query.state == element.sigla
+            return element;
+        });
+
         res.render('dashboard/Cadastro/pages', {
             erro: {},
             title: 'Criação de obra',
             conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/CriarObra',
             css: '/dashboard/Obra/Obra.css',
             secondAside: {},
+            estados: estados,
+            estadoUF: req.body.state,
+            city: req.body.city,
             currentPage: req.url
         });
     })
@@ -58,6 +79,10 @@ class WebDashboardController {
         //if(cidade.length > 1){
         //    error.cidade = "Coloque o id da cidade"
         //}
+        const estados = (await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")).data.map(element => {
+            element.selected = req.query.state == element.sigla
+            return element;
+        });
 
         if (Object.keys(error).lenght) {
             res.render('dashboard/Cadastro/pages', {
@@ -66,6 +91,7 @@ class WebDashboardController {
                 conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/Obra',
                 css: '/dashboard/Obra/Obra.css',
                 secondAside: {},
+                estados: estados,
                 currentPage: req.url
             });
             console.log(error)
@@ -74,7 +100,7 @@ class WebDashboardController {
             const createObras = new ConstrucitonModel({
                 name: req.body.name,
                 description: req.body.description,
-                city_id: req.body.city_id
+                city_id: req.body.city
             });
             await createObras.insert()
             res.redirect('/dashboard/obras')
@@ -394,7 +420,26 @@ class WebDashboardController {
 
     static getConstruction = (req, res) => Controller.execute(req, res, async (req, res) => {
         try {
-            const construction = await ConstrucitonModel.getByColumns({ id: req.params.id });
+            const obra = await ConstrucitonModel.getSQL(`
+            SELECT cmrv_construction.*,
+                ibge_city.name AS city_name,
+                ibge_city.id AS city_id,
+                ibge_state.name AS state_name,
+                ibge_state.uf AS state_uf
+            FROM cmrv_construction
+                LEFT JOIN ibge_city ON ibge_city.id = cmrv_construction.city_id
+                LEFT JOIN ibge_state ON ibge_state.id = ibge_city.state_id
+            WHERE 
+                cmrv_construction.id = ${req.params.id}
+        `)
+
+        if(!obra) {
+            return res.redirect("/dashboard/obras")
+        }
+            const estados = (await axios.get("https://servicodados.ibge.gov.br/api/v1/localidades/estados")).data.map(element => {
+                element.selected = obra.state_uf == element.sigla
+                return element;
+            });
 
             res.render('dashboard/Componentes/page', {
                 title: 'Usuários',
@@ -402,7 +447,10 @@ class WebDashboardController {
                 conteudo: __dirname + '/../../../Frontend/Dashboard/Obra/Obra',
                 secondAside: '',
                 currentPage: req.url,
-                construction: construction
+                construction: obra,
+                city: obra.city_id,
+                estadoUF: obra.state_uf,
+                estados: estados
             });
         } catch (error) {
             if (error instanceof APIError && error.status == 404) {
@@ -418,7 +466,7 @@ class WebDashboardController {
         const construciton = await ConstrucitonModel.getByColumns({ id: id })
 
         construciton.setName(req.body.name);
-        construciton.setCityId(req.body.city_id);
+        construciton.setCityId(req.body.city);
         construciton.setDescription(req.body.description);
 
         construciton.update();
@@ -477,6 +525,46 @@ class WebDashboardController {
         tag.update();
 
         res.redirect("/dashboard/tags");
+    })
+
+    static getLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
+        res.render('dashboard/Login/Login', {error: {}});
+    })
+
+    static postLogin = (req, res) => Controller.execute(req, res, async (req, res) => {
+        const {password, email} = req.body;
+
+        const error = {};
+
+        if(!password || password.length < 8) {
+            error.password = 'Senha precisa ter mais de 8 caracteres';
+        }
+
+        if(!email || !email.includes('@')){
+            error.email = 'Email precisa estar corretamente formatado';
+        }
+
+        if(Object.keys(error).length){
+            res.render('dashboard/Login/Login', {error: error});
+        }else{
+            try {
+                const user = await UserAdministratorModel.getByColumns({email: email})
+                if(user.validatePassword(password)){
+                    res.cookie('AuthToken',AuthService.makeToken(user.id, 'adm'));
+                    res.redirect("/dashboard/")
+                }else{
+                    console.log(error)
+
+                    res.render('dashboard/Login/Login', {error: error});
+                }
+            } catch (error) {
+                if(error instanceof APIError) {
+                    res.render('dashboard/Login/Login',{error: {password: 'credenciais incorretadas'}})                    
+                }else {
+                    throw error;
+                }
+            }
+        }
     })
 }
 

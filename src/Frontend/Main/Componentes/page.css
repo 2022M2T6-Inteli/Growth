@@ -20,8 +20,12 @@ nav > div > div > a:hover {
 }
 
 
+body {
+    min-height: 100vh;
+}
 
 footer {
+    margin-top: 200px;
     width: 100%;
     background: linear-gradient(11.16deg, #006B3F 0%, #079D56 111.35%);
     color: white;

@@ -1,17 +1,19 @@
 <div class="card mb-5" style="width: 450px; border-radius: 20px; margin-top: 20px; margin-left: 25px; margin-right: 25px;">
-    <img src="/imagens/PaginaPrincipal/parqueDelSol.jpg" class="card-img-top2"
-        alt="foto card">
     <div class="card-body">
         <h4 class="card-title mb-0"><%= name %></h4>
-        <h6 class="local"><%= city_id %></h6>
+        <% if(locals.city_name) {%>
+            <h6 class="local"><%= locals.city_name %> - <%= state_name %></h6>
+        <% } else { %>
+            <h6 class="local">Cidade não registrada</h6>
+        <% } %>
         <div class="d-flex w-100 justify-content-start">
-            <span class="btn btn-primary mr-2"
-                style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                type="submit">+ Pintor</span> <span class="btn btn-primary mr-2"
-                style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                type="submit">+ Apartamentos</span> <span class="btn btn-primary mr-2"
-                style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
-                type="submit">+ construtores</span>
+            <% if(locals.tags) { %>
+                <% tags.map(tag => { %>
+                    <span class="btn btn-primary mr-2"
+                    style="background-color: #FF8B22; border-color: #FF8B22; font-size: x-small;"
+                    type="submit"><%= tag.name %></span>
+                <% }) %>
+            <% } %>
         </div>
         <p class="card-text" style="text-align: start;"><%= description %></p>
         <a href="/obra/<%= id %>" class="btn btn-primary"

@@ -1,5 +1,6 @@
 <div class="container-fluid printipal-container">
     <script src="main/Busca/Busca.js"></script>
+    <script>const selectedCityId = "<%= city %>"; const selectedStateUf = "<%=estadoUF%>"</script>
     <div class="row">
         <aside class="col-2 aside-filter">
             <form action="" method="get">
@@ -16,6 +17,7 @@
                     </select>
                     <label for="city">Cidade</label>
                     <select name="city" id="city">
+                        <option value="">Selecione</option>
                     </select>
                 </section>
                 <input type="hidden" name="search" id="hiddenSearch">

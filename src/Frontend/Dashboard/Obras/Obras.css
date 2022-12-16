@@ -25,7 +25,7 @@ main #row a {
   display: flex;
   justify-content: center;
   transition: all 0.5 ease-out;
-  height: 600px;
+  height: 400px;
 }
 main #row a:hover .card {
   width: 95%;
