@@ -6,7 +6,7 @@
     </a>
     <!--barra de pesquisa-->
     <form class="d-flex w-50" role="search" action="/Busca" method="get">
-      <input class="form-control me-2" type="search" placeholder="buscar" aria-label="buscar" style="font-size: small;">
+      <input class="form-control me-2" type="search" placeholder="buscar" name="search" aria-label="buscar" style="font-size: small;" id="search" value="<%= search %>">
       <button class="btn btn-outline-success" type="submit" style="font-size: small;">buscar</button>
     </form>
     <% if(locals.logado && logado){ %>

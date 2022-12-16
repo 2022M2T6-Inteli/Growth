@@ -86,6 +86,12 @@ class ConstructionModel extends Model {
 
     // Retorna obras com base nas colunas passadas por parâmetro
     static async allByColumns(params = []){
+        const name = params.name || undefined;
+
+        if(params.name){
+            delete params.name;
+        }
+
         const rows = await this.allSQL(
             `SELECT * 
             FROM cmrv_construction
