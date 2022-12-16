@@ -1,12 +1,13 @@
 <main class="col-10">
     <!--  Conteúdo principal da página  -->
-    <center><div class="container">
+    <div class="container">
         <h1>Dashboard</h1>
         <div class="row quantities">
             <div class="col-6"><span class="quantity"><%= users.length %></span><span class="description">Usuários Cadastrados</span>
             </div>
             <div class="col-6"><span class="quantity"><%= obras.length %></span><span class="description">Obras Criadas</span></div>
         </div>
+        <br>
         <div class="row">
             <div class="col-12">
                 <canvas id="chart1"></canvas>
@@ -14,5 +15,5 @@
             <input type="hidden" name="usuarios-cadastrados" id="usuarios-cadastrados" value="<%= users.length %>">
             <input type="hidden" name="obras-cadastradas" id="obras-cadastradas" value="<%= obras.length %>">
         </div>
-    </div></center>
+    </div>
 </main>
