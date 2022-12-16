@@ -92,12 +92,12 @@ footer ul a:hover {
   justify-content: end;
 }
 #bnt-i{
-  width: 300px;
+  width: 250px;
   padding: 10px;
   color:white;
   background: linear-gradient(11.16deg, #006B3F 0%, #079D56 110.35%);
   border-radius: 10px;
-  font-size: large;
+  font-size: medium;
   text-align: center;
   border-color: #079D56;
   border-style:solid;
